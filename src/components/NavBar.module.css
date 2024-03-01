@@ -1,0 +1,14 @@
+.navbar {
+  background-color: rgb(42, 42, 42);
+  width: 80%;
+  height: 80%;
+  max-width: 1400px;
+
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  position: relative;
+}

@@ -4,22 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import NotFound from './pages/NotFound';
-import Videos from './pages/Videos';
-import World from './pages/World';
-
-const router = createBrowserRouter([
+import PowerOff from './pages/PowerOff/PowerOff';
+import PowerOn from './pages/PowerOn/PowerOn';
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <Videos /> },
-      { path: "hello", element: <World />},
+      { index: true, element: <PowerOff /> },
+      { path: "off", element: <PowerOff /> },
+      { path: "on", element: <PowerOn /> }
     ]
   }
-], { basename: process.env.PUBLIC_URL })
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -32,3 +32,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+// process.env.PUBLIC_URL
