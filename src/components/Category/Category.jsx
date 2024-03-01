@@ -1,33 +1,24 @@
-import { useEffect, useState } from 'react';
 import styles from './Category.module.css'
-
 import axios from 'axios';
+import {useQuery} from '@tanstack/react-query';
 
 
 export default function Category() {
-  const [state, setState] = useState(false);
-  const [show, setShow] = useState('');
-  const handleClick = () => {
-    setState((prev) => !prev);
-  }
-
-  useEffect(() => {
-    fetch('/cat/dog.json', {
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(res => res.json())
-    .then(data => setShow(data.price))
-
-  }, [state])
+  const {isLoading, error, data} = useQuery({
+    queryKey: ['dogs'],
+    queryFn: async () => {
+      return axios
+        .get('../cat/dog.json')
+        .then((res) => res.data.price)
+    }
+  })
   
-
   return (
     <div className={styles.category}>
       <p>카테고리</p>
-      <button onClick={handleClick}>눌러봐용</button>
-      {state ? show : ''}
+      {`로딩 상태 : ${isLoading}`}
+      {`에러 상태 : ${error}`}
+      {`데이터 : ${data}`}
     </div>
   );
 }
