@@ -8,7 +8,7 @@ export default function Category() {
     queryKey: ['dogs'],
     queryFn: async () => {
       return axios
-        .get('../cat/dog.json')
+        .get('https://raw.githubusercontent.com/2coldok/blog/main/public/cat/dog.json')
         .then((res) => res.data.price)
     }
   })
