@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from './pages/NotFound';
 import PowerOff from './pages/PowerOff/PowerOff';
 import PowerOn from './pages/PowerOn/PowerOn';

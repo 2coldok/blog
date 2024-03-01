@@ -2616,6 +2616,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.24.1":
+  version: 5.24.1
+  resolution: "@tanstack/query-core@npm:5.24.1"
+  checksum: 10c0/b1d0363096dde7a7b021c0565b9d7f2678d5348225d2fec74f8ee97fb2c294a8de1030a6c2ceb24ffd08daecf006ec17550f1db97c74f817d4fab33295e852ef
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.24.1":
+  version: 5.24.1
+  resolution: "@tanstack/react-query@npm:5.24.1"
+  dependencies:
+    "@tanstack/query-core": "npm:5.24.1"
+  peerDependencies:
+    react: ^18.0.0
+  checksum: 10c0/2c22e0e4fea282d77e8a54d9118b555d831ab51ec5eec2f5291a32ebd722967b8b3d41b9a8ceea7044decc3d0435c33161ebe82e6dd509277418d371a268a8f7
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^8.5.0":
   version: 8.20.1
   resolution: "@testing-library/dom@npm:8.20.1"
@@ -4019,6 +4037,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^1.6.7":
+  version: 1.6.7
+  resolution: "axios@npm:1.6.7"
+  dependencies:
+    follow-redirects: "npm:^1.15.4"
+    form-data: "npm:^4.0.0"
+    proxy-from-env: "npm:^1.1.0"
+  checksum: 10c0/131bf8e62eee48ca4bd84e6101f211961bf6a21a33b95e5dfb3983d5a2fe50d9fffde0b57668d7ce6f65063d3dc10f2212cbcb554f75cfca99da1c73b210358d
+  languageName: node
+  linkType: hard
+
+"axis@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "axis@npm:1.0.0"
+  checksum: 10c0/a89e1a4f2f41789a7ab4acaf22cda25bc9c49b06416b80341df8163587e71a363b425889210fc744c497af0fe09ca46d2bced31001093355dcf0511208e4f2d5
+  languageName: node
+  linkType: hard
+
 "axobject-query@npm:^3.2.1":
   version: 3.2.1
   resolution: "axobject-query@npm:3.2.1"
@@ -4259,9 +4295,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "blog@workspace:."
   dependencies:
+    "@tanstack/react-query": "npm:^5.24.1"
     "@testing-library/jest-dom": "npm:^5.14.1"
     "@testing-library/react": "npm:^13.0.0"
     "@testing-library/user-event": "npm:^13.2.1"
+    axios: "npm:^1.6.7"
+    axis: "npm:^1.0.0"
     eslint-config-react-app: "npm:^7.0.1"
     gh-pages: "npm:^6.1.1"
     react: "npm:^18.2.0"
@@ -6697,7 +6736,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.15.4":
   version: 1.15.5
   resolution: "follow-redirects@npm:1.15.5"
   peerDependenciesMeta:
@@ -6765,6 +6804,17 @@ __metadata:
     combined-stream: "npm:^1.0.8"
     mime-types: "npm:^2.1.12"
   checksum: 10c0/1ccc3ae064a080a799923f754d49fcebdd90515a8924f0f54de557540b50e7f1fe48ba5f2bd0435a5664aa2d49729107e6aaf2155a9abf52339474c5638b4485
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "form-data@npm:4.0.0"
+  dependencies:
+    asynckit: "npm:^0.4.0"
+    combined-stream: "npm:^1.0.8"
+    mime-types: "npm:^2.1.12"
+  checksum: 10c0/cb6f3ac49180be03ff07ba3ff125f9eba2ff0b277fb33c7fc47569fc5e616882c5b1c69b9904c4c4187e97dd0419dd03b134174756f296dec62041e6527e2c6e
   languageName: node
   linkType: hard
 
@@ -11576,6 +11626,13 @@ __metadata:
     forwarded: "npm:0.2.0"
     ipaddr.js: "npm:1.9.1"
   checksum: 10c0/c3eed999781a35f7fd935f398b6d8920b6fb00bbc14287bc6de78128ccc1a02c89b95b56742bf7cf0362cc333c61d138532049c7dedc7a328ef13343eff81210
+  languageName: node
+  linkType: hard
+
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: 10c0/fe7dd8b1bdbbbea18d1459107729c3e4a2243ca870d26d34c2c1bcd3e4425b7bcc5112362df2d93cc7fb9746f6142b5e272fd1cc5c86ddf8580175186f6ad42b
   languageName: node
   linkType: hard
 

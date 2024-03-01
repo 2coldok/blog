@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styles from './PowerOn.module.css'
 
 import ReactMarkdown from 'react-markdown';
@@ -15,11 +16,11 @@ const text = `
 `;
 
 export default function PowerOn() {
+  
   return (
     <div className={styles.on}>
       <p>전원 켜짐</p>
       <ReactMarkdown>{text}</ReactMarkdown>
-    
     </div>
   );
 }
