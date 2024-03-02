@@ -8,6 +8,7 @@ import { createHashRouter, RouterProvider, createBrowserRouter } from "react-rou
 import NotFound from './pages/NotFound';
 import PowerOff from './pages/PowerOff/PowerOff';
 import PowerOn from './pages/PowerOn/PowerOn';
+import Css from './components/css/Css';
 const router = createHashRouter([
   {
     path: "/",
@@ -16,7 +17,8 @@ const router = createHashRouter([
     children: [
       { index: true, element: <PowerOff /> },
       { path: "off", element: <PowerOff /> },
-      { path: "on", element: <PowerOn /> }
+      { path: "on", element: <PowerOn /> },
+      { path: "css", element: <Css />},
     ]
   }
 ])
