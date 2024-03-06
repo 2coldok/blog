@@ -10,18 +10,20 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className='container'>
-      <div className='left'>
-        <QueryClientProvider client={queryClient}><Category /></QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <div className='container'>
+        <div className='left'>
+          <Category />
+        </div>
+        <div className='middle'>
+          <Outlet />
+          <NavBar />
+        </div>
+        <div className='right'>
+          <Light />
+        </div>
       </div>
-      <div className='middle'>
-        <Outlet />
-        <NavBar />
-      </div>
-      <div className='right'>
-        <Light />
-      </div>
-    </div>
+    </QueryClientProvider>
   )
 }
 

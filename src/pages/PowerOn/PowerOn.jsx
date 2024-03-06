@@ -1,26 +1,43 @@
-import { useEffect } from 'react';
-import styles from './PowerOn.module.css'
+import { useEffect } from "react";
+import styles from "./PowerOn.module.css";
 
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
 
-const text = `
-  # 헤드에용
-  **굵게**
-  
+import { useQuery } from "@tanstack/react-query";
+import axios from 'axios';
 
-  일반텍스트
+// import { Octokit } from 'octokit';
+import { Octokit } from "@octokit/rest";
 
-  \`\`\`
-    const a = new class();
-  \`\`\`
-`;
+const octokit = new Octokit({
+  auth: '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',
+});
+
+
 
 export default function PowerOn() {
+  
+
+  const {isLoading, error, data} = useQuery({
+    queryKey: ['dogs'],
+    queryFn: async () => {
+      const result = await octokit.request("GET /repos/{owner}/{repo}/issues", {
+        owner: '2coldok',
+        repo: 'blog',
+        per_page: 2
+      })
+      return result.data;
+    }
+  })
+  
   
   return (
     <div className={styles.on}>
       <p>전원 켜짐</p>
-      <ReactMarkdown>{text}</ReactMarkdown>
+      
+      
+      <ReactMarkdown></ReactMarkdown>
+      
     </div>
   );
 }
