@@ -23,6 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# my
-docs
+# custom
+.env
 
