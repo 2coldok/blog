@@ -1,6 +1,6 @@
 
 import { FaCat } from "react-icons/fa";
-import { BsSearch } from "react-icons/bs";
+import { TbSearch } from "react-icons/tb";
 // import React from "react";
 import { ImBrightnessContrast } from "react-icons/im";
 import { IoMusicalNotes } from "react-icons/io5";
@@ -24,9 +24,9 @@ export default function Navbar() {
       </Left>
 
       <Right>
+        <ToolBoxButton><TbSearch /></ToolBoxButton>
         <ToolBoxButton><ImBrightnessContrast /></ToolBoxButton>
         <ToolBoxButton><IoMusicalNotes /></ToolBoxButton>
-        <ToolBoxButton><BsSearch /></ToolBoxButton>
       </Right>
 
       
@@ -40,6 +40,7 @@ const NavbarWrapper = styled.div`
   flex-direction: row;
   width: 80%;
   height: 60px;
+  max-width: 1200px;
   background-color: grey;
 
   @media (max-width: 768px) {
@@ -65,13 +66,13 @@ const ToolBoxButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin-right: 0.2em;
+  margin-right: 0.3em;
 
 
   & > svg {
-    font-size: 2em;
-    margin-left: 0.2em;
-    margin-right: 0.4em;
+    font-size: 2.5em;
+    margin-right: 0.3em;
+    margin-left: 0.3em;
   }
 
   background-color: pink;
@@ -87,9 +88,9 @@ const HomeButton = styled.button`
   }
 
   & > svg {
-    font-size: 2em;
-    margin-left: 0.2em;
-    margin-right: 0.4em;
+    font-size: 2.5em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
   }
 
   background-color: pink;

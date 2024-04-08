@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Drawer } from "@mui/material";
 import styled from "styled-components";
 import { LuMenu } from "react-icons/lu";
+import MenuList from "./MenuList";
 
 export default function MenuDrawer() {
   const [menuDrawer, setMenuDrawer] = useState(false);
@@ -22,7 +23,7 @@ export default function MenuDrawer() {
         <LuMenu />
       </MenuButton>
       <Drawer anchor="left" open={menuDrawer} onClose={toggleDrawer(false)}>
-        elloddfdfdfdfdfdfdsfsdfsfsdfs
+        <MenuList />
       </Drawer>
     </>
   );
@@ -34,10 +35,6 @@ const MenuButton = styled.button`
   align-items: center;
   margin-right: 0.6em;
   padding: 0;
-
-  & > span {
-    font-size: 2em;
-  }
 
   & > svg {
     font-size: 3em;
