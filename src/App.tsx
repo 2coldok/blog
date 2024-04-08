@@ -1,14 +1,19 @@
-import { useGithubIssuesMananger } from "./hook/GithubIssuesManager";
+import Navbar from "./components/Navbar";
+import { Outlet } from "react-router-dom";
 import "./App.css";
 
 export default function App() {
-  const { githubIssuesManager } = useGithubIssuesMananger()
+  
+
 
   return (
-    <>
-      {githubIssuesManager?.getAllIssues()?.map((issue) => (
-        <p>{issue.title}</p>
-      ))}
-    </>
+    <div className="container">
+      <Navbar />
+      <Outlet />      
+    </div>
   )
 }
+
+// {githubIssuesManager?.getAllIssues()?.map((issue) => (
+//   <p>{issue.title}</p>
+// ))}

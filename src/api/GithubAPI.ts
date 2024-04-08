@@ -1,6 +1,10 @@
 import { Endpoints } from "@octokit/types";
 import { Octokit } from "octokit";
 
+export type IssuesData = Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
+export type Issues = Endpoints["GET /repos/{owner}/{repo}/issues"]["response"]["data"];
+export type FetchedIssues = Issues | undefined;
+
 const GITHUB_AUTH_TOKEN = import.meta.env.VITE_GITHUB_AUTH_TOKEN.replaceAll(
   "?",
   ""
@@ -9,10 +13,6 @@ const GITHUB_AUTH_TOKEN = import.meta.env.VITE_GITHUB_AUTH_TOKEN.replaceAll(
 const octokit = new Octokit({
   auth: GITHUB_AUTH_TOKEN,
 });
-
-export type IssuesData = Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
-export type Issues = Endpoints["GET /repos/{owner}/{repo}/issues"]["response"]["data"];
-export type FetchedIssues = Issues | undefined;
 
 export const getIssuesData = async (): Promise<IssuesData> => {
   return await octokit.request("GET /repos/{owner}/{repo}/issues", {
@@ -42,7 +42,7 @@ export class GithubIssues {
   }
 
   // todo tag 대소문자 고려하기
-  getIssuesByTag(tag: string) {
+  getIssuesByTag(tag: string): FetchedIssues {
     return this.issues?.filter(
       (issue) =>
         issue.milestone !== null &&
