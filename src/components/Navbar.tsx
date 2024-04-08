@@ -1,12 +1,12 @@
 
 import { FaCat } from "react-icons/fa";
 import { BsSearch } from "react-icons/bs";
-import React from "react";
+// import React from "react";
 import { ImBrightnessContrast } from "react-icons/im";
 import { IoMusicalNotes } from "react-icons/io5";
 
 import styled from "styled-components";
-import { useState } from "react";
+// import { useState } from "react";
 import MenuDrawer from "./MenuDrawer";
 
 export default function Navbar() {
