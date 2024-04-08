@@ -36,7 +36,7 @@ const ListContainer = styled.div`
 `
 
 const ItemButton = styled.button`
-  margin: 0.5em 0.5em;
-  font-size: 2em;
+  margin: 0.5rem 0.5rem;
+  font-size: 2rem;
   background-color: green;
 `
