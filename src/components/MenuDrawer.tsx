@@ -33,11 +33,12 @@ const MenuButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 0.6em;
+  margin-left: 0.6em;
+  margin-right: 0.4em;
   padding: 0;
 
   & > svg {
-    font-size: 3em;
+    font-size: 3.5em;
   }
 
   background-color: pink;
