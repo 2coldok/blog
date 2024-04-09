@@ -1,16 +1,21 @@
 // import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 
+import { decrement, increment } from "../redux/slice/counterSlice";
+import { RootState } from "../redux/store";
 export default function Home() {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate('/cat');
-  }
+  const count = useSelector(
+    (state: RootState) => state.counter.value
+  );
+  const dispatch = useDispatch();
+
   return (
     <div>
-      Home page
-      <button onClick={handleClick}>클릭해봐</button>
+      <button onClick={() => dispatch(decrement())}>+</button>
+      <span>{count}</span>
+      <button onClick={() => dispatch(increment())}>-</button>
     </div>
   );
 }
 
+// { counter: { value: number } }

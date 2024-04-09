@@ -1,29 +1,49 @@
-
 import styled from "styled-components";
 import { TbSearch } from "react-icons/tb";
 import { ImBrightnessContrast } from "react-icons/im";
 import { IoMusicalNotes } from "react-icons/io5";
+import { ModalX } from "./ModalX";
+import { useState } from "react";
+import Music from "./Music";
+
 
 export default function ToolBox() {
+  const [searchModal, setSearchModal] = useState(false);
+  const [themeModal, setThemeModal] = useState(false);
+  const [musicModal, setMusicModal] = useState(false);
+
   return (
     <>
-      <BigSearchButtonContainer>
+      <BigSearchButtonContainer onClick={() => setSearchModal(true)}>
         <SearchButton>
           <TbSearch />
           <span>제목 또는 태그 검색</span>
         </SearchButton>
       </BigSearchButtonContainer>
-      <SmallSearchButtonContainer>
+      <SmallSearchButtonContainer onClick={() => setSearchModal(true)}>
         <ToolBoxButton>
-          <TbSearch />
+          <TbSearch color="#0055FF" />
         </ToolBoxButton>
       </SmallSearchButtonContainer>
-      <ToolBoxButton>
-        <ImBrightnessContrast />
+      <ModalX showModal={searchModal} setShowModal={setSearchModal}>
+        <p>search content</p>
+      </ModalX>
+
+
+      <ToolBoxButton onClick={() => setThemeModal(true)}>
+        <ImBrightnessContrast color="#FAF58C" />
       </ToolBoxButton>
-      <ToolBoxButton>
-        <IoMusicalNotes />
+      <ModalX showModal={themeModal} setShowModal={setThemeModal}>
+        <p>테마 content</p>
+      </ModalX>
+
+
+      <ToolBoxButton onClick={() => setMusicModal(true)}>
+        <IoMusicalNotes color="#E0115F" />
       </ToolBoxButton>
+      <ModalX showModal={musicModal} setShowModal={setMusicModal}>
+        <Music />
+      </ModalX>
     </>
   );
 }
