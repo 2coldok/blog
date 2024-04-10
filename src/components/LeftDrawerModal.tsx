@@ -8,7 +8,7 @@ interface ILeftDrawerModal {
 }
 
 export function LeftDrawerModal({ active, onClose, children }: ILeftDrawerModal) {
-  
+
   return (
     <>
       <DrawerOutside $active={active} onClick={onClose} />
@@ -20,7 +20,7 @@ export function LeftDrawerModal({ active, onClose, children }: ILeftDrawerModal)
 }
 
 const DrawerOutside = styled.div<{ $active: boolean }>`
-  background-color: rgba(6, 43, 73, 0.3);
+  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
   left: 0;
@@ -32,7 +32,7 @@ const DrawerOutside = styled.div<{ $active: boolean }>`
 `;
 
 const DrawerContainer = styled.div<{ $active: boolean }>`
-  background-color: #1a6547;
+  background-color: pink;
   position: fixed;
   top: 0;
   left: 0;

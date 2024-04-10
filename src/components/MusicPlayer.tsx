@@ -2,6 +2,8 @@
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { RootState } from '../redux/store';
+import { useDispatch } from 'react-redux';
+import { musicOff } from '../redux/slice/musicSlice';
 
 const PlayerWrapper = styled.div`
   display: flex;
@@ -14,13 +16,18 @@ const PlayerWrapper = styled.div`
   }
 `;
 
-const Ybutton = styled.button`
+const Button = styled.button`
   width: 5%;
 `
 
 export default function MusicPlayer() {
   const youtubeUrl = useSelector((state: RootState) => state.music.url);
   const youtubeEmbedURL = `https://www.youtube.com/embed/${getVideoId(youtubeUrl)}`;
+  
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(musicOff());
+  }
 
   return (
     <PlayerWrapper>
@@ -33,7 +40,7 @@ export default function MusicPlayer() {
         src={youtubeEmbedURL}
         style={{ border: "none" }}
       ></iframe>
-      <Ybutton>닫기</Ybutton>
+      <Button onClick={handleClick}>닫기</Button>
     </PlayerWrapper>
   );
 }

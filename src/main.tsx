@@ -13,6 +13,8 @@ import Home from './pages/Home.tsx';
 // redux
 import { Provider } from 'react-redux';
 import store from './redux/store.ts';
+import CategoryArticles from './pages/CategoryArticles.tsx';
+import ArticleDetail from './pages/ArticleDetail.tsx';
 
 const queryClient = new QueryClient();
 
@@ -23,7 +25,8 @@ const router = createHashRouter([
     errorElement: <NotFound />,
     children: [
       {index: true, element: <Home />},
-      
+      {path: ":category", element: <CategoryArticles />},
+      {path: ":category/:title", element: <ArticleDetail />},
     ]
   }
 ])

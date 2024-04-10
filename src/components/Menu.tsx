@@ -1,21 +1,23 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { LuMenu } from "react-icons/lu";
 import MenuList from "./MenuList";
 import { LeftDrawerModal } from "./LeftDrawerModal";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import { setMenuModal } from "../redux/slice/modalSlice";
 
-export default function MenuDrawer() {
-  const [menuDrawer, setMenuDrawer] = useState(false);
+export default function Menu() {
+  const dispatch = useDispatch();
+  const menuModal = useSelector((state: RootState) => state.modal.menuModal);
   
   return (
     <>
-      <MenuButton onClick={() => setMenuDrawer(true)}>
+      <MenuButton onClick={() => dispatch(setMenuModal(true))}>
         <LuMenu />
       </MenuButton>
-      {/* <Drawer anchor="left" open={menuDrawer} onClose={toggleDrawer(false)}>
-        <MenuList />
-      </Drawer> */}
-      <LeftDrawerModal active={menuDrawer} onClose={() => setMenuDrawer(false)}>
+  
+      <LeftDrawerModal active={menuModal} onClose={() => dispatch(setMenuModal(false))}>
         <MenuList />
       </LeftDrawerModal>
     </>

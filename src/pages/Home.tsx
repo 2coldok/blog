@@ -1,21 +1,23 @@
+import styled from "styled-components";
+
 // import React from 'react';
-import { useDispatch, useSelector } from "react-redux";
-
-import { decrement, increment } from "../redux/slice/counterSlice";
-import { RootState } from "../redux/store";
 export default function Home() {
-  const count = useSelector(
-    (state: RootState) => state.counter.value
-  );
-  const dispatch = useDispatch();
-
+  
   return (
-    <div>
-      <button onClick={() => dispatch(decrement())}>+</button>
-      <span>{count}</span>
-      <button onClick={() => dispatch(increment())}>-</button>
-    </div>
+    <HomeContainer>
+      홈이에용
+    </HomeContainer>
   );
 }
 
-// { counter: { value: number } }
+const HomeContainer = styled.div`
+  width: 80%;
+  height: 100%;
+  background-color: #0f2129;
+  overflow-y: auto;
+  max-width: 1200px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`

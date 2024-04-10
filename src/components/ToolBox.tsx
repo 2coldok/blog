@@ -2,44 +2,56 @@ import styled from "styled-components";
 import { TbSearch } from "react-icons/tb";
 import { ImBrightnessContrast } from "react-icons/im";
 import { IoMusicalNotes } from "react-icons/io5";
-import { useState } from "react";
 import Music from "./Music";
 import { ToolkitModal } from "./ToolkitModal";
 
-export default function ToolBox() {
-  const [searchModal, setSearchModal] = useState(false);
-  const [themeModal, setThemeModal] = useState(false);
-  const [musicModal, setMusicModal] = useState(false);
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import { useDispatch } from "react-redux";
+import { setMusicModal, setSearchModal, setThemeModal } from "../redux/slice/modalSlice";
 
+export default function ToolBox() {
+  // 서로 개별적인 상태인데 이렇게 묶어서 가져오면 한상태 변경이 다른 선택자의 호출까지 트리거함.
+  // 번거롭더라도 따로 따로 useSelector를 이용해 상태 가져오기.
+  // const { searchModal, themeModal, musicModal } = useSelector((state: RootState) => ({
+  //   searchModal: state.modal.searchModal,
+  //   themeModal: state.modal.themeModal,
+  //   musicModal: state.modal.musicModal,
+  // }));
+  const searchModal = useSelector((state: RootState) => state.modal.searchModal);
+  const themeModal = useSelector((state: RootState) => state.modal.themeModal);
+  const musicModal = useSelector((state: RootState) => state.modal.musicModal);
+
+  const dispatch = useDispatch();
+  
   return (
     <>
-      <BigSearchButtonContainer onClick={() => setSearchModal(true)}>
+      <BigSearchButtonContainer onClick={() => dispatch(setSearchModal(true))}>
         <SearchButton>
           <TbSearch />
           <span>제목 또는 태그 검색</span>
         </SearchButton>
       </BigSearchButtonContainer>
-      <SmallSearchButtonContainer onClick={() => setSearchModal(true)}>
+      <SmallSearchButtonContainer onClick={() => dispatch(setSearchModal(true))}>
         <ToolBoxButton>
           <TbSearch color="#0055FF" />
         </ToolBoxButton>
       </SmallSearchButtonContainer>
-      <ToolkitModal active={searchModal} onClose={() => setSearchModal(false)}>
+      <ToolkitModal active={searchModal} onClose={() => dispatch(setSearchModal(false))}>
         <p>search content</p>
       </ToolkitModal>
 
-
-      <ToolBoxButton onClick={() => setThemeModal(true)}>
+      <ToolBoxButton onClick={() => dispatch(setThemeModal(true))}>
         <ImBrightnessContrast color="#FAF58C" />
       </ToolBoxButton> 
-      <ToolkitModal active={themeModal} onClose={() => setThemeModal(false)}>
+      <ToolkitModal active={themeModal} onClose={() => dispatch(setThemeModal(false))}>
         <p>테마 content</p>
       </ToolkitModal>
       
-      <ToolBoxButton onClick={() => setMusicModal(true)}>
+      <ToolBoxButton onClick={() => dispatch(setMusicModal(true))}>
         <IoMusicalNotes color="#E0115F" />
       </ToolBoxButton>
-      <ToolkitModal active={musicModal} onClose={() => setMusicModal(false)}>
+      <ToolkitModal active={musicModal} onClose={() => dispatch(setMusicModal(false))}>
         <Music />
       </ToolkitModal>
     </>
@@ -61,7 +73,7 @@ const ToolBoxButton = styled.button`
   background-color: transparent;
   /* background-color: pink; */
 `;
-const BigSearchButtonContainer = styled.button`
+const BigSearchButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,7 +86,7 @@ const BigSearchButtonContainer = styled.button`
   }
 `;
 
-const SmallSearchButtonContainer = styled.button`
+const SmallSearchButtonContainer = styled.div`
   display: none;
   justify-content: center;
   align-items: center;

@@ -18,20 +18,20 @@ const modalSlice = createSlice({
   name: 'modal',
   initialState: initialModalState,
   reducers: {
-    toggleMenuModal: (state) => {
-      state.menuModal = !state.menuModal;
+    setMenuModal: (state, action) => {
+      state.menuModal = action.payload;
     },
-    toggleSearchModal: (state) => {
-      state.searchModal = !state.searchModal;
+    setSearchModal: (state, action) => {
+      state.searchModal = action.payload;
     },
-    toggleThemeModal: (state) => {
-      state.themeModal = !state.themeModal;
+    setThemeModal: (state, action) => {
+      state.themeModal = action.payload;
     },
-    toggleMusicModal: (state) => {
-      state.musicModal = !state.musicModal;
+    setMusicModal: (state, action) => {
+      state.musicModal = action.payload;
     },
   },
 });
 
-export const { toggleMenuModal, toggleSearchModal, toggleThemeModal, toggleMusicModal } = modalSlice.actions;
+export const { setMenuModal, setSearchModal, setThemeModal, setMusicModal } = modalSlice.actions;
 export default modalSlice.reducer;

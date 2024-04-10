@@ -7,8 +7,9 @@ import { FaCat } from "react-icons/fa";
 
 import styled from "styled-components";
 // import { useState } from "react";
-import MenuDrawer from "./MenuDrawer";
+
 import ToolBox from "./ToolBox";
+import Menu from "./Menu";
 
 
 export default function Navbar() {
@@ -18,7 +19,7 @@ export default function Navbar() {
     <NavbarWrapper>
       
       <Left>
-        <MenuDrawer />
+        <Menu />
         <HomeButton>
           <FaCat />
           <span>Chan's Blog</span>

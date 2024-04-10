@@ -1,32 +1,26 @@
-// import React from 'react';
+import { ArticlesData } from '../meta/ArticlesData';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setMenuModal } from '../redux/slice/modalSlice';
 import styled from 'styled-components';
 
-
-// import ListItem from '@mui/material/ListItem';
-// import ListItemButton from '@mui/material/ListItemButton';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItemText from '@mui/material/ListItemText';
-// import InboxIcon from '@mui/icons-material/MoveToInbox';
-// import MailIcon from '@mui/icons-material/Mail';
-// import List from '@mui/material/List';
-
 export default function MenuList() {
-  const lists = ['React', 'JavaScript', 'TypeScript', 'CSS', 'Next', 'React-Router-Dom', 'Redux'];
-  const lists2 = ['버서커', '카멘', '비아키스', '발탄'];
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = (category: string) => () => {
+    dispatch(setMenuModal(false));
+    navigate(`/${category}`);
+  };
+  
   return (
-    <p>
+    <>
       <ListContainer>
-        {lists.map((item) => (
-          <ItemButton>{item}</ItemButton>
+        {ArticlesData.map((articleData) => (
+          <ItemButton onClick={handleClick(articleData.category)}>{articleData.name}</ItemButton>
         ))}
       </ListContainer>
-      
-      <ListContainer>
-        {lists2.map((item) => (
-          <ItemButton>{item}</ItemButton>
-        ))}
-      </ListContainer>
-    </p>
+    </>
   )
 }
 

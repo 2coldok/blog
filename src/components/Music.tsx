@@ -3,6 +3,7 @@ import { IMusic, MusicContents } from '../meta/MusicContents';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { musicOn, setUrl } from '../redux/slice/musicSlice';
+import { setMusicModal } from '../redux/slice/modalSlice';
 
 
 export default function Music() {
@@ -10,6 +11,7 @@ export default function Music() {
   const handleClick = (url: string) => () => {
     dispatch(setUrl(url));
     dispatch(musicOn());
+    dispatch(setMusicModal(false));
   }
     
   return (
