@@ -14,5 +14,15 @@ export const MusicContents: IMusic[] = [
     title: '처음 그 자리에',
     singer: '풀하우스ost',
     youtubeUrl: 'https://www.youtube.com/watch?v=2WyOq7IMEnc'
+  },
+  {
+    title: '일기 1시간',
+    singer: '김냐영',
+    youtubeUrl: 'https://www.youtube.com/watch?v=ZE0OH7tz9SU&t=281s'
+  },
+  {
+    title: '나에게로의 초대 1시간',
+    singer: '조유진 X 박가영',
+    youtubeUrl: 'https://www.youtube.com/watch?v=wCiysUZn0us'
   }
 ];
