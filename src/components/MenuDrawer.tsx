@@ -1,30 +1,23 @@
-import React, { useState } from "react";
-import { Drawer } from "@mui/material";
+import { useState } from "react";
 import styled from "styled-components";
 import { LuMenu } from "react-icons/lu";
 import MenuList from "./MenuList";
+import { LeftDrawerModal } from "./LeftDrawerModal";
 
 export default function MenuDrawer() {
   const [menuDrawer, setMenuDrawer] = useState(false);
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-      setMenuDrawer(open);
-    };
+  
   return (
     <>
-      <MenuButton onClick={toggleDrawer(true)}>
+      <MenuButton onClick={() => setMenuDrawer(true)}>
         <LuMenu />
       </MenuButton>
-      <Drawer anchor="left" open={menuDrawer} onClose={toggleDrawer(false)}>
+      {/* <Drawer anchor="left" open={menuDrawer} onClose={toggleDrawer(false)}>
         <MenuList />
-      </Drawer>
+      </Drawer> */}
+      <LeftDrawerModal active={menuDrawer} onClose={() => setMenuDrawer(false)}>
+        <MenuList />
+      </LeftDrawerModal>
     </>
   );
 }

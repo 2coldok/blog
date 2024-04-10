@@ -1,7 +1,7 @@
 // import React from 'react';
 import styled from 'styled-components';
 
-import Divider from '@mui/material/Divider';
+
 // import ListItem from '@mui/material/ListItem';
 // import ListItemButton from '@mui/material/ListItemButton';
 // import ListItemIcon from '@mui/material/ListItemIcon';
@@ -20,7 +20,7 @@ export default function MenuList() {
           <ItemButton>{item}</ItemButton>
         ))}
       </ListContainer>
-      <Divider />
+      
       <ListContainer>
         {lists2.map((item) => (
           <ItemButton>{item}</ItemButton>

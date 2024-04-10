@@ -5,11 +5,6 @@ import { IoMusicalNotes } from "react-icons/io5";
 import { ModalX } from "./ModalX";
 import { useState } from "react";
 import Music from "./Music";
-import { LeftDrawerModal } from "./LeftDrawerModal";
-import MenuList from "./MenuList";
-
-
-
 
 export default function ToolBox() {
   const [searchModal, setSearchModal] = useState(false);
@@ -34,22 +29,13 @@ export default function ToolBox() {
       </ModalX>
 
 
-      {/* <ToolBoxButton onClick={() => setThemeModal(true)}>
+      <ToolBoxButton onClick={() => setThemeModal(true)}>
         <ImBrightnessContrast color="#FAF58C" />
-      </ToolBoxButton> */}
-      {/* <ModalX showModal={themeModal} setShowModal={setThemeModal}>
+      </ToolBoxButton> 
+      <ModalX showModal={themeModal} setShowModal={setThemeModal}>
         <p>테마 content</p>
-      </ModalX> */}
-      <ToolBoxButton onClick={() => setThemeModal((prev) => !prev)}>
-        <ImBrightnessContrast color="#FAF58C" />
-      </ToolBoxButton>
-      <LeftDrawerModal active={themeModal} onClose={() => setThemeModal(false)}>
-        <MenuList/>
-      </LeftDrawerModal>
-        
+      </ModalX>
       
-
-
       <ToolBoxButton onClick={() => setMusicModal(true)}>
         <IoMusicalNotes color="#E0115F" />
       </ToolBoxButton>
