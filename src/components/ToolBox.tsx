@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { TbSearch } from "react-icons/tb";
 import { ImBrightnessContrast } from "react-icons/im";
 import { IoMusicalNotes } from "react-icons/io5";
-import { ModalX } from "./ModalX";
 import { useState } from "react";
 import Music from "./Music";
+import { ToolkitModal } from "./ToolkitModal";
 
 export default function ToolBox() {
   const [searchModal, setSearchModal] = useState(false);
@@ -24,24 +24,24 @@ export default function ToolBox() {
           <TbSearch color="#0055FF" />
         </ToolBoxButton>
       </SmallSearchButtonContainer>
-      <ModalX showModal={searchModal} setShowModal={setSearchModal}>
+      <ToolkitModal active={searchModal} onClose={() => setSearchModal(false)}>
         <p>search content</p>
-      </ModalX>
+      </ToolkitModal>
 
 
       <ToolBoxButton onClick={() => setThemeModal(true)}>
         <ImBrightnessContrast color="#FAF58C" />
       </ToolBoxButton> 
-      <ModalX showModal={themeModal} setShowModal={setThemeModal}>
+      <ToolkitModal active={themeModal} onClose={() => setThemeModal(false)}>
         <p>테마 content</p>
-      </ModalX>
+      </ToolkitModal>
       
       <ToolBoxButton onClick={() => setMusicModal(true)}>
         <IoMusicalNotes color="#E0115F" />
       </ToolBoxButton>
-      <ModalX showModal={musicModal} setShowModal={setMusicModal}>
+      <ToolkitModal active={musicModal} onClose={() => setMusicModal(false)}>
         <Music />
-      </ModalX>
+      </ToolkitModal>
     </>
   );
 }
