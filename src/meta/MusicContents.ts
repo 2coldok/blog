@@ -30,4 +30,9 @@ export const MusicContents: IMusic[] = [
     singer: 'bad raiders',
     youtubeUrl: 'https://www.youtube.com/watch?v=feA64wXhbjo',
   },
+  {
+    title: '낭만고양이',
+    singer: '체리필터',
+    youtubeUrl: 'https://www.youtube.com/watch?v=Nh5Ld4EpXJs',
+  },
 ];

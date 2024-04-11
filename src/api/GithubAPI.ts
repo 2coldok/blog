@@ -1,8 +1,11 @@
 import { Endpoints } from "@octokit/types";
 import { Octokit } from "octokit";
+import { judgeTagMatchByHuristic, judgeTitleMatchByHuristic } from "../util/SearchEngine";
 
-export type IssuesData = Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
-export type Issues = Endpoints["GET /repos/{owner}/{repo}/issues"]["response"]["data"];
+export type IssuesData =
+  Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
+export type Issues =
+  Endpoints["GET /repos/{owner}/{repo}/issues"]["response"]["data"];
 export type FetchedIssues = Issues | undefined;
 
 const GITHUB_AUTH_TOKEN = import.meta.env.VITE_GITHUB_AUTH_TOKEN.replaceAll(
@@ -58,5 +61,34 @@ export class GithubIssues {
 
   getIssueByTitle(title: string): FetchedIssues {
     return this.issues?.filter((issue) => issue.title === title);
+  }
+
+  filterIssuesBySearchEngine(searchText: string): FetchedIssues {
+    const normalizeSearchText = this.getNormalizeString(searchText);
+
+    return this.issues?.filter((issue) => {
+      const normalizeTitle = this.getNormalizeString(issue.title);
+      const normalizeTags = this.getNormalizeTags(issue.milestone?.title);
+
+      return (
+        judgeTitleMatchByHuristic(normalizeSearchText, normalizeTitle) ||
+        judgeTagMatchByHuristic(normalizeSearchText, normalizeTags)
+        
+      );
+    });
+  }
+
+  private getNormalizeString(searchText: string): string {
+    return searchText.trim().split(" ").join("").toLowerCase();
+  }
+
+  private getNormalizeTags(milestoneTitle: string | undefined): string[] {
+    if (milestoneTitle !== undefined) {
+      return milestoneTitle
+        .split("#")
+        .filter(Boolean)
+        .map((tag) => this.getNormalizeString(tag));
+    }
+    return [""];
   }
 }

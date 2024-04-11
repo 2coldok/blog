@@ -10,9 +10,14 @@ import styled from "styled-components";
 
 import ToolBox from "./ToolBox";
 import Menu from "./Menu";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/');
+  }
   
 
   return (
@@ -20,7 +25,7 @@ export default function Navbar() {
       
       <Left>
         <Menu />
-        <HomeButton>
+        <HomeButton onClick={handleClick}>
           <FaCat />
           <span>Chan's Blog</span>
         </HomeButton>
