@@ -6,18 +6,17 @@ export default function CategoryArticles() {
   const { category } = useParams();
   const { githubIssuesManager } = useGithubIssuesMananger();
   const navigate = useNavigate();
-  const handleClick = (title: string, id: number) => () => {
-    navigate(`/${category}/${title}`, { state: { id } });
+  const handleClick = (title: string) => () => {
+    navigate(`/${category}/${title}`);
   }
   
-
   return (
     <Container>
       <h1>{`여기는 ${category}의 포스터를 보여주고 있어요`}</h1>
 
       {githubIssuesManager?.getIssuesByCategory(category!)?.map((article) => (
         <List key={article.id}>
-          <button onClick={handleClick(article.title, article.id)}>{article.title}</button>
+          <button onClick={handleClick(article.title)}>{article.title}</button>
         </List>
         
       ))}

@@ -102,6 +102,12 @@ const Container = styled.div`
   /* word-spacing: 1px; */
   line-height: 2.1;
 	padding: 0.8em;
+
+  & > ul {
+    list-style: disc outside none;
+    padding: 0 0 0 40px;
+  }
+  
   
 	
 

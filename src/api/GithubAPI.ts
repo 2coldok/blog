@@ -55,4 +55,8 @@ export class GithubIssues {
   getIssueById(id: number): FetchedIssues {
     return this.issues?.filter((issue) => issue.id === id);
   }
+
+  getIssueByTitle(title: string): FetchedIssues {
+    return this.issues?.filter((issue) => issue.title === title);
+  }
 }
