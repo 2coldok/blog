@@ -11,12 +11,13 @@ export default function Home() {
 }
 
 const HomeContainer = styled.div`
-  width: 80%;
-  height: 100%;
-  background-color: #0f2129;
-  overflow-y: auto;
-  max-width: 1200px;
+  padding: 1em;
+  width: 100%;
+  height: auto;
+  
+  color: white;
 
+  background-color: #111e44;
   @media (max-width: 768px) {
     width: 100%;
   }

@@ -25,6 +25,7 @@ export default function Menu() {
 }
 
 const MenuButton = styled.button`
+  color: #e3bdbd;
   display: flex;
   justify-content: center;
   align-items: center;

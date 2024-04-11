@@ -19,15 +19,13 @@ export default function ArticleDetail() {
 }
 
 const Container = styled.div`
-  
-  margin: 0;
   padding: 1em;
   width: 100%;
   height: auto;
+  
 
   
   color: white;
-  overflow-y: auto;
 
   background-color: #111e44;
   @media (max-width: 768px) {

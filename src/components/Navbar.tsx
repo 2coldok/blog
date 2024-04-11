@@ -41,9 +41,11 @@ const NavbarWrapper = styled.div`
   width: 100%;
   height: 60px;
   
-  background-color: grey;
+  background-color: #304031;
+  
   padding-left: 1em;
   padding-right: 1em;
+  z-index: 1000;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -72,12 +74,14 @@ const HomeButton = styled.button`
 
   & > span {
     font-size: 2em;
+    color: #ef7d25;
   }
 
   & > svg {
     font-size: 2.5em;
     margin-left: 0.3em;
     margin-right: 0.3em;
+    color: yellow;
   }
   background-color:transparent;
   /* background-color: pink; */

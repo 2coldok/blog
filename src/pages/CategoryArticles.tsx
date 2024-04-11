@@ -29,6 +29,16 @@ const Container = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+  
+  color: white;
+
+  background-color: #111e44;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const List = styled.li`
