@@ -7,8 +7,8 @@ import { musicOff } from '../redux/slice/musicSlice';
 
 const PlayerWrapper = styled.div`
   display: flex;
-  width: 80%;
-  max-width: 1200px;
+  width: 100%;
+  /* max-width: 1200px; */
   height: 60px;
   
   @media (max-width: 768px) {

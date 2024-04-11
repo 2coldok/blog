@@ -38,9 +38,9 @@ const NavbarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
   height: 60px;
-  max-width: 1200px;
+  
   background-color: grey;
   padding-left: 1em;
   padding-right: 1em;

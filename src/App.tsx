@@ -12,8 +12,10 @@ export default function App() {
   return (
     <div className="container">
       <Navbar />
-      {musicToggle && <MusicPlayer />}
-      <Outlet />
+      <div className="middle">
+        {musicToggle && <MusicPlayer />}
+        <Outlet />
+      </div>
     </div>
   )
 }
