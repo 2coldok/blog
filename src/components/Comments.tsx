@@ -23,6 +23,8 @@ const Comments = () => {
     script.setAttribute("theme", "github-light"); 
     script.setAttribute("crossorigin", "anonymous");
 
+    const currentUrl = window.location.origin + location.pathname + location.search + location.hash;
+    script.setAttribute('issue-term', currentUrl);
 
     scriptParentNode.appendChild(script);
     
@@ -32,7 +34,7 @@ const Comments = () => {
         scriptParentNode.removeChild(scriptParentNode.firstChild);
       }
     }  
-  }, [location]);
+  }, [location.pathname, location.search, location.hash]);
 
   return <div id="comments-section" />;
 };
