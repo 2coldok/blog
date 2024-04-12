@@ -62,16 +62,16 @@ export default function Search() {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={text} onChange={handleChange} />
-        <button>검색</button>
-      </form>
+      <SearchForm onSubmit={handleSubmit}>
+        <SearchInput type="text" value={text} onChange={handleChange} />
+        <SearchButton>검색</SearchButton>
+      </SearchForm>
 
       <SearchListContainer>
         {filtedIssues?.map((issue) => (
           
           <List onClick={handleClick(typeof issue.labels[0] === 'object' && issue.labels[0] !== null ? issue.labels[0].name : '', issue.title)}>
-            <Title><h3 dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, issue.title)}}></h3></Title>
+            <Title><h2 dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, issue.title)}}></h2></Title>
             
             {getTags(issue.milestone?.title).map((tag) => (
               <Tag><span dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, tag)}}></span></Tag>
@@ -85,6 +85,43 @@ export default function Search() {
     </Container>
   );
 }
+
+const SearchForm = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+const SearchInput = styled.input`
+  font-size: 17px;   // 폰트 사이즈 조정
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 300px;     // 너비 설정
+  margin-right: 10px;  // 오른쪽 마진 추가
+
+  &:focus {
+    border-color: #80aaff;
+    outline: none;
+  }
+`;
+
+const SearchButton = styled.button`
+  padding: 10px 20px;
+  font-size: 16px;  // 폰트 사이즈 조정
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+
 
 const Container = styled.div`
   width: 100%;
@@ -122,4 +159,5 @@ const Tag = styled.div`
   display: inline-block;
   background-color: #8a5353;
   margin-right: 1em;
+  font-size: 17px;
 `
