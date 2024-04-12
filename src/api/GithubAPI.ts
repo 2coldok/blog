@@ -28,7 +28,10 @@ export const getIssuesData = async (): Promise<IssuesData> => {
 };
 
 export class GithubIssues {
-  constructor(private issues: FetchedIssues) {}
+  
+  constructor(private issues: FetchedIssues) {
+    
+  }
 
   getAllIssues(): FetchedIssues {
     return this.issues;
@@ -54,9 +57,9 @@ export class GithubIssues {
     );
   }
 
-  // 고유한 id에 의해 무조건 길이가 1 인 배열을 반환한다.
-  getIssueById(id: number): FetchedIssues {
-    return this.issues?.filter((issue) => issue.id === id);
+  getIssuesById(ids: number[]): FetchedIssues {
+
+    return this.issues?.filter((issue) => ids.includes(issue.id));
   }
 
   getIssueByTitle(title: string): FetchedIssues {

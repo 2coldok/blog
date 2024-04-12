@@ -32,9 +32,52 @@ export function judgeTitleMatchByHuristic(normalizeInput: string, normalizeTitle
 
 // todo
 export function judgeTagMatchByHuristic(normalizeInput: string, normalizeTags: string[]): boolean {
-  const inputWords = normalizeInput.split('');
-  console.log(inputWords);
+  // const inputWords = normalizeInput.split('');
+  
   
   return normalizeTags.some((tag) => tag.includes(normalizeInput))
 
+}
+
+// input: 'Appple Melon 3개먹기' output: 'applemelon3개먹기'
+export function getNormalizeStringInput(input: string): string {
+  return input.trim().split(" ").join("").toLowerCase();
+}
+
+//input : #태그A1#태그CD2 output: ['태그a1', '태그cd2']
+export function getNormalizeTagBundle(milestoneTitle: string | undefined): string[] {
+  if (milestoneTitle !== undefined) {
+    return milestoneTitle
+      .split("#")
+      .filter(Boolean)
+      .map((tag) => getNormalizeStringInput(tag));
+  }
+  return [""];
+}
+// input : #태그1Aa#태그K output: ['태그1Aa', '태그K']
+export function getTags(milestoneTitle: string | undefined): string[] {
+  if (milestoneTitle != undefined) {
+    return milestoneTitle.split('#').filter(Boolean).map((tag) => tag.trim());
+  }
+  return [''];
+}
+
+//
+export function getAccentedTarget(input: string, target: string): string {
+  const array = input.split("").map((element, index) => {
+    if (index !== input.length - 1) {
+      return element + `\\s*`;
+    }
+    return element;
+  });
+
+  const regPrep = array.join("");
+  const re = new RegExp(regPrep, "i");
+
+  const matchResult = target.match(re);
+  if (matchResult === null) {
+    return target;
+  }
+
+  return target.replace(matchResult[0], `<span style="color: rgb(80, 255, 82);">${matchResult}</span>`);
 }
