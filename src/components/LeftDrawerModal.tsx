@@ -12,6 +12,14 @@ export function LeftDrawerModal({ active, onClose, children }: ILeftDrawerModal)
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = active ? 'hidden' : originalStyle;
+
+    const utterancesFrame = document.querySelector('#comments-section iframe') as HTMLIFrameElement; // Type assertion here
+    if (utterancesFrame) {
+      console.log('발동')
+      utterancesFrame.style.display = active ? 'none' : 'block';
+    }
+
+    
     
     return () => {
       document.body.style.overflow = originalStyle;
@@ -35,7 +43,7 @@ const DrawerOutside = styled.div<{ $active: boolean }>`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 100000;
   
   display: ${(props) => (props.$active ? 'flex' : 'none')};
 `;
@@ -48,7 +56,7 @@ const DrawerContainer = styled.div<{ $active: boolean }>`
   transform: ${(props) => (props.$active ? 'translateX(0)' : 'translateX(-100%)')};
   width: 300px;
   height: 100%;
-  z-index: 13;
+  z-index: 100010;
 
   transition: transform 0.2s ease-in-out;
 `;

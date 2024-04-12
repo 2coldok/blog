@@ -21,6 +21,11 @@ export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = active ? 'hidden' : originalStyle;
+
+    const utterancesFrame = document.querySelector('#comments-section iframe') as HTMLIFrameElement;
+    if (utterancesFrame) {
+      utterancesFrame.style.display = active ? 'none' : 'block';
+    }
     
     return () => {
       document.body.style.overflow = originalStyle;
@@ -50,7 +55,7 @@ const ModalOutside = styled.div<{ $active: boolean }>`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 13;
+  z-index: 2020;
 
   display: ${(props) => (props.$active ? 'flex' : 'none')};
   justify-content: center;
@@ -69,7 +74,7 @@ const ModalContainer = styled.div<{ $active: boolean }>`
   display: ${(props) => (props.$active ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
-  z-index: 39;
+  z-index: 2023;
 
   @media (max-width: 768px) {
     width: 100%;
