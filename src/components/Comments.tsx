@@ -1,28 +1,38 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Comments = () => {
+  const location = useLocation();
+
+
   useEffect(() => {
+    const scriptParentNode = document.getElementById('comments-section');
+    if (!scriptParentNode) return;
+
+    
+    while (scriptParentNode.firstChild) {
+      scriptParentNode.removeChild(scriptParentNode.firstChild);
+    }
+
     const script = document.createElement('script');
     script.src = "https://utteranc.es/client.js";
     script.async = true;
-    script.setAttribute("repo", "2coldok/blog-comments"); // 사용할 GitHub 리포지토리
-    script.setAttribute("issue-term", "url"); // 댓글을 매칭할 기준
+    script.setAttribute("repo", "2coldok/blog-comments");
+    script.setAttribute("issue-term", "url"); 
     script.setAttribute("id", "utterances");
-    script.setAttribute("theme", "github-light"); // 테마 설정
+    script.setAttribute("theme", "github-light"); 
     script.setAttribute("crossorigin", "anonymous");
 
-    const commentsSection = document.getElementById('comments-section');
-    if (commentsSection) {
-      commentsSection.appendChild(script);
-    }
 
+    scriptParentNode.appendChild(script);
+    
     return () => {
-      const commentsSection = document.getElementById('comments-section');
-      if (commentsSection) {
-        commentsSection.innerHTML = '';
+      
+      if (scriptParentNode.firstChild) {
+        scriptParentNode.removeChild(scriptParentNode.firstChild);
       }
-    };
-  }, []);
+    }  
+  }, [location]);
 
   return <div id="comments-section" />;
 };
