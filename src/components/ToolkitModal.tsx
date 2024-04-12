@@ -16,16 +16,16 @@ export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
   // ModalOutside에서도 onClose를 이용해 모달 창을 닫는다. 그래서 여기에 이벤트 핸들러가 바인딩 되어있음.
   // ModalContainer에서 이벤트 전파 방지를 하지 않으면 클릭 이벤트가 상위 요소인 ModalOutside까지 전파됨.
   // onClose 함수가 두번 호출될 수도 있음으로 이는 예상치 못한 버그를 발생시킬 수 있음.
-  const handleClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onClose();
-  }
+  // const handleClick = (e: React.MouseEvent) => {
+  //   e.stopPropagation();
+  //   onClose();
+  // }
 
   return (
     <>
       <ModalOutside $active={active} onClick={onClose}/>
       <ModalContainer $active={active}>
-        <CloseButton onClick={handleClick}>X</CloseButton>
+        {/* <CloseButton onClick={handleClick}>X</CloseButton> */}
         {children}
       </ModalContainer>
     </>

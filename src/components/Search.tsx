@@ -64,6 +64,7 @@ export default function Search() {
     <Container>
       <SearchForm onSubmit={handleSubmit}>
         <SearchInput type="text" value={text} onChange={handleChange} />
+        <CloseButton>X</CloseButton>
         <SearchButton>검색</SearchButton>
       </SearchForm>
 
@@ -79,19 +80,53 @@ export default function Search() {
           </List>
           
         ))}
-        
-
       </SearchListContainer>
     </Container>
   );
 }
 
+const Container = styled.div`
+  
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #003c80;
+  display: flex;
+  /* justify-contents: center; */
+  align-items: center;
+  flex-direction: column;
+  
+`;
+
 const SearchForm = styled.form`
   display: flex;
+  width: 100%;
+  height: 30px;
   flex-direction: row;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 1em;
 `;
+
+const SearchListContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 100%;
+  background-color: white;
+`
+const List = styled.li`
+  width: 100%;
+  background-color: grey;
+  margin-bottom: 0.3em;
+  padding: 1em;
+
+  &:hover {
+    cursor: pointer;
+  }
+  
+`
+
+
 
 const SearchInput = styled.input`
   font-size: 17px;   // 폰트 사이즈 조정
@@ -121,34 +156,7 @@ const SearchButton = styled.button`
   }
 `;
 
-
-
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  background-color: purple;
-  display: flex;
-  justify-contents: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const SearchListContainer = styled.ul`
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  width: 100%;
-  background-color: white;
-`
-const List = styled.li`
-  width: 100%;
-  background-color: grey;
-  margin-bottom: 2px;
-
-  &:hover {
-    cursor: pointer;
-  }
+const CloseButton = styled.button`
   
 `
 
