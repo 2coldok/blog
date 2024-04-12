@@ -93,7 +93,7 @@ Error generating stack: `+a.message+`
   flex-direction: column;
   justify-contents: center;
   align-items: center; 
-`;function Hd({active:e,onClose:t,children:n}){if(!e)return null;const r=i=>{i.stopPropagation(),t()};return q.jsxs(q.Fragment,{children:[q.jsx(Zj,{$active:e,onClick:t}),q.jsxs(Qj,{$active:e,children:[q.jsx(Jj,{onClick:r,children:"X"}),n]})]})}const Zj=Ce.div`
+`;function Hd({active:e,onClose:t,children:n}){return e?q.jsxs(q.Fragment,{children:[q.jsx(Zj,{$active:e,onClick:t}),q.jsx(Qj,{$active:e,children:n})]}):null}const Zj=Ce.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -126,16 +126,41 @@ Error generating stack: `+a.message+`
     left: 0;
     transform: none;
   }
-`,Jj=Ce.button`
-  width: 5%;
-  height: 5%;
-  align-self: flex-end;
-`;function _v(){const e=j.useContext(n0);if(e===void 0)throw new Error("GithubIssuesContext 가 undefined 입니다.");return e}function eq(){const e=Rc(),t=Co(),[n,r]=j.useState(""),i=d=>r(d.target.value),a=d=>{d.preventDefault()},o=(d,p)=>()=>{t(gu(!1)),e(`/${d}/${p}`)},{githubIssuesManager:s}=_v(),[l,u]=j.useState([]),c=j.useMemo(()=>{const d=s==null?void 0:s.getAllIssues();return d==null?void 0:d.map(p=>{var f;return{id:p.id,title:Ry(p.title),tags:eG((f=p.milestone)==null?void 0:f.title)}})},[s]);return j.useEffect(()=>{if(n.trim().length!==0){const d=Ry(n),p=c==null?void 0:c.filter(b=>e0(d,b.title)||t0(d,b.tags)),f=s==null?void 0:s.getIssuesById((p==null?void 0:p.map(b=>b.id))||[]);u(f)}else u([]);return()=>console.log("검색 리스트 만들기 useEffect 초기화")},[n,c,s]),q.jsxs(iq,{children:[q.jsxs(tq,{onSubmit:a,children:[q.jsx(nq,{type:"text",value:n,onChange:i}),q.jsx(rq,{children:"검색"})]}),q.jsx(aq,{children:l==null?void 0:l.map(d=>{var p;return q.jsxs(oq,{onClick:o(typeof d.labels[0]=="object"&&d.labels[0]!==null?d.labels[0].name:"",d.title),children:[q.jsx(sq,{children:q.jsx("h2",{dangerouslySetInnerHTML:{__html:fT(n,d.title)}})}),tG((p=d.milestone)==null?void 0:p.title).map(f=>q.jsx(lq,{children:q.jsx("span",{dangerouslySetInnerHTML:{__html:fT(n,f)}})}))]})})})]})}const tq=Ce.form`
+`;function _v(){const e=j.useContext(n0);if(e===void 0)throw new Error("GithubIssuesContext 가 undefined 입니다.");return e}function Jj(){const e=Rc(),t=Co(),[n,r]=j.useState(""),i=d=>r(d.target.value),a=d=>{d.preventDefault()},o=(d,p)=>()=>{t(gu(!1)),e(`/${d}/${p}`)},{githubIssuesManager:s}=_v(),[l,u]=j.useState([]),c=j.useMemo(()=>{const d=s==null?void 0:s.getAllIssues();return d==null?void 0:d.map(p=>{var f;return{id:p.id,title:Ry(p.title),tags:eG((f=p.milestone)==null?void 0:f.title)}})},[s]);return j.useEffect(()=>{if(n.trim().length!==0){const d=Ry(n),p=c==null?void 0:c.filter(b=>e0(d,b.title)||t0(d,b.tags)),f=s==null?void 0:s.getIssuesById((p==null?void 0:p.map(b=>b.id))||[]);u(f)}else u([]);return()=>console.log("검색 리스트 만들기 useEffect 초기화")},[n,c,s]),q.jsxs(eq,{children:[q.jsxs(tq,{onSubmit:a,children:[q.jsx(iq,{type:"text",value:n,onChange:i}),q.jsx(oq,{children:"X"}),q.jsx(aq,{children:"검색"})]}),q.jsx(nq,{children:l==null?void 0:l.map(d=>{var p;return q.jsxs(rq,{onClick:o(typeof d.labels[0]=="object"&&d.labels[0]!==null?d.labels[0].name:"",d.title),children:[q.jsx(sq,{children:q.jsx("h2",{dangerouslySetInnerHTML:{__html:fT(n,d.title)}})}),tG((p=d.milestone)==null?void 0:p.title).map(f=>q.jsx(lq,{children:q.jsx("span",{dangerouslySetInnerHTML:{__html:fT(n,f)}})}))]})})})]})}const eq=Ce.div`
+  
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #003c80;
   display: flex;
+  /* justify-contents: center; */
+  align-items: center;
+  flex-direction: column;
+  
+`,tq=Ce.form`
+  display: flex;
+  width: 100%;
+  height: 30px;
   flex-direction: row;
   justify-content: center;
-  margin-top: 20px;
-`,nq=Ce.input`
+  margin-top: 1em;
+`,nq=Ce.ul`
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 100%;
+  background-color: white;
+`,rq=Ce.li`
+  width: 100%;
+  background-color: grey;
+  margin-bottom: 0.3em;
+  padding: 1em;
+
+  &:hover {
+    cursor: pointer;
+  }
+  
+`,iq=Ce.input`
   font-size: 17px;   // 폰트 사이즈 조정
   padding: 10px 20px;
   border: 2px solid #ccc;
@@ -147,7 +172,7 @@ Error generating stack: `+a.message+`
     border-color: #80aaff;
     outline: none;
   }
-`,rq=Ce.button`
+`,aq=Ce.button`
   padding: 10px 20px;
   font-size: 16px;  // 폰트 사이즈 조정
   background-color: #007bff;
@@ -159,29 +184,7 @@ Error generating stack: `+a.message+`
   &:hover {
     background-color: #0056b3;
   }
-`,iq=Ce.div`
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  background-color: purple;
-  display: flex;
-  justify-contents: center;
-  align-items: center;
-  flex-direction: column;
-`,aq=Ce.ul`
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  width: 100%;
-  background-color: white;
-`,oq=Ce.li`
-  width: 100%;
-  background-color: grey;
-  margin-bottom: 2px;
-
-  &:hover {
-    cursor: pointer;
-  }
+`,oq=Ce.button`
   
 `,sq=Ce.div`
   
@@ -190,7 +193,7 @@ Error generating stack: `+a.message+`
   background-color: #8a5353;
   margin-right: 1em;
   font-size: 17px;
-`;function uq(){const e=ja(i=>i.modal.searchModal),t=ja(i=>i.modal.themeModal),n=ja(i=>i.modal.musicModal),r=Co();return q.jsxs(q.Fragment,{children:[q.jsx(cq,{onClick:()=>r(gu(!0)),children:q.jsxs(pq,{children:[q.jsx(OT,{}),q.jsx("span",{children:"제목 또는 태그 검색"})]})}),q.jsx(dq,{onClick:()=>r(gu(!0)),children:q.jsx(Vd,{children:q.jsx(OT,{color:"#0055FF"})})}),q.jsx(Hd,{active:e,onClose:()=>r(gu(!1)),children:q.jsx(eq,{})}),q.jsx(Vd,{onClick:()=>r(HT(!0)),children:q.jsx(bz,{color:"#FAF58C"})}),q.jsx(Hd,{active:t,onClose:()=>r(HT(!1)),children:q.jsx("p",{children:"테마 content"})}),q.jsx(Vd,{onClick:()=>r(jy(!0)),children:q.jsx(yz,{color:"#E0115F"})}),q.jsx(Hd,{active:n,onClose:()=>r(jy(!1)),children:q.jsx(Yj,{})})]})}const Vd=Ce.button`
+`;function uq(){const e=ja(i=>i.modal.searchModal),t=ja(i=>i.modal.themeModal),n=ja(i=>i.modal.musicModal),r=Co();return q.jsxs(q.Fragment,{children:[q.jsx(cq,{onClick:()=>r(gu(!0)),children:q.jsxs(pq,{children:[q.jsx(OT,{}),q.jsx("span",{children:"제목 또는 태그 검색"})]})}),q.jsx(dq,{onClick:()=>r(gu(!0)),children:q.jsx(Vd,{children:q.jsx(OT,{color:"#0055FF"})})}),q.jsx(Hd,{active:e,onClose:()=>r(gu(!1)),children:q.jsx(Jj,{})}),q.jsx(Vd,{onClick:()=>r(HT(!0)),children:q.jsx(bz,{color:"#FAF58C"})}),q.jsx(Hd,{active:t,onClose:()=>r(HT(!1)),children:q.jsx("p",{children:"테마 content"})}),q.jsx(Vd,{onClick:()=>r(jy(!0)),children:q.jsx(yz,{color:"#E0115F"})}),q.jsx(Hd,{active:n,onClose:()=>r(jy(!1)),children:q.jsx(Yj,{})})]})}const Vd=Ce.button`
   display: flex;
   justify-content: center;
   align-items: center;
