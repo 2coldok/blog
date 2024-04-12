@@ -13,7 +13,6 @@ export default function Home() {
 const HomeContainer = styled.div`
   padding: 1em;
   width: 100%;
-  height: auto;
   
   color: white;
 

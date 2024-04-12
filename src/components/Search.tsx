@@ -17,8 +17,11 @@ export default function Search() {
   }
   const handleClick = (category: string | undefined, title: string) => () => {
     dispatch(setSearchModal(false));
-    navigate(`/${category}/${title}`);
-    
+    navigate(`/${category}/${title}`); 
+  }
+  const handleCloseClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    dispatch(setSearchModal(false));
   }
 
   interface INormalizedIssuesSubset {
@@ -64,7 +67,7 @@ export default function Search() {
     <Container>
       <SearchForm onSubmit={handleSubmit}>
         <SearchInput type="text" value={text} onChange={handleChange} />
-        <CloseButton>X</CloseButton>
+        <CloseButton onClick={handleCloseClick}>X</CloseButton>
         <SearchButton>검색</SearchButton>
       </SearchForm>
 

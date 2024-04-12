@@ -42,6 +42,10 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+
+
+  
 
   width: 100%;
   height: 100%;
@@ -54,10 +58,27 @@ const NavbarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
+
+  width: 70%;
+  
+  
+  @media (max-width: 1100px) {
+    width: 100%;
+  }
 `
 
 const ContentsWrapper = styled.div<{ $margintop: number}>`
-  width: 100%;
+  background-color: yellow;
+  width: 70%;
   margin-top: ${(props) => props.$margintop}px;
+  display: flex;
+
+  
+  
+  @media (max-width: 1100px) {
+    width: 100%;
+  }
+
+  
 `

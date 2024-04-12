@@ -63,8 +63,8 @@ const ModalContainer = styled.div<{ $active: boolean }>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 70%;
 
   display: ${(props) => (props.$active ? 'flex' : 'none')};
   flex-direction: column;
