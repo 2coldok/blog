@@ -93,14 +93,14 @@ Error generating stack: `+a.message+`
   flex-direction: column;
   justify-contents: center;
   align-items: center; 
-`;function Hd({active:e,onClose:t,children:n}){return z.useEffect(()=>{const r=window.getComputedStyle(document.body).overflow;return document.body.style.overflow=e?"hidden":r,()=>{document.body.style.overflow=r}},[e]),e?q.jsxs(q.Fragment,{children:[q.jsx(Zj,{$active:e,onClick:t}),q.jsx(Qj,{$active:e,children:n})]}):null}const Zj=Ce.div`
+`;function Hd({active:e,onClose:t,children:n}){return z.useEffect(()=>{const r=window.getComputedStyle(document.body).overflow;document.body.style.overflow=e?"hidden":r;const i=document.querySelector("#comments-section iframe");return i&&(i.style.display=e?"none":"block"),()=>{document.body.style.overflow=r}},[e]),e?q.jsxs(q.Fragment,{children:[q.jsx(Zj,{$active:e,onClick:t}),q.jsx(Qj,{$active:e,children:n})]}):null}const Zj=Ce.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 13;
+  z-index: 2020;
 
   display: ${e=>e.$active?"flex":"none"};
   justify-content: center;
@@ -117,7 +117,7 @@ Error generating stack: `+a.message+`
   display: ${e=>e.$active?"flex":"none"};
   flex-direction: column;
   align-items: center;
-  z-index: 39;
+  z-index: 2023;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -263,14 +263,14 @@ Error generating stack: `+a.message+`
   margin: 0.5rem 0.5rem;
   font-size: 2rem;
   background-color: green;
-`;function yq({active:e,onClose:t,children:n}){return z.useEffect(()=>{const r=window.getComputedStyle(document.body).overflow;return document.body.style.overflow=e?"hidden":r,()=>{document.body.style.overflow=r}},[e]),q.jsxs(q.Fragment,{children:[q.jsx(Eq,{$active:e,onClick:t}),q.jsx(vq,{$active:e,children:n})]})}const Eq=Ce.div`
+`;function yq({active:e,onClose:t,children:n}){return z.useEffect(()=>{const r=window.getComputedStyle(document.body).overflow;document.body.style.overflow=e?"hidden":r;const i=document.querySelector("#comments-section iframe");return i&&(console.log("발동"),i.style.display=e?"none":"block"),()=>{document.body.style.overflow=r}},[e]),q.jsxs(q.Fragment,{children:[q.jsx(Eq,{$active:e,onClick:t}),q.jsx(vq,{$active:e,children:n})]})}const Eq=Ce.div`
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 100000;
   
   display: ${e=>e.$active?"flex":"none"};
 `,vq=Ce.div`
@@ -281,7 +281,7 @@ Error generating stack: `+a.message+`
   transform: ${e=>e.$active?"translateX(0)":"translateX(-100%)"};
   width: 300px;
   height: 100%;
-  z-index: 13;
+  z-index: 100010;
 
   transition: transform 0.2s ease-in-out;
 `;function Sq(){const e=Co(),t=ja(n=>n.modal.menuModal);return q.jsxs(q.Fragment,{children:[q.jsx(wq,{onClick:()=>e(zy(!0)),children:q.jsx(fq,{})}),q.jsx(yq,{active:t,onClose:()=>e(zy(!1)),children:q.jsx(hq,{})})]})}const wq=Ce.button`
@@ -504,7 +504,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
   };
-`,eee=()=>(z.useEffect(()=>{const e=document.createElement("script");e.src="https://utteranc.es/client.js",e.async=!0,e.setAttribute("repo","2coldok/blog-comments"),e.setAttribute("issue-term","pathname"),e.setAttribute("id","utterances"),e.setAttribute("theme","github-light"),e.setAttribute("crossorigin","anonymous");const t=document.getElementById("comments-section");return t&&t.appendChild(e),()=>{const n=document.getElementById("comments-section");n&&(n.innerHTML="")}},[]),q.jsx("div",{id:"comments-section"}));function tee(){var r;const{githubIssuesManager:e}=_v(),{title:t}=X1();if(t===void 0)return q.jsx("h1",{children:"게시글의 제목이 undefined"});const n=decodeURIComponent(t);return q.jsxs(nee,{children:[(r=e==null?void 0:e.getIssueByTitle(n))==null?void 0:r.map(i=>q.jsx(QJ,{data:i.body})),q.jsx(eee,{})]})}const nee=Ce.div`
+`,eee=()=>(z.useEffect(()=>{const e=document.createElement("script");e.src="https://utteranc.es/client.js",e.async=!0,e.setAttribute("repo","2coldok/blog-comments"),e.setAttribute("issue-term","url"),e.setAttribute("id","utterances"),e.setAttribute("theme","github-light"),e.setAttribute("crossorigin","anonymous");const t=document.getElementById("comments-section");return t&&t.appendChild(e),()=>{const n=document.getElementById("comments-section");n&&(n.innerHTML="")}},[]),q.jsx("div",{id:"comments-section"}));function tee(){var r;const{githubIssuesManager:e}=_v(),{title:t}=X1();if(t===void 0)return q.jsx("h1",{children:"게시글의 제목이 undefined"});const n=decodeURIComponent(t);return q.jsxs(nee,{children:[(r=e==null?void 0:e.getIssueByTitle(n))==null?void 0:r.map(i=>q.jsx(QJ,{data:i.body})),q.jsx(eee,{})]})}const nee=Ce.div`
   
   /* padding-left: 8em;
   padding-right: 8em; */
