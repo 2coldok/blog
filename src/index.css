@@ -53,3 +53,11 @@ body {
   justify-content: center;
   align-items: center; 
 }
+
+#comments-section iframe {
+  padding: 0;
+  border: 3px solid rgb(15, 42, 81);
+  
+  /* margin-top: 2em; */
+  /* background-color: #242424; */
+}

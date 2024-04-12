@@ -13,7 +13,8 @@ export default function Home() {
 const HomeContainer = styled.div`
   padding: 1em;
   width: 100%;
-  
+  height: 100%;
+  min-height: 1000px;
   color: white;
 
   background-color: #111e44;

@@ -71,6 +71,8 @@ const NavbarWrapper = styled.div`
 const ContentsWrapper = styled.div<{ $margintop: number}>`
   background-color: yellow;
   width: 70%;
+  height: 100%;
+  /* min-height: 1000px; */
   margin-top: ${(props) => props.$margintop}px;
   display: flex;
 

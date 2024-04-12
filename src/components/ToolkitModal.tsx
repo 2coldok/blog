@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface IToolkitModal {
@@ -18,19 +18,19 @@ export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
   //   onClose();
   // }
 
-  useEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = active ? 'hidden' : originalStyle;
+  // useEffect(() => {
+  //   const originalStyle = window.getComputedStyle(document.body).overflow;
+  //   document.body.style.overflow = active ? 'hidden' : originalStyle;
 
-    const utterancesFrame = document.querySelector('#comments-section iframe') as HTMLIFrameElement;
-    if (utterancesFrame) {
-      utterancesFrame.style.display = active ? 'none' : 'block';
-    }
+  //   const utterancesFrame = document.querySelector('#comments-section iframe') as HTMLIFrameElement;
+  //   if (utterancesFrame) {
+  //     utterancesFrame.style.display = active ? 'none' : 'block';
+  //   }
     
-    return () => {
-      document.body.style.overflow = originalStyle;
-    }
-  }, [active])
+  //   return () => {
+  //     document.body.style.overflow = originalStyle;
+  //   }
+  // }, [active])
 
   // 조건부 렌더링 최적화.
   // active가 false일때 DOM에서 컴포넌트를 완전히 제거하기 위함.

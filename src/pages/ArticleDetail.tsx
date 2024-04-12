@@ -32,17 +32,19 @@ export default function ArticleDetail() {
 }
 
 const Container = styled.div`
-  
   /* padding-left: 8em;
   padding-right: 8em; */
 
   padding: 1em;
   width: 100%;
-  height: auto;
+  height: 100%;
+  min-height: 1000px;
+  /* height: auto; */
+  /* height: 800px; */
   
   color: white;
   
-  background-color: #111e44;
+  background-color: #383d4c;
   @media (max-width: 768px) {
     width: 100%;
   }
