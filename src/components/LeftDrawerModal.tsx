@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import styled from 'styled-components';
 
 interface ILeftDrawerModal {
@@ -8,6 +8,15 @@ interface ILeftDrawerModal {
 }
 
 export function LeftDrawerModal({ active, onClose, children }: ILeftDrawerModal) {
+
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = active ? 'hidden' : originalStyle;
+    
+    return () => {
+      document.body.style.overflow = originalStyle;
+    }
+  }, [active])
 
   return (
     <>

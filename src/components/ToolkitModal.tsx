@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import styled from 'styled-components';
 
 interface IToolkitModal {
@@ -8,9 +8,6 @@ interface IToolkitModal {
 }
 
 export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
-  // 조건부 렌더링 최적화.
-  // active가 false일때 DOM에서 컴포넌트를 완전히 제거하기 위함.
-  if (!active) return null;
 
   // 이벤트 전파 방지.
   // ModalOutside에서도 onClose를 이용해 모달 창을 닫는다. 그래서 여기에 이벤트 핸들러가 바인딩 되어있음.
@@ -20,6 +17,19 @@ export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
   //   e.stopPropagation();
   //   onClose();
   // }
+
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = active ? 'hidden' : originalStyle;
+    
+    return () => {
+      document.body.style.overflow = originalStyle;
+    }
+  }, [active])
+
+  // 조건부 렌더링 최적화.
+  // active가 false일때 DOM에서 컴포넌트를 완전히 제거하기 위함.
+  if (!active) return null;
 
   return (
     <>
@@ -70,8 +80,8 @@ const ModalContainer = styled.div<{ $active: boolean }>`
   }
 `;
 
-const CloseButton = styled.button`
-  width: 5%;
-  height: 5%;
-  align-self: flex-end;
-`
+// const CloseButton = styled.button`
+//   width: 5%;
+//   height: 5%;
+//   align-self: flex-end;
+// `
