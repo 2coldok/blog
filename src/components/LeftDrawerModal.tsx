@@ -13,10 +13,12 @@ export function LeftDrawerModal({ active, onClose, children }: ILeftDrawerModal)
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = active ? 'hidden' : originalStyle;
 
-    const utterancesFrame = document.querySelector('#comments-section iframe') as HTMLIFrameElement; // Type assertion here
+    const utterancesFrame = document.querySelector('#comments-section iframe') as HTMLIFrameElement;
     if (utterancesFrame) {
-      console.log('발동')
-      utterancesFrame.style.display = active ? 'none' : 'block';
+      
+      // utterancesFrame.style.visibility = active ? 'none' : '';
+      // utterancesFrame.style.left = active ? '-100%' : '';
+      // utterancesFrame.style.backgroundColor = active ? '' : 'red';
     }
 
     

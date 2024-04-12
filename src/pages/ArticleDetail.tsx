@@ -4,9 +4,15 @@ import CustomMarkdown from '../components/CustomMarkdown';
 import { useGithubIssuesMananger } from '../hook/GithubIssuesManager';
 import { useParams } from 'react-router-dom';
 import Comments from '../components/Comments';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
+
 
 export default function ArticleDetail() {
-  
+  const menuModal = useSelector((state: RootState) => state.modal.menuModal);
+  const searchModal = useSelector((state: RootState) => state.modal.searchModal);
+  const themeModal = useSelector((state: RootState) => state.modal.themeModal);
+  const musicModal = useSelector((state: RootState) => state.modal.musicModal);
   const { githubIssuesManager } = useGithubIssuesMananger();
   const { title } = useParams();
 
@@ -20,7 +26,7 @@ export default function ArticleDetail() {
       {githubIssuesManager?.getIssueByTitle(decodedTitle)?.map((article) => (
         <CustomMarkdown data={article.body} />
       ))}
-      <Comments />
+      {!(menuModal || searchModal || themeModal || musicModal) && <Comments />}
     </Container>
   );
 }
