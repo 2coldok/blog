@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { UtterancesSkeletonLoader } from './skeleton/UtterancesSkeletonLoader';
 
 const Comments = () => {
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
     const scriptParentNode = document.getElementById('comments-section');
     if (!scriptParentNode) return;
 
-    
     while (scriptParentNode.firstChild) {
       scriptParentNode.removeChild(scriptParentNode.firstChild);
     }
@@ -27,16 +28,26 @@ const Comments = () => {
     script.setAttribute('issue-term', currentUrl);
 
     scriptParentNode.appendChild(script);
+
+    script.onload = () => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    };
     
     return () => {
-      
       if (scriptParentNode.firstChild) {
         scriptParentNode.removeChild(scriptParentNode.firstChild);
       }
     }  
   }, [location.pathname, location.search, location.hash]);
 
-  return <div id="comments-section" />;
+  return (
+    <>
+      {loading && <UtterancesSkeletonLoader />}
+      <div id="comments-section" style={{ display: loading ? 'none' : 'block' }} />
+    </>
+  )
 };
 
 export default Comments;

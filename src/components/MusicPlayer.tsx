@@ -1,11 +1,12 @@
 // import React from 'react';
 import { useSelector } from 'react-redux';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { RootState } from '../redux/store';
 import { useDispatch } from 'react-redux';
 import { musicOff } from '../redux/slice/musicSlice';
 import { CgClose } from "react-icons/cg";
 import { useEffect, useState } from 'react';
+import { MusicSkeletonLoader } from './skeleton/MusicSkeletonLoader';
 
 export default function MusicPlayer() {
   const youtubeUrl = useSelector((state: RootState) => state.music.url);
@@ -25,7 +26,7 @@ export default function MusicPlayer() {
   
   return (
     <PlayerWrapper>
-      {loading && <SkeletonLoader />}
+      {loading && <MusicSkeletonLoader />}
       
       <Iframe
         id="player"
@@ -102,31 +103,31 @@ const Button = styled.button<{ $loading: boolean }>`
   display: ${props => props.$loading ? 'none' : 'block'};
 `;
 
-const pulse = keyframes`
-  0% {
-    opacity: 0.9;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 0.9;
-  }
-`;
+// const pulse = keyframes`
+//   0% {
+//     opacity: 0.9;
+//   }
+//   50% {
+//     opacity: 0.5;
+//   }
+//   100% {
+//     opacity: 0.9;
+//   }
+// `;
 
-const SkeletonLoader = styled.div`
-  position: fixed;
-  top: 60;
-  left: 0;
-  height: 60px;
-  width: 80%; /////////
-  border-radius: 1rem;
-  border-right: none;
-  background-color: #7f8c94;
-  transform: translateX(12.5%);
-  @media (max-width: 1100px) {
-    width: 100%;
-    transform: translateX(0);
-  }
-  animation: ${pulse} 1s ease-in-out infinite;
-`;
+// const SkeletonLoader = styled.div`
+//   position: fixed;
+//   top: 60;
+//   left: 0;
+//   height: 60px;
+//   width: 80%; /////////
+//   border-radius: 1rem;
+//   border-right: none;
+//   background-color: #7f8c94;
+//   transform: translateX(12.5%);
+//   @media (max-width: 1100px) {
+//     width: 100%;
+//     transform: translateX(0);
+//   }
+//   animation: ${pulse} 1s ease-in-out infinite;
+// `;
