@@ -1,10 +1,11 @@
 // import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { RootState } from '../redux/store';
 import { useDispatch } from 'react-redux';
 import { musicOff } from '../redux/slice/musicSlice';
 import { CgClose } from "react-icons/cg";
+import { useState } from 'react';
 
 const PlayerWrapper = styled.div`
   display: flex;
@@ -43,9 +44,33 @@ const Button = styled.button`
   &:hover {
     background-color: #242424;
   }
-`
+`;
+
+const pulse = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const SkeletonLoader = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #a08c8c;
+  animation: ${pulse} 1.5s ease-in-out infinite;
+`;
 
 export default function MusicPlayer() {
+  const [loading, setLoading] = useState(true);
+
   const youtubeUrl = useSelector((state: RootState) => state.music.url);
   const youtubeEmbedURL = `https://www.youtube.com/embed/${getVideoId(youtubeUrl)}`;
   
@@ -53,14 +78,18 @@ export default function MusicPlayer() {
   const handleClick = () => {
     dispatch(musicOff());
   }
+  
+  
 
   return (
     <PlayerWrapper>
+      {loading && <SkeletonLoader />}
       <Iframe
         id="player"
         title="youtube player"
         // type="text/html"
         src={youtubeEmbedURL}
+        onLoad={() => setLoading(false)}
       ></Iframe>
       <Button onClick={handleClick}><CgClose /></Button>
     </PlayerWrapper>
