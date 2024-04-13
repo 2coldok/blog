@@ -11,20 +11,22 @@ export default function CategoryArticles() {
   }
   
   return (
-    <Container>
+    <Wrapper>
       <h1>{`여기는 ${category}의 포스터를 보여주고 있어요`}</h1>
 
-      {githubIssuesManager?.getIssuesByCategory(category!)?.map((article) => (
-        <List key={article.id}>
-          <button onClick={handleClick(article.title)}>{article.title}</button>
+      {githubIssuesManager?.getIssuesByCategory(category!)?.map((issue) => (
+        <List key={issue.id} onClick={handleClick(issue.title)}>
+          <h2>{issue.title}</h2>
+          <p>{issue.updated_at}</p>
+          
         </List>
         
       ))}
-    </Container>
+    </Wrapper>
   );
 }
 
-const Container = styled.ul`
+const Wrapper = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;

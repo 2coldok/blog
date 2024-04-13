@@ -4,19 +4,45 @@ import styled from 'styled-components';
 import { RootState } from '../redux/store';
 import { useDispatch } from 'react-redux';
 import { musicOff } from '../redux/slice/musicSlice';
+import { CgClose } from "react-icons/cg";
 
 const PlayerWrapper = styled.div`
   display: flex;
+  justify-content: center;
   width: 100%;
   /* max-width: 1200px; */
   height: 60px;
+  background-color: #112030;
   @media (max-width: 768px) {
     width: 100%;
   }
+  
 `;
 
+const Iframe = styled.iframe`
+  width: 92%;
+  /* height: 100%; */
+  border: 2px solid #3b3b3b;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-right: none;
+
+`
+
 const Button = styled.button`
-  width: 5%;
+  width: 50px;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border: 2px solid #3b3b3b;
+  border-left: none;
+  background-color: black;
+  &> svg {
+    font-size: 30px;
+    color: red;
+  }
+  &:hover {
+    background-color: #242424;
+  }
 `
 
 export default function MusicPlayer() {
@@ -30,16 +56,13 @@ export default function MusicPlayer() {
 
   return (
     <PlayerWrapper>
-      <iframe
+      <Iframe
         id="player"
         title="youtube player"
         // type="text/html"
-        width="95%"
-        height="100%"
         src={youtubeEmbedURL}
-        style={{ border: "none" }}
-      ></iframe>
-      <Button onClick={handleClick}>닫기</Button>
+      ></Iframe>
+      <Button onClick={handleClick}><CgClose /></Button>
     </PlayerWrapper>
   );
 }

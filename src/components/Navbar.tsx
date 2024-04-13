@@ -46,7 +46,7 @@ const NavbarWrapper = styled.div`
   width: 100%;
   height: 60px;
   
-  background-color: #304031;
+  background-color: #112030;
   
   padding-left: 1em;
   padding-right: 1em;

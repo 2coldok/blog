@@ -47,13 +47,13 @@ export class GithubIssues {
     );
   }
 
-  // todo tag 대소문자 고려하기
-  // tag는 이슈마다 겹칠 수 있으니 우선은 반환타입이 FetchedIssues 임.
+  
+  // tag는 이슈마다 겹칠 수 있음. 
   getIssuesByTag(tag: string): FetchedIssues {
     return this.issues?.filter(
       (issue) =>
         issue.milestone !== null &&
-        issue.milestone.title.split("#").includes(tag)
+        issue.milestone.title.split("#").filter(Boolean).map((element) => element.trim()).includes(tag.trim())
     );
   }
 

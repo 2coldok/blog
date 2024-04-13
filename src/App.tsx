@@ -60,7 +60,7 @@ const NavbarWrapper = styled.div`
   align-items: center;
   /* width: 100%; */
 
-  width: 70%;
+  width: 80%;
   
   
   @media (max-width: 1100px) {
@@ -69,12 +69,15 @@ const NavbarWrapper = styled.div`
 `
 
 const ContentsWrapper = styled.div<{ $margintop: number}>`
+  display: flex;
+  align-items: center;
+  justify-contents: center;
   background-color: yellow;
-  width: 70%;
+  width: 80%;
   height: 100%;
   /* min-height: 1000px; */
   margin-top: ${(props) => props.$margintop}px;
-  display: flex;
+  
 
   
   

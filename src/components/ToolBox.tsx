@@ -114,9 +114,9 @@ const SearchButton = styled.button`
   padding: 0;
   /* margin-left: 0.3em; */
 
-  background-color: transparent;
+  background-color: #2360aa;
   border-radius: 1em;
-  border: 1.5px solid blue;
+  border: 1.5px solid #040f15;
   padding: 0.5em;
   height: 3em;
   width: 170px;
@@ -125,6 +125,7 @@ const SearchButton = styled.button`
     margin-right: 0.3em;
   }
   & > span {
+    color: white;
     font-size: 1em;
   }
 `;

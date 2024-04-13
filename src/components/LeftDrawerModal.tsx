@@ -1,4 +1,4 @@
-import { ReactNode} from 'react';
+import { ReactNode, useEffect} from 'react';
 import styled from 'styled-components';
 
 interface ILeftDrawerModal {
@@ -9,24 +9,14 @@ interface ILeftDrawerModal {
 
 export function LeftDrawerModal({ active, onClose, children }: ILeftDrawerModal) {
 
-  // useEffect(() => {
-  //   const originalStyle = window.getComputedStyle(document.body).overflow;
-  //   document.body.style.overflow = active ? 'hidden' : originalStyle;
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = active ? 'hidden' : originalStyle;
 
-  //   const utterancesFrame = document.querySelector('#comments-section iframe') as HTMLIFrameElement;
-  //   if (utterancesFrame) {
-      
-  //     utterancesFrame.style.visibility = active ? 'none' : '';
-  //     utterancesFrame.style.left = active ? '-100%' : '';
-  //     utterancesFrame.style.backgroundColor = active ? '' : 'red';
-  //   }
-
-    
-    
-  //   return () => {
-  //     document.body.style.overflow = originalStyle;
-  //   }
-  // }, [active])
+    return () => {
+      document.body.style.overflow = originalStyle;
+    }
+  }, [active])
 
   return (
     <>

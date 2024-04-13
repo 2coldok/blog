@@ -55,6 +55,7 @@ export function getNormalizeTagBundle(milestoneTitle: string | undefined): strin
   return [""];
 }
 // input : #태그1Aa#태그K output: ['태그1Aa', '태그K']
+// 원본을 유지하며 배열로 반환.
 export function getTags(milestoneTitle: string | undefined): string[] {
   if (milestoneTitle != undefined) {
     return milestoneTitle.split('#').filter(Boolean).map((tag) => tag.trim());

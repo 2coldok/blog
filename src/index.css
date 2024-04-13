@@ -55,9 +55,10 @@ body {
 }
 
 #comments-section iframe {
+  
   padding: 0;
   border: 3px solid rgb(15, 42, 81);
-  
+  background-color: red;
   /* margin-top: 2em; */
   /* background-color: #242424; */
 }
