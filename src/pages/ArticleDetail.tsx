@@ -7,6 +7,7 @@ import Comments from '../components/Comments';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { getTags } from '../util/SearchEngine';
+import koreanDateTimeFromISO from '../util/KoreanDateTImeFromISO';
 
 
 export default function ArticleDetail() {
@@ -28,16 +29,22 @@ export default function ArticleDetail() {
     navigate(`/${category}/${title}`);
     window.scrollTo(0, 0);
   }
+
+  const handleCategoryClick = () => {
+    navigate(`/${category}`);
+    window.scrollTo(0, 0);
+  }
   
   return (
     <Wrapper>
       {githubIssuesManager?.getIssueByTitle(decodedTitle)?.map((issue) => (
         <IssueContainer>
-          <Date>{issue.updated_at}</Date>
-          <Category>{category}</Category>
+          
           <TitleContainer>
             <h1>{issue.title}</h1>
+            <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
             <TagContainer>
+              <button onClick={handleCategoryClick}>{category}</button>
               {getTags(issue.milestone?.title).map((tag) => (
                 <p>#{tag}</p>
               ))}
@@ -56,7 +63,6 @@ export default function ArticleDetail() {
           </List>
         ))}
       </OtherIssuesContainer>  
-      
       {!(menuModal || searchModal || themeModal || musicModal) && <Comments />}
     </Wrapper>
   );
@@ -81,36 +87,23 @@ const Wrapper = styled.div`
 const IssueContainer = styled.div`
 `
 
-const Date = styled.p`
-  display: inline-block;
-  padding: 0.7em;
-  margin-right: 0.3rem;
-
-  border-radius: 1em;
-  background-color: #2c60a4;
-`
-
-const Category = styled.p`
-  display: inline-block;
-  padding: 0.7em;
-
-  border-radius: 1em;
-  background-color: #496d9d;
-  
-`
-
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   border-radius: 1em;
-  background-color: rgba(12, 1, 1);
+  background-color: #292e3c;
   padding: 0.3rem;
   margin-bottom: 1rem;
 
   & > h1 {
     color: white;
+  }
+
+  & > p {
+    margin-top: 0.1rem;
+    color: grey;
   }
 `
 const TagContainer = styled.div`
@@ -120,10 +113,18 @@ const TagContainer = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
 
+  & > button {
+    margin: 0.3rem;
+    background-color: #3773af;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    white-space: nowrap;
+  }
+
   & > p {
     margin : 0.3rem;
     background-color: #40734b;
-    padding: 0.5rem;
+    padding: 0.7rem;
     border-radius: 1rem;
     white-space: nowrap;
   }
@@ -138,6 +139,7 @@ const OtherIssuesContainer = styled.ul`
   background-color: rgba(12, 1, 1);
   padding: 0.3rem;
   margin-bottom: 1rem;
+  background-color: #292e3c;
 `
 
 const List = styled.li`

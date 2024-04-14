@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { LuMenu } from "react-icons/lu";
 import MenuList from "./MenuList";
-import { LeftDrawerModal } from "./LeftDrawerModal";
+import { DrawerModal } from "./DrawerModal";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
@@ -17,9 +17,9 @@ export default function Menu() {
         <LuMenu />
       </MenuButton>
   
-      <LeftDrawerModal active={menuModal} onClose={() => dispatch(setMenuModal(false))}>
+      <DrawerModal active={menuModal} onClose={() => dispatch(setMenuModal(false))} direction="left">
         <MenuList />
-      </LeftDrawerModal>
+      </DrawerModal>
     </>
   );
 }

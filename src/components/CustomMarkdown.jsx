@@ -113,7 +113,7 @@ const Container = styled.div`
 	
 
   & > hr {
-    border: 1px solid var(--color-blog-dark-gray);
+    border: 1px solid purple;
   };
   & > table {
     border-spacing: 0 !important;

@@ -1,13 +1,16 @@
 import { ReactNode, useEffect} from 'react';
 import styled from 'styled-components';
 
+type Direction = 'left' | 'right';
+
 interface ILeftDrawerModal {
   active: boolean;
   onClose: () => void;
   children: ReactNode;
+  direction: Direction;
 }
 
-export function LeftDrawerModal({ active, onClose, children }: ILeftDrawerModal) {
+export function DrawerModal({ active, onClose, direction, children }: ILeftDrawerModal) {
 
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
@@ -21,7 +24,7 @@ export function LeftDrawerModal({ active, onClose, children }: ILeftDrawerModal)
   return (
     <>
       <DrawerOutside $active={active} onClick={onClose} />
-      <DrawerContainer $active={active}>
+      <DrawerContainer $active={active} $direction={direction}>
         {children}
       </DrawerContainer>
     </>
@@ -40,13 +43,13 @@ const DrawerOutside = styled.div<{ $active: boolean }>`
   display: ${(props) => (props.$active ? 'flex' : 'none')};
 `;
 
-const DrawerContainer = styled.div<{ $active: boolean }>`
+const DrawerContainer = styled.div<{ $active: boolean; $direction: Direction }>`
   background-color: pink;
   position: fixed;
   top: 0;
-  left: 0;
-  transform: ${(props) => (props.$active ? 'translateX(0)' : 'translateX(-100%)')};
-  width: 300px;
+  ${props => props.$direction === 'left' ? 'left: 0;' : 'right: 0;'};
+  transform: ${props => (props.$active ? 'translateX(0)' : (props.$direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)'))};
+  max-width: 300px;
   height: 100%;
   z-index: 100010;
 

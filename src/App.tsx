@@ -45,7 +45,7 @@ const AppContainer = styled.div`
   
 
 
-  
+  max-width: 1100px;
 
   width: 100%;
   height: 100%;
@@ -60,12 +60,13 @@ const NavbarWrapper = styled.div`
   align-items: center;
   /* width: 100%; */
 
-  width: 80%;
+  width: 100%;
+  max-width: 1100px;
   
   
-  @media (max-width: 1100px) {
+  /* @media (max-width: 900px) {
     width: 100%;
-  }
+  } */
 `
 
 const ContentsWrapper = styled.div<{ $margintop: number}>`
@@ -73,7 +74,7 @@ const ContentsWrapper = styled.div<{ $margintop: number}>`
   align-items: center;
   justify-contents: center;
   background-color: yellow;
-  width: 80%;
+  width: 100%;
   height: 100%;
   /* min-height: 1000px; */
   margin-top: ${(props) => props.$margintop}px;
@@ -81,9 +82,9 @@ const ContentsWrapper = styled.div<{ $margintop: number}>`
 
   
   
-  @media (max-width: 1100px) {
+  /* @media (max-width: 1100px) {
     width: 100%;
-  }
+  } */
 
   
 `

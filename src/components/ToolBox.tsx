@@ -10,6 +10,7 @@ import { RootState } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { setMusicModal, setSearchModal, setThemeModal } from "../redux/slice/modalSlice";
 import Search from "./Search";
+import { DrawerModal } from "./DrawerModal";
 
 export default function ToolBox() {
   // 서로 개별적인 상태인데 이렇게 묶어서 가져오면 한상태 변경이 다른 선택자의 호출까지 트리거함.
@@ -52,9 +53,9 @@ export default function ToolBox() {
       <ToolBoxButton onClick={() => dispatch(setMusicModal(true))}>
         <IoMusicalNotes color="#E0115F" />
       </ToolBoxButton>
-      <ToolkitModal active={musicModal} onClose={() => dispatch(setMusicModal(false))}>
+      <DrawerModal active={musicModal} onClose={() => dispatch(setMusicModal(false))} direction="right">
         <Music />
-      </ToolkitModal>
+      </DrawerModal>
     </>
   );
 }
