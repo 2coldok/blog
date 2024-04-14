@@ -38,7 +38,7 @@ const DrawerOutside = styled.div<{ $active: boolean }>`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100000;
+  z-index: 3000;
   
   display: ${(props) => (props.$active ? 'flex' : 'none')};
 `;
@@ -51,7 +51,7 @@ const DrawerContainer = styled.div<{ $active: boolean; $direction: Direction }>`
   transform: ${props => (props.$active ? 'translateX(0)' : (props.$direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)'))};
   max-width: 300px;
   height: 100%;
-  z-index: 100010;
+  z-index: 4000;
 
   transition: transform 0.2s ease-in-out;
 `;

@@ -35,4 +35,14 @@ export const MusicContents: IMusic[] = [
     singer: '체리필터',
     youtubeUrl: 'https://www.youtube.com/watch?v=Nh5Ld4EpXJs',
   },
+  {
+    title: '어느 날 우리',
+    singer: '김필',
+    youtubeUrl: 'https://www.youtube.com/watch?v=wyVDJwh8-YU',
+  },
+  {
+    title: 'Why',
+    singer: '태연',
+    youtubeUrl: 'https://www.youtube.com/watch?v=VIWGrjyKvKw',
+  },
 ];

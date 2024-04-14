@@ -50,7 +50,11 @@ const NavbarWrapper = styled.div`
   
   padding-left: 1em;
   padding-right: 1em;
-  z-index: 1000;
+  
+  /***********/
+  /* position: relative;
+  z-index: 5000; */
+
 
   @media (max-width: 768px) {
     width: 100%;

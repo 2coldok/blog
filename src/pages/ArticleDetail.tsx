@@ -4,18 +4,14 @@ import CustomMarkdown from '../components/CustomMarkdown';
 import { useGithubIssuesMananger } from '../hook/GithubIssuesManager';
 import { useNavigate, useParams } from 'react-router-dom';
 import Comments from '../components/Comments';
-import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
+
 import { getTags } from '../util/SearchEngine';
 import koreanDateTimeFromISO from '../util/KoreanDateTImeFromISO';
 
 
+
 export default function ArticleDetail() {
   const navigate = useNavigate();
-  const menuModal = useSelector((state: RootState) => state.modal.menuModal);
-  const searchModal = useSelector((state: RootState) => state.modal.searchModal);
-  const themeModal = useSelector((state: RootState) => state.modal.themeModal);
-  const musicModal = useSelector((state: RootState) => state.modal.musicModal);
   const { githubIssuesManager } = useGithubIssuesMananger();
   const { category, title } = useParams();
 
@@ -57,13 +53,20 @@ export default function ArticleDetail() {
 
       <OtherIssuesContainer>
         <h1>{category}의 다른글들 목록이에요</h1>
+        
         {githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
           <List onClick={handleTitleClick(issue.title)}>
-            {issue.title === decodedTitle ? <p style={{backgroundColor: 'black'}}>{array.length - index}. {issue.title}</p> : <p>{array.length - index}. {issue.title}</p>}
+            {issue.title === decodedTitle ? <h3 style={{backgroundColor: 'black'}}>{array.length - index}. {issue.title}</h3> : <h3>{array.length - index}. {issue.title}</h3>}
+            <TagContainer>
+              {getTags(issue.milestone?.title).map((tag) => (
+                <p>#{tag}</p>
+              ))}
+            </TagContainer>
           </List>
         ))}
+        
       </OtherIssuesContainer>  
-      {!(menuModal || searchModal || themeModal || musicModal) && <Comments />}
+      <Comments />
     </Wrapper>
   );
 }
@@ -134,14 +137,25 @@ const OtherIssuesContainer = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
   width: 100%;
   border-radius: 1em;
   background-color: rgba(12, 1, 1);
   padding: 0.3rem;
   margin-bottom: 1rem;
   background-color: #292e3c;
+
+  /* position: relative;
+  z-index: 100; */
+  
 `
 
 const List = styled.li`
+  background-color: grey;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 90%;
+  margin: 1rem;
+
   
 `

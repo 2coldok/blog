@@ -62,7 +62,7 @@ const NavbarWrapper = styled.div`
 
   width: 100%;
   max-width: 1100px;
-  
+  z-index: 8000;
   
   /* @media (max-width: 900px) {
     width: 100%;
@@ -78,8 +78,6 @@ const ContentsWrapper = styled.div<{ $margintop: number}>`
   height: 100%;
   /* min-height: 1000px; */
   margin-top: ${(props) => props.$margintop}px;
-  
-
   
   
   /* @media (max-width: 1100px) {
