@@ -4,29 +4,33 @@ import CustomMarkdown from '../components/CustomMarkdown';
 import { useGithubIssuesMananger } from '../hook/GithubIssuesManager';
 import { useNavigate, useParams } from 'react-router-dom';
 import Comments from '../components/Comments';
-
 import { getTags } from '../util/SearchEngine';
 import koreanDateTimeFromISO from '../util/KoreanDateTImeFromISO';
-
-
+import { Pagination } from '../components/Pagenation';
+import { useDispatch } from 'react-redux';
+import { setFixedIndex } from '../redux/slice/fixedIndexSlice';
 
 export default function ArticleDetail() {
   const navigate = useNavigate();
   const { githubIssuesManager } = useGithubIssuesMananger();
   const { category, title } = useParams();
-
+  const dispatch = useDispatch();
+  
   if (title === undefined || category === undefined) {
     return <h1>카테고리, 타이틀 오류</h1>;
   } 
-  const decodedTitle = decodeURIComponent(title);
 
+  const decodedTitle = decodeURIComponent(title);
   
+
   const handleTitleClick = (title: string) => () => {
+    dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, title)));
     navigate(`/${category}/${title}`);
     window.scrollTo(0, 0);
   }
 
   const handleCategoryClick = () => {
+    dispatch(setFixedIndex(0));
     navigate(`/${category}`);
     window.scrollTo(0, 0);
   }
@@ -54,16 +58,15 @@ export default function ArticleDetail() {
       <OtherIssuesContainer>
         <h1>{category}의 다른글들 목록이에요</h1>
         
-        {githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
-          <List onClick={handleTitleClick(issue.title)}>
-            {issue.title === decodedTitle ? <h3 style={{backgroundColor: 'black'}}>{array.length - index}. {issue.title}</h3> : <h3>{array.length - index}. {issue.title}</h3>}
-            <TagContainer>
-              {getTags(issue.milestone?.title).map((tag) => (
-                <p>#{tag}</p>
-              ))}
-            </TagContainer>
-          </List>
-        ))}
+        <Pagination itemsPerPage={5}>
+          {githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
+            
+            <List onClick={handleTitleClick(issue.title)} $decodedtitle={decodedTitle} $issuetitle={issue.title}>
+              <div><span>#{array.length - index}. </span>{issue.title}</div>
+              <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
+            </List>
+          ))}
+        </Pagination>
         
       </OtherIssuesContainer>  
       <Comments />
@@ -102,6 +105,15 @@ const TitleContainer = styled.div`
 
   & > h1 {
     color: white;
+    word-wrap: break-word;      /* 긴 단어가 경계를 넘어가면 줄바꿈 */
+    overflow-wrap: break-word;  /* 과도하게 긴 단어를 다음 줄로 넘기도록 함 */
+    white-space: normal;        /* 공백을 기준으로 자동 줄바꿈 */
+    text-align: center;         /* 제목을 중앙 정렬 */
+    width: 90%;                 /* 컨테이너 너비의 90%만 사용 */
+    margin-top: 1rem;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   & > p {
@@ -150,12 +162,39 @@ const OtherIssuesContainer = styled.ul`
   
 `
 
-const List = styled.li`
-  background-color: grey;
+const List = styled.li<{ $decodedtitle: string, $issuetitle: string }>`
+  background-color: black;
+  color: ${(props) => (props.$decodedtitle === props.$issuetitle) ? 'yellow' : 'white'};
   border-radius: 1rem;
-  padding: 0.5rem;
+  
   width: 90%;
   margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+  & > div {
+    font-weight: bolder;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 2em;
+    
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+
+    & > span {
+      color: #aaaaaa;
+      font-size: 0.8em;
+      font-weight: 300;
+    }
+  }
+
+  & > p {
+    color: #525252;
+    font-size: 1em;
+    margin-left: 1em;
+    margin-top: 0.3em;
+  }
   
 `

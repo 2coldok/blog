@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { musicOff } from '../redux/slice/musicSlice';
 import { CgClose } from "react-icons/cg";
 import { useEffect, useState } from 'react';
-import { MusicSkeletonLoader } from './skeleton/MusicSkeletonLoader';
+import { MusicSkeletonLoader } from '../util/skeleton/MusicSkeletonLoader';
 
 export default function MusicPlayer() {
   const youtubeUrl = useSelector((state: RootState) => state.music.url);

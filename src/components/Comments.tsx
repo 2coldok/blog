@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { UtterancesSkeletonLoader } from './skeleton/UtterancesSkeletonLoader';
+import { UtterancesSkeletonLoader } from '../util/skeleton/UtterancesSkeletonLoader';
 
 const Comments = () => {
   const location = useLocation();
