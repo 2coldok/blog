@@ -96,7 +96,8 @@ export default function CustomMarkdown({ data }) {
 
 const Container = styled.div`
   background-color: #292e3c;
-  border-radius: 0.7rem;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
   color: white;
   /* letter-spacing: 0.1rem; */
   /* word-spacing: 1px; */

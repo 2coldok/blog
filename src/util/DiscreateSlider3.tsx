@@ -37,7 +37,7 @@ const SliderContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 800px;
+  width: 80%;
   height: 0.9em;
   background-color: #8c61c0;
   padding: 0;
@@ -45,7 +45,7 @@ const SliderContainer = styled.div`
 `;
 
 const StyledSlider = styled.input`
-  width: 800px;
+  width: 100%;
   cursor: pointer;
 
   padding: 0;

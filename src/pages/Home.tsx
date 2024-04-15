@@ -6,7 +6,7 @@ import { Slider3 } from "../util/DiscreateSlider3";
 
 // import React from 'react';
 export default function Home() {
-  const [value, setValue] = useState(30);
+  const [value, setValue] = useState(5);
   const min = 0;
   const max = 30;
   const step = 5;

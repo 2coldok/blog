@@ -32,7 +32,7 @@ export function DrawerModal({ active, onClose, direction, children }: ILeftDrawe
 }
 
 const DrawerOutside = styled.div<{ $active: boolean }>`
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   top: 0;
   left: 0;
@@ -44,14 +44,15 @@ const DrawerOutside = styled.div<{ $active: boolean }>`
 `;
 
 const DrawerContainer = styled.div<{ $active: boolean; $direction: Direction }>`
-  background-color: pink;
+  background-color: #101418;
   position: fixed;
   top: 0;
   ${props => props.$direction === 'left' ? 'left: 0;' : 'right: 0;'};
   transform: ${props => (props.$active ? 'translateX(0)' : (props.$direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)'))};
-  max-width: 300px;
+  max-width: 250px;
   height: 100%;
   z-index: 4000;
+  overflow-y: auto;
 
   transition: transform 0.2s ease-in-out;
 `;
