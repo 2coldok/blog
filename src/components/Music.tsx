@@ -23,8 +23,10 @@ export default function Music() {
     <MusicWrapper>
       
       <Header>
+        
         <BsMusicPlayerFill />
         <h1>Music List</h1>
+        
         
         
       </Header>

@@ -19,16 +19,19 @@ export default function MenuList() {
   return (
     <Wrapper>
       <GmailButton />
-      <h1>Fronted</h1>
-      {ArticlesData.map((articleData) => (
-        <ItemButton onClick={handleClick(articleData.category)}>
-          <h3>{articleData.name}</h3>
-        </ItemButton>
-      ))}
+      <Br></Br>
+      <Front>
+        <span>프론트엔드</span>
+        {ArticlesData.map((articleData) => (
+          <p onClick={handleClick(articleData.category)}>
+            {articleData.name}
+          </p>
+        ))}  
+      </Front>
+      <Br></Br>
     </Wrapper>
   );
 }
-
 
 const Wrapper = styled.div`
   width: 250px;
@@ -36,6 +39,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.2em;
+  /* align-items: center; */
 
   & > h1 {
     /* background-color: yellow; */
@@ -48,21 +52,45 @@ const Wrapper = styled.div`
   }
 `;
 
+const Br = styled.div`
+  width: 95%;
+  height: 1px;
+  margin-left: 0.4em;
+  margin-top: 0.9em;
+  margin-bottom: 0.9em;
+  border-bottom: 1px solid #aebacb;
+`
 
-const ItemButton = styled.button`
-  /* margin: 0.2em; */
-  font-size: 1em;
-  background-color: transparent;
-  color: #aebacb;
-  padding: 0 3em;
-  border-radius: 0.5em;
-  margin-bottom: 0.3em;
+const Front = styled.div`
+  display: flex;
+  text-align: left;
+  
+  
+  /* align-items: center; */
+  flex-direction: column;
+  & > p {
+    font-size: 20px;
+    /* background-color: yellow; */
+    margin: 5px;
+    margin-left: 15px;
+    &:hover {
+      filter: brightness(125%);
+      cursor: pointer;
+    }
+    
+    /* margin-left: 0.5em; */
 
-  & > h3 {
-    margin: 0.5em;
   }
 
-  &:hover {
-    background-color: #1f262e;
+  & > span {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #3d3e46;
   }
-`;
+
+
+  font-weight: bold;
+  /* background-color: #1b1b1b; */
+  
+`
