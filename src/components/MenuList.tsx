@@ -1,9 +1,10 @@
-import { ArticlesData } from '../meta/ArticlesData';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setMenuModal } from '../redux/slice/modalSlice';
-import styled from 'styled-components';
+import { ArticlesData } from "../meta/ArticlesData";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setMenuModal } from "../redux/slice/modalSlice";
+import styled from "styled-components";
 
+import GmailButton from "./menu/GmailButton";
 export default function MenuList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -12,60 +13,56 @@ export default function MenuList() {
     dispatch(setMenuModal(false));
     navigate(`/${category}`);
   };
-  
+
+
+
   return (
     <Wrapper>
-      <Header>
-        <ProfileImage src="https://2coldok.github.io/blog/image/profile.png" alt="profile" />
-        <ProfileImage src="https://2coldok.github.io/blog/image/github.png" alt="github" />
-        <ProfileImage src="https://2coldok.github.io/blog/image/gmail.png" alt="gmail" />
-
-        {/* <label>이찬웅</label> */}
-      </Header>
+      <GmailButton />
+      <h1>Fronted</h1>
       {ArticlesData.map((articleData) => (
-        <ItemButton onClick={handleClick(articleData.category)}>{articleData.name}</ItemButton>
+        <ItemButton onClick={handleClick(articleData.category)}>
+          <h3>{articleData.name}</h3>
+        </ItemButton>
       ))}
-      ddcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdc
     </Wrapper>
-  )
+  );
 }
 
+
 const Wrapper = styled.div`
+  width: 250px;
+  color: #aebacb;
   display: flex;
   flex-direction: column;
   padding: 0.2em;
-`
-const Header = styled.div`
-  display: flex;
-  /* justify-content: center; */
-  align-items: center;
-  flex-direction: column;
-  margin: 1.5em 1em;
 
-  & > label {
-    margin-top: 0.6em;
-    color: #AEBACB;
+  & > h1 {
+    /* background-color: yellow; */
+    margin: 0;
+    color: white;
+    text-align: center;
+    border: 1px solid yellow;
+    border-radius: 1em;
+    margin-bottom: 0.3em;
   }
-`
+`;
 
-const ProfileImage = styled.img`
-  width: 60px;
-  height: 60px;
-  border-radius: 0.6em;
-  background-color: white;
-  margin-bottom: 0.5em;
-`
 
 const ItemButton = styled.button`
-  margin: 0.2em;
+  /* margin: 0.2em; */
   font-size: 1em;
   background-color: transparent;
-  color: #AEBACB;
-  padding: 0.4em 1em;
+  color: #aebacb;
+  padding: 0 3em;
   border-radius: 0.5em;
-  
-  
-  &:hover {
-    background-color: #1F262E;
+  margin-bottom: 0.3em;
+
+  & > h3 {
+    margin: 0.5em;
   }
-`
+
+  &:hover {
+    background-color: #1f262e;
+  }
+`;
