@@ -1,11 +1,14 @@
-import styled from "styled-components";
 import { LuMenu } from "react-icons/lu";
 import MenuList from "./MenuList";
 import { DrawerModal } from "./DrawerModal";
+
+// redux
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { setMenuModal } from "../redux/slice/modalSlice";
+
+import styled from "styled-components";
 
 export default function Menu() {
   const dispatch = useDispatch();
@@ -25,7 +28,6 @@ export default function Menu() {
 }
 
 const MenuButton = styled.button`
-  color: #e3bdbd;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,8 +35,6 @@ const MenuButton = styled.button`
   margin-right: 0.8em;
 
   & > svg {
-    font-size: 3.5em;
+    font-size: 3.2em;
   }
-  background-color:transparent;
-  /* background-color: pink; */
 `;

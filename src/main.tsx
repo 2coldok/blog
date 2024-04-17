@@ -5,16 +5,20 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 
-// page 
-import NotFound from './pages/NotFound.tsx';
-import Home from './pages/Home.tsx';
-
 // redux
 import { Provider } from 'react-redux';
 import store from './redux/store.ts';
 import CategoryArticles from './pages/CategoryArticles.tsx';
 import ArticleDetail from './pages/ArticleDetail.tsx';
 import GlobalStyle from './styles/GlobalStyle.ts';
+
+// page 
+import NotFound from './pages/NotFound.tsx';
+import Home from './pages/Home.tsx';
+
+// style
+import { ThemeProvider } from 'styled-components';
+import { darkTheme } from './styles/Theme.ts';
 
 
 const queryClient = new QueryClient();
@@ -29,18 +33,22 @@ const router = createHashRouter([
       {path: ":category", element: <CategoryArticles />},
       {path: ":category/:title", element: <ArticleDetail />},
     ]
-  }
-])
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <GithubIssuesProvider>
-          <GlobalStyle />
-          <RouterProvider router={router} />
+          <ThemeProvider theme={darkTheme}>
+            <GlobalStyle />
+            <RouterProvider router={router} />
+          </ThemeProvider>
         </GithubIssuesProvider>
       </QueryClientProvider>
     </Provider>
   </React.StrictMode>
 );
+
+// React.StrictMode

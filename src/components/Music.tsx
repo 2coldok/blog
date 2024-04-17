@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { musicOn, setUrl } from '../redux/slice/musicSlice';
 import { setMusicModal } from '../redux/slice/modalSlice';
-import { BsMusicPlayerFill } from "react-icons/bs";
+
 import { useState } from 'react';
 
 export default function Music() {
@@ -20,56 +20,26 @@ export default function Music() {
   
     
   return (
-    <MusicWrapper>
-      
-      <Header>
-        
-        <BsMusicPlayerFill />
-        <h1>Music List</h1>
-        
-        
-        
-      </Header>
-      
+    <StyledContainer>
       {MusicContents.map((music: IMusic) => (
-        <Button onClick={handleMusicClick(music.youtubeUrl, music.title)} $title={music.title} $track={currentTrack}>{music.title} - {music.singer}</Button>
+        <>
+          <TitleButton onClick={handleMusicClick(music.youtubeUrl, music.title)} $title={music.title} $track={currentTrack}>{music.title} - {music.singer}</TitleButton>
+          
+        </>
       ))}
-    </MusicWrapper>
+    </StyledContainer>
   );
 }
 
-const MusicWrapper = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   
-  padding: 0.2em;
-  /* align-items: center;  */
-`
-
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  height: 50px;
-  border-style: none;
-  background-color: #101418;
-  /* background-color: green; */
-  justify-content: center;
-  align-items: center;
-  color: #AEBACB;
-  border-radius: 1rem;
-  & > svg {
-    margin-right: 10px;
-    font-size: 35px;
-  }
-
+  padding: 2em 0.2em;
   
+`;
 
-  &:hover {
-    filter: none;
-  }
-`
+
 
 // const CloseButton = styled.button`
   
@@ -89,16 +59,16 @@ const Header = styled.div`
 //   }
 // `
 
-const Button = styled.button<{ $title: string, $track: string }>`
-  margin: 0.2em;
+const TitleButton = styled.button<{ $title: string, $track: string }>`
+  margin-bottom: 1em;
   font-size: 1em;
   background-color: transparent;
   color: ${props => props.$title === props.$track ? '#66B2FF' : '#AEBACB'};
   padding: 0.4em 1em;
-  border-radius: 0.5em;
+  /* border-radius: 0.5em; */
   
   &:hover {
     background-color: #1F262E;
   }
 
-`
+`;

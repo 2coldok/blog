@@ -11,7 +11,6 @@ interface ILeftDrawerModal {
 }
 
 export function DrawerModal({ active, onClose, direction, children }: ILeftDrawerModal) {
-
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     document.body.style.overflow = active ? 'hidden' : originalStyle;
@@ -33,6 +32,7 @@ export function DrawerModal({ active, onClose, direction, children }: ILeftDrawe
 
 const DrawerOutside = styled.div<{ $active: boolean }>`
   background-color: rgba(0, 0, 0, 0.6);
+
   position: fixed;
   top: 0;
   left: 0;
@@ -44,7 +44,8 @@ const DrawerOutside = styled.div<{ $active: boolean }>`
 `;
 
 const DrawerContainer = styled.div<{ $active: boolean; $direction: Direction }>`
-  background-color: #101418;
+  background-color: ${({theme}) => theme.colors.background};
+
   position: fixed;
   top: 0;
   ${props => props.$direction === 'left' ? 'left: 0;' : 'right: 0;'};

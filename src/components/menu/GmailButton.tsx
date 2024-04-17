@@ -1,174 +1,98 @@
-import { useState } from 'react';
-import styled from 'styled-components';
-import { IoCloseOutline } from "react-icons/io5";
-import { IoMdCopy } from "react-icons/io";
-import { IoIosLink } from "react-icons/io";
+import { useState } from "react";
+import { IoMail } from "react-icons/io5"; // 메일
+import { IoIosCopy } from "react-icons/io"; // 복사
+import { IoCloseOutline } from "react-icons/io5"; // 닫기
+
+import styled from "styled-components";
 
 export default function GmailButton() {
-  const [gmailToggle, setGmailToggle]= useState(false);
-  const [copySuccess, setCopySuccess] = useState(false);
-  const [githubToggle, setGithubToggle] = useState(false);
+  const [button, setButton] = useState(false);
+  const [copy, setCopy] = useState(false);
 
-  const copyToClipBoard = async (textTarget: string) => {
+  const copyToClipBoard = async (target: string) => {
     try {
-      await navigator.clipboard.writeText(textTarget);
-      setCopySuccess(true);
-    } catch (e) {
-      setCopySuccess(false);
+      await navigator.clipboard.writeText(target);
+      setCopy(true);
+    } catch (error) {
+      setCopy(false);
     }
+  }
+
+  const handleCopyClick = () => copyToClipBoard('2coldok@gmail.com');
+  const handleGmailClick = () => setButton(true);
+  const handleCloseClick = () => {
+    setButton(false);
+    setCopy(false);
   };
-
-  const handleCopyClick = () => {
-    copyToClipBoard('2coldok@gmail.com');
-  }
-
-  const handleGmailToggle = (state: boolean) => () => {
-    setGmailToggle(state);
-    setCopySuccess(false);
-  }
-
-  
 
   return (
     <>
-      {githubToggle ? (
-        <Github $github={githubToggle}>
-          <a href="https://github.com/2coldok" target="_blank" rel="noopener noreferrer">github.com/2coldok<IoIosLink /></a>
-          <IoCloseOutline onClick={() => setGithubToggle(false)}/>
-        </Github> 
+      {button ? (
+        <AfterContainer>
+          <CopyContainer $copy={copy}>
+            <span onClick={handleCopyClick}><p>{copy ? 'Copied!' : '2coldok@gmail.com'}</p><IoIosCopy /></span>
+            <IoCloseOutline onClick={handleCloseClick} />
+          </CopyContainer>
+        </AfterContainer>
       ) : (
-        <Github onClick={() => setGithubToggle(true)} $github={githubToggle}>
-          <img
-            src="https://2coldok.github.io/blog/image/github.png"
-            alt="github"
-          />
-          Github
-        </Github>
-      )}
-      
-      {gmailToggle ? (
-        <Gmail $copy={copySuccess}>
-          <CopyButton onClick={handleCopyClick}>
-            {copySuccess ? <p>Copied!</p> : <><p>2coldok@gmail.com</p><IoMdCopy/></>}
-          </CopyButton>
-          <IoCloseOutline onClick={handleGmailToggle(false)}/>
-        </Gmail>
-      ) : (
-        <Gmail onClick={handleGmailToggle(true)} $copy={copySuccess}>
-          <img
-            src="https://2coldok.github.io/blog/image/gmail.png"
-            alt="gmail"
-          />
-          Gmail
-        </Gmail>
+        <BeforeContainer onClick={handleGmailClick}>
+          <IoMail/>
+          <p>Mail</p>
+        </BeforeContainer>
       )}
     </>
   )
 }
 
-const Gmail = styled.div<{$copy: boolean}>`
+const BeforeContainer = styled.button`
   display: flex;
   align-items: center;
-  justify-content: ${prop => prop.$copy ? 'space-between' : ''};
-  
-  width: 100%;
-  height: 60px;
-  font-size: 25px;
-  font-weight: bold;
-  padding: 0.5em;
-  border-radius: 0.2em;
-  /* background-color: #1b1b1b; */
-  margin-bottom: 0.3em;
-  
-
-  & > img {
-    width: 30px;
-    height: 30px;
-    border-radius: 0.2em;
-    background-color: white;
-    margin-right: 0.3em;
-  }
+  height: 50px;
+  border-radius: 0.4em;
+  margin-bottom: 0.5em;
 
   & > svg {
-    font-size: 30px;
-    margin-left: 0.5em;
-    margin-right: 0.3em;
-    
-    &:hover {
-      cursor: pointer;
-      filter: brightness(125%);
-    }
+    font-size: 2em;  
+    margin-right: 0.4em;
+  }
+
+  & > p {
+    font-size: 2em;
   }
 
   &:hover {
-    cursor: pointer;
-    filter: brightness(125%);
+    background-color: ${({theme}) => theme.colors.border};
   }
 `;
 
-const CopyButton = styled.button`
+const AfterContainer = styled.div`  
   display: flex;
-  align-items: center;
-  color: #305fcb;
-  background: transparent;
+  height: 50px;
+  padding: 20px;
+`;
 
-  & > svg {
-    font-size: 30px;
-  }
-`
-const Github = styled.div<{ $github: boolean }>`
+const CopyContainer = styled.div<{ $copy: boolean }>`
   display: flex;
-  align-items: center;
-  justify-content: ${prop => prop.$github ? 'space-between' : ''};
   width: 100%;
-  height: 60px;
-  
-  font-size: 25px;
-  font-weight: bold;
-  padding: 0.5em;
-  /* background-color: #1b1b1b; */
-  border-radius: 0.2em;
-  margin-bottom: 0.3em;
-  
-  & > img {
-    width: 30px;
-    height: 30px;
-    border-radius: 0.5em;
-    background-color: white;
-    margin-right: 0.3em;
-  }
+  align-items: center;
+  justify-content: space-between;
 
-  & > a {
+  & > span {
     display: flex;
     align-items: center;
-    font-size: 13px;
-    margin-left: 0.5em;
-    color: #305fcb;
-
-    & > svg {
-      font-size: 30px;
-    }
-
+    font-size: ${(prop) => prop.$copy ? '25px' : '14px'};
+    color: ${({theme}) => theme.colors.clicked};
     &:hover {
       filter: brightness(125%);
+      cursor: pointer;
     }
   }
 
   & > svg {
     font-size: 30px;
-    margin-left: 0.5em;
-    margin-right: 0.3em;
-    
     &:hover {
-      cursor: pointer;
       filter: brightness(125%);
+      cursor: pointer;
     }
   }
-
-  &:hover {
-    cursor: pointer;
-    filter: brightness(125%);
-  }
-
-  
-`
+`;

@@ -1,16 +1,19 @@
-import styled from "styled-components";
 import { TbSearch } from "react-icons/tb";
 import { ImBrightnessContrast } from "react-icons/im";
 import { IoMusicalNotes } from "react-icons/io5";
-import Music from "./Music";
-import { ToolkitModal } from "./ToolkitModal";
 
+// redux
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { setMusicModal, setSearchModal, setThemeModal } from "../redux/slice/modalSlice";
+
 import Search from "./Search";
 import { DrawerModal } from "./DrawerModal";
+import { ToolkitModal } from "./ToolkitModal";
+import Music from "./Music";
+
+import styled from "styled-components";
 
 export default function ToolBox() {
   // 서로 개별적인 상태인데 이렇게 묶어서 가져오면 한상태 변경이 다른 선택자의 호출까지 트리거함.
@@ -28,31 +31,27 @@ export default function ToolBox() {
   
   return (
     <>
-      <BigSearchButtonContainer onClick={() => dispatch(setSearchModal(true))}>
-        <SearchButton>
-          <TbSearch />
-          <span>제목 또는 태그 검색</span>
-        </SearchButton>
-      </BigSearchButtonContainer>
-      <SmallSearchButtonContainer onClick={() => dispatch(setSearchModal(true))}>
-        <ToolBoxButton>
-          <TbSearch color="#0055FF" />
-        </ToolBoxButton>
-      </SmallSearchButtonContainer>
+      <BigSearchButton onClick={() => dispatch(setSearchModal(true))}>
+        <TbSearch />
+        <span>제목 또는 태그 검색</span>
+      </BigSearchButton>
+      <SmallSearchButton onClick={() => dispatch(setSearchModal(true))}>
+        <TbSearch/>
+      </SmallSearchButton>
       <ToolkitModal active={searchModal} onClose={() => dispatch(setSearchModal(false))}>
         <Search />
       </ToolkitModal>
 
-      <ToolBoxButton onClick={() => dispatch(setThemeModal(true))}>
-        <ImBrightnessContrast color="#FAF58C" />
-      </ToolBoxButton> 
+      <ToolButton onClick={() => dispatch(setThemeModal(true))}>
+        <ImBrightnessContrast/>
+      </ToolButton> 
       <ToolkitModal active={themeModal} onClose={() => dispatch(setThemeModal(false))}>
         <p>테마 content</p>
       </ToolkitModal>
       
-      <ToolBoxButton onClick={() => dispatch(setMusicModal(true))}>
-        <IoMusicalNotes color="#E0115F" />
-      </ToolBoxButton>
+      <ToolButton onClick={() => dispatch(setMusicModal(true))}>
+        <IoMusicalNotes/>
+      </ToolButton>
       <DrawerModal active={musicModal} onClose={() => dispatch(setMusicModal(false))} direction="right">
         <Music />
       </DrawerModal>
@@ -60,38 +59,38 @@ export default function ToolBox() {
   );
 }
 
-const ToolBoxButton = styled.button`
+const BigSearchButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
-  margin-left: 0.3em;
+
+  height: 40px;
+  padding: 1.5em;
+  margin-right: 0.5em;
+
+  border: 1.5px solid ${({theme}) => theme.colors.clicked};
+  color: ${({theme}) => theme.colors.subtitle};
+  border-radius: 2em;
 
   & > svg {
-    font-size: 2.5em;
+    font-size: 1.5em;
     margin-right: 0.3em;
-    margin-left: 0.3em;
   }
-  background-color: transparent;
-  /* background-color: pink; */
-`;
-const BigSearchButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin-right: 0.5em;
-  background-color: transparent;
+
+  & > span {
+    font-weight: bold;  
+  }
 
   @media (max-width: 768px) {
     display: none;
   }
 `;
 
-const SmallSearchButtonContainer = styled.div`
+const SmallSearchButton = styled.button`
   display: none;
   justify-content: center;
   align-items: center;
+
   padding: 0;
   margin-left: 0.3em;
 
@@ -100,33 +99,23 @@ const SmallSearchButtonContainer = styled.div`
     margin-right: 0.3em;
     margin-left: 0.3em;
   }
-  background-color: transparent;
 
   @media (max-width: 768px) {
     display: flex;
   }
-  /* background-color: pink; */
 `;
 
-const SearchButton = styled.button`
+const ToolButton = styled.button`
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  padding: 0;
-  /* margin-left: 0.3em; */
 
-  background-color: #2360aa;
-  border-radius: 1em;
-  border: 1.5px solid #040f15;
-  padding: 0.5em;
-  height: 3em;
-  width: 170px;
+  padding: 0;
+  margin-left: 0.3em;
+
   & > svg {
-    font-size: 1.5em;
+    font-size: 2.5em;
     margin-right: 0.3em;
-  }
-  & > span {
-    color: white;
-    font-size: 1em;
+    margin-left: 0.3em;
   }
 `;

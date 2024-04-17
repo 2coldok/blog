@@ -4,13 +4,15 @@ const GlobalStyle = createGlobalStyle`
   // html
   :root {
     background-color: red;
-    line-height: 1.5;
+
+    /* line-height: 1.5;
     font-weight: 400;
-    color-scheme: light dark;
+    color-scheme: light dark; */
   }
   
   body {
     background-color: coral;
+    
 
     display: flex;
     justify-content: center;
@@ -30,14 +32,15 @@ const GlobalStyle = createGlobalStyle`
 
   // App.tsx container
   #root {
-    background-color: yellow;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 1100px;
+
+    background-color: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.colors.text};
   }
 
   *, *::before, *::after {
@@ -46,12 +49,16 @@ const GlobalStyle = createGlobalStyle`
 
   button {
     border-style: none;
+    color: inherit; // button은 부모 color, background-color 를 상속받지 않는다.
+    background-color:transparent;
 
     &:hover {
       filter: brightness(125%);
       cursor: pointer;
     }
   }
+
+  
 
   ul {
     list-style: none;
