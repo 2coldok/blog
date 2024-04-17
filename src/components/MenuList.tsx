@@ -50,6 +50,7 @@ const Wrapper = styled.div`
     border-radius: 1em;
     margin-bottom: 0.3em;
   }
+  
 `;
 
 const Br = styled.div`
