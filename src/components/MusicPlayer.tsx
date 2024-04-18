@@ -77,7 +77,7 @@ const PlayerWrapper = styled.div`
 const Iframe = styled.iframe`
   width: 92%;
   /* height: 100%; */
-  border: 2px solid #3b3b3b;
+  border: 2px solid ${({theme}) => theme.colors.border};
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   border-right: none;
@@ -89,7 +89,7 @@ const Button = styled.button<{ $loading: boolean }>`
   height: 100%;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  border: 2px solid #3b3b3b;
+  border: 2px solid ${({theme}) => theme.colors.border};
   border-left: none;
   background-color: black;
   &> svg {
@@ -97,7 +97,7 @@ const Button = styled.button<{ $loading: boolean }>`
     color: red;
   }
   &:hover {
-    background-color: #242424;
+    filter: none;
   }
 
   display: ${props => props.$loading ? 'none' : 'block'};

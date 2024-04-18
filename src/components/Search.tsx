@@ -77,14 +77,17 @@ export default function Search() {
       <SearchListContainer>
         {filtedIssues?.map((issue) => (
           
-          <List onClick={handleClick(typeof issue.labels[0] === 'object' && issue.labels[0] !== null ? issue.labels[0].name : '', issue.title)}>
-            <Title><h2 dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, issue.title)}}></h2></Title>
+          <>
+            <List onClick={handleClick(typeof issue.labels[0] === 'object' && issue.labels[0] !== null ? issue.labels[0].name : '', issue.title)}>
+              <Title><h2 dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, issue.title)}}></h2></Title>
+              
+              {getTags(issue.milestone?.title).map((tag) => (
+                <Tag><span dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, tag)}}></span></Tag>
+              ))}
+                
+            </List>
             
-            {getTags(issue.milestone?.title).map((tag) => (
-              <Tag><span dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, tag)}}></span></Tag>
-            ))}  
-          </List>
-          
+          </>
         ))}
       </SearchListContainer>
     </Container>
@@ -117,7 +120,7 @@ const SearchForm = styled.form`
 
   & > svg {
     margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin-right: 9px;
     font-size: 1.5em;
   }
   & > input {
@@ -156,7 +159,7 @@ const SearchListContainer = styled.ul`
 
 const List = styled.li`
   background-color: ${({theme}) => theme.colors.background};
-  border: 2px solid ${({theme}) => theme.colors.block};
+  /* border: 2px solid ${({theme}) => theme.colors.block}; */
   border-radius: 0.9em;
   
   
@@ -170,14 +173,14 @@ const List = styled.li`
 
   &:hover {
     cursor: pointer;
-    background-color: ${({theme}) => theme.colors.block};
+    background-color: ${({theme}) => theme.colors.border};
   }
 `;
 
 
 const Title = styled.div`
   /* background-color: #4c4c9f; */
-  font-size: 1.2em;
+  font-size: 0.9em;
 
   & > h2 {
     overflow-x: hidden;
@@ -185,19 +188,19 @@ const Title = styled.div`
     text-overflow: ellipsis;
   }
 `;
-
+// #4c4c9f
 const Tag = styled.div`
-  /* background-color: #4c4c9f; */
-  background-color: ${({theme}) => theme.colors.border};
+  background-color: #3a3a88;
+  /* background-color: ${({theme}) => theme.colors.border}; */
 
   
   display: inline-block;
   
-  padding: 0.5em;
+  padding: 0.6em;
   margin-right: 1em;
   margin-bottom: 0.5em;
-  font-size: 1.1em;
-  font-weight: 600;
+  font-size: 0.9em;
+  font-weight: 800;
   border-radius: 2em;
-  
+  letter-spacing: 0.5px;
 `;

@@ -3,11 +3,45 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   // html
   :root {
-    background-color: red;
+    /* background-color: red; */
 
     /* line-height: 1.5;
     font-weight: 400;
     color-scheme: light dark; */
+    // 스크롤바
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-button {
+      width: 0px;
+      height: 0px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #646464;
+      border: 0px none #ffffff;
+      border-radius: 50px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #646464;
+    }
+    ::-webkit-scrollbar-thumb:active {
+      background: #939393;
+    }
+    ::-webkit-scrollbar-track {
+      background: #292929;
+      border: 0px none #ffffff;
+      border-radius: 50px;
+    }
+    ::-webkit-scrollbar-track:hover {
+      background: #292929;
+    }
+    ::-webkit-scrollbar-track:active {
+      background: #292929;
+    }
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
   }
   
   body {
@@ -29,6 +63,41 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+
+    // 스크롤바
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-button {
+      width: 0px;
+      height: 0px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #646464;
+      border: 0px none #ffffff;
+      border-radius: 50px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #646464;
+    }
+    ::-webkit-scrollbar-thumb:active {
+      background: #939393;
+    }
+    ::-webkit-scrollbar-track {
+      background: #292929;
+      border: 0px none #ffffff;
+      border-radius: 50px;
+    }
+    ::-webkit-scrollbar-track:hover {
+      background: #292929;
+    }
+    ::-webkit-scrollbar-track:active {
+      background: #292929;
+    }
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
   }
 
   // App.tsx container

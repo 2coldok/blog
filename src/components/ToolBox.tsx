@@ -65,7 +65,7 @@ const BigSearchButton = styled.button`
   align-items: center;
 
   height: 40px;
-  padding: 1.5em;
+  padding: 1em;
   margin-right: 0.5em;
 
   border: 1.5px solid ${({theme}) => theme.colors.clicked};

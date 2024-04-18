@@ -61,6 +61,7 @@ const StyledContainer = styled.div`
 
 const TitleButton = styled.button<{ $title: string, $track: string }>`
   margin-bottom: 1em;
+  margin: 0.4em;
   font-size: 1.2em;
   font-weight: 500;
   background-color: transparent;
