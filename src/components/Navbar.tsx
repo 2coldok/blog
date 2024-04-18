@@ -2,9 +2,10 @@ import { FaCat } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 import ToolBox from "./ToolBox";
-import Menu from "./Menu";
+import Menu from "./menu/Menu";
 
 import styled from "styled-components";
+
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -12,6 +13,8 @@ export default function Navbar() {
     navigate('/');
   };
   
+  
+
   return (
     <StyledContainer>
 

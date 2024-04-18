@@ -35,7 +35,7 @@ const BeforeContainer = styled.button`
   align-items: center;
   height: 50px;
   border-radius: 0.4em;
-  margin-bottom: 0.5em;
+  margin-bottom: 10px;
   
   & > svg {
     font-size: 2em;  
@@ -55,6 +55,7 @@ const AfterContainer = styled.div`
   display: flex;
   height: 50px;
   padding: 20px;
+  margin-bottom: 10px;
 `;
 
 const LinkContainer = styled.div`

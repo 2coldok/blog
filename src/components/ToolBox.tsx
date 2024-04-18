@@ -1,4 +1,4 @@
-import { TbSearch } from "react-icons/tb";
+import { TbSearch } from "react-icons/tb"; // 검색
 import { ImBrightnessContrast } from "react-icons/im";
 import { IoMusicalNotes } from "react-icons/io5";
 

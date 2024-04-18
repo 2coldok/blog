@@ -61,14 +61,16 @@ const StyledContainer = styled.div`
 
 const TitleButton = styled.button<{ $title: string, $track: string }>`
   margin-bottom: 1em;
-  font-size: 1em;
+  font-size: 1.2em;
+  font-weight: 500;
   background-color: transparent;
+  border-radius: 0.4em;
   color: ${props => props.$title === props.$track ? '#66B2FF' : '#AEBACB'};
   padding: 0.4em 1em;
   /* border-radius: 0.5em; */
   
   &:hover {
-    background-color: #1F262E;
+    background-color: ${({theme}) => theme.colors.border};
   }
 
 `;

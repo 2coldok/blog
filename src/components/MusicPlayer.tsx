@@ -68,7 +68,7 @@ const PlayerWrapper = styled.div`
   width: 100%;
   /* max-width: 1200px; */
   height: 60px;
-  background-color: #112030;
+  /* background-color: #112030; */
   @media (max-width: 768px) {
     width: 100%;
   }

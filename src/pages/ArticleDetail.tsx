@@ -1,6 +1,6 @@
 
 import styled from 'styled-components';
-import CustomMarkdown from '../components/CustomMarkdown';
+import CustomMarkdown from '../components/markdown/CustomMarkdown';
 import { useGithubIssuesMananger } from '../hook/GithubIssuesManager';
 import { useNavigate, useParams } from 'react-router-dom';
 import Comments from '../components/Comments';
@@ -88,7 +88,7 @@ const Wrapper = styled.div`
   padding: 1em;
 
   color: white;
-  background-color: #112030;
+  /* background-color: #112030; */
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -104,7 +104,8 @@ const TitleContainer = styled.div`
   width: 100%;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
-  background-color: #292e3c;
+  /* background-color: #292e3c; */
+  background-color: ${({theme}) => theme.colors.block};
   padding: 0.3rem;
   border-bottom: 1px solid gray;
   

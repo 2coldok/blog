@@ -1,12 +1,12 @@
 import { LuMenu } from "react-icons/lu";
 import MenuList from "./MenuList";
-import { DrawerModal } from "./DrawerModal";
+import { DrawerModal } from "../DrawerModal";
 
 // redux
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
-import { setMenuModal } from "../redux/slice/modalSlice";
+import { RootState } from "../../redux/store";
+import { setMenuModal } from "../../redux/slice/modalSlice";
 
 import styled from "styled-components";
 

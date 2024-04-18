@@ -58,30 +58,19 @@ const ModalOutside = styled.div<{ $active: boolean }>`
 `;
 
 const ModalContainer = styled.div<{ $active: boolean }>`
-  background-color: #1a6547;
   position: fixed;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  height: 70%;
-
+  transform: translate(-50%, 0%);
+  z-index: 2023;
+  
   display: ${(props) => (props.$active ? 'flex' : 'none')};
   flex-direction: column;
-  align-items: center;
-  z-index: 2023;
-
-  @media (max-width: 768px) {
+  width: 80%;
+  max-width: 1100px;
+  height: auto;
+  
+  @media (max-width: 1000px) {
     width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: none;
   }
 `;
-
-// const CloseButton = styled.button`
-//   width: 5%;
-//   height: 5%;
-//   align-self: flex-end;
-// `

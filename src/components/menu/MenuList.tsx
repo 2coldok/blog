@@ -1,6 +1,6 @@
-import GmailButton from "./menu/GmailButton";
-import GithubButton from "./menu/GithubButton";
-import Category from "./menu/Category";
+import GmailButton from "./GmailButton";
+import GithubButton from "./GithubButton";
+import Category from "./Category";
 
 import styled from "styled-components";
 

@@ -95,7 +95,8 @@ export default function CustomMarkdown({ data }) {
 }
 
 const Container = styled.div`
-  background-color: #292e3c;
+  /* background-color: #292e3c; */
+  background-color: #22272E;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
   color: white;
