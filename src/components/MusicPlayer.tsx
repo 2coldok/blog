@@ -69,15 +69,15 @@ const PlayerWrapper = styled.div`
   /* max-width: 1200px; */
   height: 60px;
   /* background-color: #112030; */
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     width: 100%;
-  }
+  } */
 `;
 
 const Iframe = styled.iframe`
-  width: 92%;
+  width: 100%;
   /* height: 100%; */
-  border: 2px solid ${({theme}) => theme.colors.border};
+  border: 1px solid ${({theme}) => theme.colors.border};
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   border-right: none;
@@ -89,7 +89,7 @@ const Button = styled.button<{ $loading: boolean }>`
   height: 100%;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  border: 2px solid ${({theme}) => theme.colors.border};
+  border: 1px solid ${({theme}) => theme.colors.border};
   border-left: none;
   background-color: black;
   &> svg {

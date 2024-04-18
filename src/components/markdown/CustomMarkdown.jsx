@@ -96,14 +96,16 @@ export default function CustomMarkdown({ data }) {
 
 const Container = styled.div`
   /* background-color: #292e3c; */
-  background-color: #22272E;
+  /* background-color: #22272E; */
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
-  color: white;
+  color: ${({theme}) => theme.colors.text};
   /* letter-spacing: 0.1rem; */
   /* word-spacing: 1px; */
   line-height: 2.1;
 	padding: 0.8em;
+  /* border: 1px solid ${({theme}) => theme.colors.border}; */
+  border-top: none;
   
 
   & > ul {

@@ -45,6 +45,11 @@ const StyledContainer = styled.div`
 
   padding-left: 1em;
   padding-right: 1em;
+
+  /* border: 1px solid ${({theme}) => theme.colors.border}; */
+  /* border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem; */
+  
 `;
 
 const LeftContainer = styled.div`

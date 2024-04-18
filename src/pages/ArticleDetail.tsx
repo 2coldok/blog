@@ -85,16 +85,22 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   min-height: 800px;
-  padding: 1em;
+  /* padding: 1em; */
+  margin-top: 1em;
 
   color: white;
-  /* background-color: #112030; */
+  
   @media (max-width: 768px) {
     width: 100%;
   }
 `
 
 const IssueContainer = styled.div`
+  width: 100%;
+  /* background-color: ${({theme}) => theme.colors.block}; */
+  border-radius: 1rem;
+  border: 1px solid ${({theme}) => theme.colors.border};
+  
 `
 
 const TitleContainer = styled.div`
@@ -104,10 +110,11 @@ const TitleContainer = styled.div`
   width: 100%;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
-  /* background-color: #292e3c; */
-  background-color: ${({theme}) => theme.colors.block};
+  
   padding: 0.3rem;
-  border-bottom: 1px solid gray;
+  /* border: 1px solid ${({theme}) => theme.colors.border}; */
+  border-bottom: 1px solid ${({theme}) => theme.colors.border};
+  background-color: #1a1e22;
   
   & > h1 {
     color: white;

@@ -54,6 +54,14 @@ const DrawerContainer = styled.div<{ $active: boolean; $direction: Direction }>`
   height: 100%;
   z-index: 4000;
   overflow-y: auto;
+  overflow-x: hidden;
+
+  border-top-right-radius: ${(props) => props.$direction === 'left' ? '1rem' : '' };
+  border-top-left-radius: ${(props) => props.$direction === 'left' ? '' : '1rem' };
+  border-bottom-right-radius: ${(props) => props.$direction === 'left' ? '1rem' : '' };
+  border-bottom-left-radius: ${(props) => props.$direction === 'left' ? '' : '1rem' };
+  
+  border: 1px solid ${({theme}) => theme.colors.border};
 
   transition: transform 0.2s ease-in-out;
 `;
