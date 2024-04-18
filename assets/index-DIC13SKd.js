@@ -208,6 +208,14 @@ Error generating stack: `+a.message+`
   height: 100%;
   z-index: 4000;
   overflow-y: auto;
+  overflow-x: hidden;
+
+  border-top-right-radius: ${e=>e.$direction==="left"?"1rem":""};
+  border-top-left-radius: ${e=>e.$direction==="left"?"":"1rem"};
+  border-bottom-right-radius: ${e=>e.$direction==="left"?"1rem":""};
+  border-bottom-left-radius: ${e=>e.$direction==="left"?"":"1rem"};
+  
+  border: 1px solid ${({theme:e})=>e.colors.border};
 
   transition: transform 0.2s ease-in-out;
 `;function ek({active:e,onClose:t,children:n}){return G.useEffect(()=>{const r=window.getComputedStyle(document.body).overflow;return document.body.style.overflow=e?"hidden":r,()=>{document.body.style.overflow=r}},[e]),e?N.jsxs(N.Fragment,{children:[N.jsx(g5,{$active:e,onClick:t}),N.jsx(h5,{$active:e,children:n})]}):null}const g5=oe.div`
@@ -477,6 +485,11 @@ Error generating stack: `+a.message+`
 
   padding-left: 1em;
   padding-right: 1em;
+
+  /* border: 1px solid ${({theme:e})=>e.colors.border}; */
+  /* border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem; */
+  
 `,r6=oe.div`
   display: flex;
   margin: 0;
@@ -536,13 +549,13 @@ Error generating stack: `+a.message+`
   /* max-width: 1200px; */
   height: 60px;
   /* background-color: #112030; */
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     width: 100%;
-  }
+  } */
 `,d6=oe.iframe`
-  width: 92%;
+  width: 100%;
   /* height: 100%; */
-  border: 2px solid ${({theme:e})=>e.colors.border};
+  border: 1px solid ${({theme:e})=>e.colors.border};
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   border-right: none;
@@ -552,7 +565,7 @@ Error generating stack: `+a.message+`
   height: 100%;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  border: 2px solid ${({theme:e})=>e.colors.border};
+  border: 1px solid ${({theme:e})=>e.colors.border};
   border-left: none;
   background-color: black;
   &> svg {
@@ -692,14 +705,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 `).replace(/\*\*/gi,"@$_%!^").replace(/@\$_%!\^/gi,"**").replace(/<\/?u>/gi,"*")})})}const Lee=oe.div`
   /* background-color: #292e3c; */
-  background-color: #22272E;
+  /* background-color: #22272E; */
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
-  color: white;
+  color: ${({theme:e})=>e.colors.text};
   /* letter-spacing: 0.1rem; */
   /* word-spacing: 1px; */
   line-height: 2.1;
 	padding: 0.8em;
+  /* border: 1px solid ${({theme:e})=>e.colors.border}; */
+  border-top: none;
   
 
   & > ul {
@@ -791,14 +806,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   width: 100%;
   height: 100%;
   min-height: 800px;
-  padding: 1em;
+  /* padding: 1em; */
+  margin-top: 1em;
 
   color: white;
-  /* background-color: #112030; */
+  
   @media (max-width: 768px) {
     width: 100%;
   }
 `,Kee=oe.div`
+  width: 100%;
+  /* background-color: ${({theme:e})=>e.colors.block}; */
+  border-radius: 1rem;
+  border: 1px solid ${({theme:e})=>e.colors.border};
+  
 `,Yee=oe.div`
   display: flex;
   flex-direction: column;
@@ -806,10 +827,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   width: 100%;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
-  /* background-color: #292e3c; */
-  background-color: ${({theme:e})=>e.colors.block};
+  
   padding: 0.3rem;
-  border-bottom: 1px solid gray;
+  /* border: 1px solid ${({theme:e})=>e.colors.border}; */
+  border-bottom: 1px solid ${({theme:e})=>e.colors.border};
+  background-color: #1a1e22;
   
   & > h1 {
     color: white;
