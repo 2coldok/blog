@@ -25,8 +25,10 @@ export default function Search() {
   }
   const handleClick = (category: string | undefined, title: string) => () => {
     dispatch(setSearchModal(false));
-    dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category!, title)));
-    navigate(`/${category}/${title}`); 
+    navigate(`/${category}/${title}`);
+    const index = githubIssuesManager?.getIndexInCategoryByTitle(category!, title);
+    dispatch(setFixedIndex(index));
+    
   }
   const handleCloseClick = (e: React.MouseEvent) => {
     e.stopPropagation();

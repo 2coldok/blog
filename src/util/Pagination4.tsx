@@ -13,7 +13,7 @@ interface PaginationProps {
 export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const [currentPage, setCurrentPage] = useState(0);
-
+  const [pageGroupIndex, setPageGroupIndex] = useState(0);  
   //언마운트시 state 초기화
   const location = useLocation();
   useEffect(() => {
@@ -26,12 +26,69 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
     setCurrentPage(newPage);
   };
 
-  const handleLeftClick = () => {
-    setCurrentPage((prev) => prev === 0 ? prev : prev - 1);
-  };
+  // const handleLeftClick = () => {
+  //   setCurrentPage((prev) => prev === 0 ? prev : prev - 1);
+  // };
+
+  // const handleRightClick = () => {
+  //   setCurrentPage((prev) => prev === (totalPages - 1) ? prev : prev + 1);
+  // };
 
   const handleRightClick = () => {
-    setCurrentPage((prev) => prev === (totalPages - 1) ? prev : prev + 1);
+    setCurrentPage((prev) => {
+      if (prev === (totalPages - 1)) {
+        return prev;
+      } else {
+        const newPage = prev + 1;
+        if (newPage > (pageGroupIndex + 1) * 5 - 1) {
+          setPageGroupIndex(pageGroupIndex + 1);
+        }
+        return newPage;
+      }
+    });
+  };
+
+  const handleLeftClick = () => {
+    setCurrentPage((prev) => {
+      if (prev === 0) {
+        return prev;
+      } else {
+        const newPage = prev - 1;
+        if (newPage < pageGroupIndex * 5) {
+          setPageGroupIndex(pageGroupIndex - 1);
+        }
+        return newPage;
+      }
+    });
+  };
+
+
+  const renderPageIndicators = () => {
+    const start = pageGroupIndex * 5;
+    const end = Math.min(start + 5, totalPages);
+    const indicators = [];
+
+    if (pageGroupIndex > 0) {
+      indicators.push(<span key="prevMore" onClick={() => setPageGroupIndex(pageGroupIndex - 1)}>... </span>);
+    }
+
+    for (let i = start; i < end; i++) {
+      indicators.push(
+        <PageIndicator
+          key={i}
+          onClick={() => changePage(i)}
+          $active={i === currentPage}
+        >
+          {i + 1}
+        </PageIndicator>
+      );
+    }
+
+    if (end < totalPages) {
+      indicators.push(<span key="nextMore" onClick={() => setPageGroupIndex(pageGroupIndex + 1)}>... </span>);
+    }
+
+    return indicators;
   };
 
   return (
@@ -47,7 +104,7 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
 
       <PageIndicatorContainer $currentpageindex={currentPage} $totalpages={totalPages}>
         <button onClick={handleLeftClick} className='prev'><HiChevronLeft />&nbsp;&nbsp;Previous</button>
-        {[...Array(totalPages)].map((_, index) => (
+        {/* {[...Array(totalPages)].map((_, index) => (
           <PageIndicator
             key={index}
             onClick={() => changePage(index)}
@@ -55,7 +112,9 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
           >
             {index + 1}
           </PageIndicator>
-        ))}
+        ))} */}
+        <PageState>{currentPage + 1} / {totalPages}</PageState>
+        {renderPageIndicators()}
         <button onClick={handleRightClick} className='next'>Next&nbsp;&nbsp;<HiChevronRight /></button>
       </PageIndicatorContainer>
 
@@ -106,7 +165,7 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    
+    font-weight: 600;
 
     /* color: ${({theme}) => theme.colors.clicked}; */
     border-radius: 0.5em;
@@ -125,12 +184,26 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
       /* font-size: 1em; */
 
     }
+
   }  
 
   & > span {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: ${({theme}) => theme.colors.subtitle};
     margin: 0 1.5rem;
+    border-radius: 0.5em;
+    font-weight: 700;
+
+    &:hover {
+      filter: brightness(200%);
+      cursor: pointer;
+      
+
+    }
+
+    @media (max-width: 800px) {
+      display: none;
+    }
   }
 `;
 
@@ -139,6 +212,16 @@ const PageIndicator = styled.button<{ $active: boolean }>`
   width: 2.5rem;
   margin: 0 5px;
   background-color: ${(prop) => (prop.$active ? prop.theme.colors.clicked : '')};
-  /* border: 1px solid #ddd; */
-  cursor: pointer;
+  
+  @media (max-width: 800px) {
+    //important 안하면 안없어짐.
+    display: none !important;
+  }
+`;
+
+const PageState = styled.span`
+  display: none;
+  @media (max-width: 800px) {
+    display: inline !important;
+  }
 `;

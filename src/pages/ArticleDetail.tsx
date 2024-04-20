@@ -18,7 +18,9 @@ export default function ArticleDetail() {
   const { category, title } = useParams();
   const dispatch = useDispatch();
   const theme = useContext(ThemeContext);
+  
 
+  
   
   if (title === undefined || category === undefined) {
     return <h1>카테고리, 타이틀 오류</h1>;
@@ -26,9 +28,11 @@ export default function ArticleDetail() {
 
   const decodedTitle = decodeURIComponent(title);
   
+  
+
 
   const handleTitleClick = (title: string) => () => {
-    dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, title)));
+    dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, decodedTitle)));
     navigate(`/${category}/${title}`);
     window.scrollTo(0, 0);
   }
