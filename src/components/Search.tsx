@@ -190,7 +190,7 @@ const Title = styled.div`
 `;
 // #4c4c9f
 const Tag = styled.div`
-  background-color: #3a3a88;
+  background-color: #4c4c9f; 
   /* background-color: ${({theme}) => theme.colors.border}; */
 
   

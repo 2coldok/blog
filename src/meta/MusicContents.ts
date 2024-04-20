@@ -6,11 +6,6 @@ export interface IMusic {
 
 export const MusicContents: IMusic[] = [
   {
-    title: '어떤 날들',
-    singer: '스텔라장',
-    youtubeUrl: 'https://www.youtube.com/watch?v=aoD5h8FkJ4c',
-  },
-  {
     title: '처음 그 자리에',
     singer: '풀하우스ost',
     youtubeUrl: 'https://www.youtube.com/watch?v=2WyOq7IMEnc',
@@ -26,23 +21,13 @@ export const MusicContents: IMusic[] = [
     youtubeUrl: 'https://www.youtube.com/watch?v=wCiysUZn0us',
   },
   {
-    title: 'shooting star',
-    singer: 'bad raiders',
-    youtubeUrl: 'https://www.youtube.com/watch?v=feA64wXhbjo',
-  },
-  {
-    title: '낭만고양이',
-    singer: '체리필터',
-    youtubeUrl: 'https://www.youtube.com/watch?v=Nh5Ld4EpXJs',
-  },
-  {
     title: '어느 날 우리',
     singer: '김필',
     youtubeUrl: 'https://www.youtube.com/watch?v=wyVDJwh8-YU',
   },
   {
-    title: 'Why',
-    singer: '태연',
-    youtubeUrl: 'https://www.youtube.com/watch?v=VIWGrjyKvKw',
+    title: '천상연',
+    singer: '이창섭',
+    youtubeUrl: 'https://www.youtube.com/watch?v=OwPoj6KUdxo',
   },
 ];

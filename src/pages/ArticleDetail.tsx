@@ -1,14 +1,18 @@
 
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import CustomMarkdown from '../components/markdown/CustomMarkdown';
 import { useGithubIssuesMananger } from '../hook/GithubIssuesManager';
 import { useNavigate, useParams } from 'react-router-dom';
 import Comments from '../components/Comments';
 import { getTags } from '../util/SearchEngine';
 import koreanDateTimeFromISO from '../util/KoreanDateTImeFromISO';
-import { Pagination } from '../components/Pagenation';
 import { useDispatch } from 'react-redux';
 import { setFixedIndex } from '../redux/slice/fixedIndexSlice';
+
+import { useContext } from 'react';
+import Pagination3 from '../util/Pagination3';
+
+
 
 
 
@@ -17,7 +21,8 @@ export default function ArticleDetail() {
   const { githubIssuesManager } = useGithubIssuesMananger();
   const { category, title } = useParams();
   const dispatch = useDispatch();
-  
+  const theme = useContext(ThemeContext);
+
   if (title === undefined || category === undefined) {
     return <h1>카테고리, 타이틀 오류</h1>;
   } 
@@ -51,7 +56,7 @@ export default function ArticleDetail() {
             <TagContainer>
               <button onClick={handleCategoryClick}>{category}</button>
               {getTags(issue.milestone?.title).map((tag) => (
-                <p>#{tag}</p>
+                <p>{tag}</p>
               ))}
             </TagContainer>
             
@@ -61,17 +66,17 @@ export default function ArticleDetail() {
       ))}
 
       <OtherIssuesContainer>
-        <h1>근처 또 다른 글들이에요</h1>
-        
-        <Pagination itemsPerPage={3}>
-          {githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
-            
-            <List onClick={handleTitleClick(issue.title)} $decodedtitle={decodedTitle} $issuetitle={issue.title}>
-              <div><span>#{array.length - index} </span>{issue.title}</div>
+        <h1>{category}의 또다른 글</h1>
+        <Pagination3 
+          itemsPerPage={3}
+          
+          items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
+            <li key={issue.id} onClick={handleTitleClick(issue.title)} style={{color: decodedTitle === issue.title ? theme?.colors.clicked : ''}}>
+              <h2><span>#{array.length - index}</span> {issue.title}</h2>
               <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
-            </List>
-          ))}
-        </Pagination>
+            </li>
+          )) || []}
+        />  
       </OtherIssuesContainer>  
       <Comments />
     </Wrapper>
@@ -91,7 +96,7 @@ const Wrapper = styled.div`
   color: white;
   
   @media (max-width: 768px) {
-    width: 100%;
+    width: 95%;
   }
 `
 
@@ -114,7 +119,7 @@ const TitleContainer = styled.div`
   padding: 0.3rem;
   /* border: 1px solid ${({theme}) => theme.colors.border}; */
   border-bottom: 1px solid ${({theme}) => theme.colors.border};
-  background-color: #1a1e22;
+  background-color: ${({theme}) => theme.colors.headline};
   
   & > h1 {
     color: white;
@@ -131,7 +136,7 @@ const TitleContainer = styled.div`
 
   & > p {
     margin-top: 0.1rem;
-    color: grey;
+    color: ${({theme}) =>  theme.colors.subtitle};
   }
 `
 const TagContainer = styled.div`
@@ -141,10 +146,15 @@ const TagContainer = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.5em;
-
+  letter-spacing: 0.5px;
   & > button {
     margin: 0.3rem;
-    background-color: #3773af;
+    background-color: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.colors.clicked};
+    border: 1.5px solid ${({theme}) => theme.colors.clicked};
+    
+    font-size: 1em;
+    font-weight: 600;
     padding: 0.7rem;
     border-radius: 2em;
     white-space: nowrap;
@@ -152,68 +162,32 @@ const TagContainer = styled.div`
 
   & > p {
     margin : 0.3rem;
-    background-color: #40734b;
+    background-color: #347D39;
+    color: #FFFFFF;
+    border: 1.5px solid #556355;
     padding: 0.7rem;
     border-radius: 2em;
+    font-size: 1em;
+    font-weight: 600;
     white-space: nowrap;
   }
 `
 
+/////////////////////////////////////////////////////////
 const OtherIssuesContainer = styled.ul`
+  /* background-color: ${({theme}) => theme.colors.headline}; */
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  justify-content: center;
+
   width: 100%;
+
   border-radius: 1em;
-  
-  /* padding: 0.3rem; */
-  /* margin-bottom: 1rem; */
-  background-color: #292e3c;
+  border: 1px solid ${({theme}) => theme.colors.border};
 
   & > h1 {
-    /* margin: 0.5em; */
+    color: ${({theme}) => theme.colors.text};
   }
-  
-`
-
-const List = styled.li<{ $decodedtitle: string, $issuetitle: string }>`
-  
-  color: ${(props) => (props.$decodedtitle === props.$issuetitle) ? 'yellow' : 'white'};
-  
-  padding: 0.5em;
-  width: 100%;
-  border-radius: 1em;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 1.5em;
-
-  & > div {
-    font-weight: bolder;
-    overflow-x: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    
-  
-
-    & > span {
-      color: ${(props) => (props.$decodedtitle === props.$issuetitle) ? 'yellow' : '#aaaaaa'};
-      font-size: 1em;
-    }
-  }
-
-  & > p {
-    color: #525252;
-    font-size: 0.7em;
-    margin-top: 0;
-  }
-
-  &:hover {
-    filter: brightness(125%);
-    background-color: #48484f;
-    cursor: pointer;
-  }
-  
-`
+`;

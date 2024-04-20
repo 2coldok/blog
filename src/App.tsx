@@ -46,7 +46,7 @@ const NavbarContainer = styled.div`
 
 const MainContentsContainer = styled.div<{ $margintop: number }>`
   display: flex;
-  justify-contents: center;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;

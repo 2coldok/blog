@@ -10,6 +10,11 @@ declare module 'styled-components' {
       clicked: string;
       block: string;
       subtitle: string;
+      tagbackground: string;
+      tagtext: string;
+      tagborder: string;
+      headline: string;
+      number: string;
     };
   }
 }

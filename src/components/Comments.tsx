@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { UtterancesSkeletonLoader } from '../util/skeleton/UtterancesSkeletonLoader';
+// import { UtterancesSkeletonLoader } from '../util/skeleton/UtterancesSkeletonLoader';
+import styled from 'styled-components';
 
 const Comments = () => {
   const location = useLocation();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const Comments = () => {
     script.setAttribute("repo", "2coldok/blog-comments");
     script.setAttribute("issue-term", "url"); 
     script.setAttribute("id", "utterances");
-    script.setAttribute("theme", "github-light"); 
+    script.setAttribute("theme", "github-dark"); 
     script.setAttribute("crossorigin", "anonymous");
 
     const currentUrl = window.location.origin + location.pathname + location.search + location.hash;
@@ -29,11 +30,6 @@ const Comments = () => {
 
     scriptParentNode.appendChild(script);
 
-    script.onload = () => {
-      setTimeout(() => {
-        setLoading(false);
-      }, 2000);
-    };
     
     return () => {
       if (scriptParentNode.firstChild) {
@@ -44,10 +40,21 @@ const Comments = () => {
 
   return (
     <>
-      {loading && <UtterancesSkeletonLoader />}
-      <div id="comments-section" style={{ display: loading ? 'none' : 'block' }} />
+      {/* {loading && <UtterancesSkeletonLoader />} */}
+      <CommentsContainer id='comments-section' />
     </>
   )
 };
 
 export default Comments;
+
+
+const CommentsContainer = styled.div`
+  /* background-color: #999494; */
+  min-height: 200px;
+
+  border-radius: 1rem;
+  border: 1px solid ${({theme}) => theme.colors.border};
+  margin: 1rem 0;
+  
+`;
