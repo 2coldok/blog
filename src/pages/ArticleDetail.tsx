@@ -12,10 +12,6 @@ import { setFixedIndex } from '../redux/slice/fixedIndexSlice';
 import { useContext } from 'react';
 import Pagination3 from '../util/Pagination3';
 
-
-
-
-
 export default function ArticleDetail() {
   const navigate = useNavigate();
   const { githubIssuesManager } = useGithubIssuesMananger();
@@ -23,6 +19,7 @@ export default function ArticleDetail() {
   const dispatch = useDispatch();
   const theme = useContext(ThemeContext);
 
+  
   if (title === undefined || category === undefined) {
     return <h1>카테고리, 타이틀 오류</h1>;
   } 
@@ -71,10 +68,10 @@ export default function ArticleDetail() {
           itemsPerPage={3}
           
           items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
-            <li key={issue.id} onClick={handleTitleClick(issue.title)} style={{color: decodedTitle === issue.title ? theme?.colors.clicked : ''}}>
+            <OtherIssuesList key={issue.id} onClick={handleTitleClick(issue.title)} style={{color: decodedTitle === issue.title ? theme?.colors.clicked : ''}}>
               <h2><span>#{array.length - index}</span> {issue.title}</h2>
               <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
-            </li>
+            </OtherIssuesList>
           )) || []}
         />  
       </OtherIssuesContainer>  
@@ -191,3 +188,31 @@ const OtherIssuesContainer = styled.ul`
     color: ${({theme}) => theme.colors.text};
   }
 `;
+
+const OtherIssuesList = styled.li`
+  background-color: ${({theme}) => theme.colors.headline};
+  color: ${({theme}) => theme.colors.text};
+  padding: 0.5em 1.2em;
+  border-radius: 1rem;
+  &:hover {
+    filter: brightness(125%);
+    cursor: pointer;
+  }
+  // 제목
+  & > h2 {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;  
+    margin-bottom: 0;
+      
+    // #number
+    & > span {
+      color: ${({theme}) => theme.colors.number};
+    }
+  }
+  // 날짜
+  & > p {
+    margin-top: 0;
+    color: ${({theme}) => theme.colors.subtitle};
+  }
+`

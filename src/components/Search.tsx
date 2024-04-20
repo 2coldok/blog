@@ -8,18 +8,24 @@ import { useDispatch } from "react-redux";
 import { setSearchModal } from "../redux/slice/modalSlice";
 import { TbSearch } from "react-icons/tb"; // 검색
 import { IoCloseOutline } from "react-icons/io5"; // 닫기
+import { setFixedIndex } from "../redux/slice/fixedIndexSlice";
 // import { SlClose } from "react-icons/sl";
 
 export default function Search() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [text, setText] = useState("");
+
+  const { githubIssuesManager } = useGithubIssuesMananger();
+  const [filtedIssues, setFiltedIssues] = useState<FetchedIssues>([]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   }
   const handleClick = (category: string | undefined, title: string) => () => {
     dispatch(setSearchModal(false));
+    dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category!, title)));
     navigate(`/${category}/${title}`); 
   }
   const handleCloseClick = (e: React.MouseEvent) => {
@@ -35,8 +41,8 @@ export default function Search() {
 
   
 
-  const { githubIssuesManager } = useGithubIssuesMananger();
-  const [filtedIssues, setFiltedIssues] = useState<FetchedIssues>([]);
+  // const { githubIssuesManager } = useGithubIssuesMananger();
+  // const [filtedIssues, setFiltedIssues] = useState<FetchedIssues>([]);
   
 
 

@@ -6,6 +6,9 @@ import koreanDateTimeFromISO from '../util/KoreanDateTImeFromISO';
 import { getTags } from '../util/SearchEngine';
 import { useDispatch } from 'react-redux';
 import { setFixedIndex } from '../redux/slice/fixedIndexSlice';
+import { ArticlesData, iconMapping } from '../meta/ArticlesData';
+
+import Pagination4 from '../util/Pagination4';
 
 
 export default function CategoryArticles() {
@@ -21,126 +24,121 @@ export default function CategoryArticles() {
     dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, title)));
     navigate(`/${category}/${title}`);
   }
+
+  const article = ArticlesData.find((article) => article.category === category)!;
+  const Icon = iconMapping[article.icon];
   
   return (
-    <Wrapper>
-      <h1>{`여기는 ${category}의 포스터를 보여주고 있어요`}</h1>
-      
-      {githubIssuesManager?.getIssuesByCategory(category)?.map((issue) => (
-        <TitleContainer key={issue.id} onClick={handleClick(issue.title)}>
-          <h1>{issue.title}</h1>
-          <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
-          <TagContainer>
-            <button>{category}</button>
-            {getTags(issue.milestone?.title).map((tag) => (
-              <p>#{tag}</p>
-            ))}
-          </TagContainer>
-        </TitleContainer>
-      ))}
-      
-    </Wrapper>
+    <StyledContainer>
+      <h1><Icon />{`${category}`}</h1>
+
+      <Pagination4
+        itemsPerPage={3}
+        items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue) => (
+          <ArticleList onClick={handleClick(issue.title)}>
+            <h1>{issue.title}</h1>
+            <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
+            <Tag>
+              {getTags(issue.milestone?.title).map((tag) => (
+                <p>{tag}</p>
+
+              ))}
+            </Tag>
+          </ArticleList>
+        )) || []}
+      />      
+    </StyledContainer>
   );
 }
 
-const Wrapper = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   width: 100%;
-  margin: 0;
+  height: 100%;
+  min-height: 800px;
+  /* padding: 1em; */
+  margin-top: 1em;
 
-  padding: 1em;
   color: white;
-  background-color: #112030;
-`;
-
-// 각 리스트 아이템 높이 : Listed height + margin*2
-// const Listed = styled.div`
-//   background-color: blue;
-//   display: block;
-//   align-items: center;
-//   justify-content: center;
-//   width: 80%;
-//   height: 3em;
-//   margin: 10px;
-
-//   border-radius: 1rem;
- 
-//   padding: 0.5em;
-
-//   font-size: 30px;
-
-//   & > p {
-//     text-align: center;
-//     font-size: 10px;
-//   }
-
-//   & > div {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     overflow-x: hidden;
-//     white-space: nowrap;
-//     text-overflow: ellipsis;
-    
-//   }
-// `
-  // 다른 요소와 간섭을 피하기 위해 스태킹 컨텍스트 생성.
-  /* position: relative;
-  z-index: 1; */
-
-
-
-
-const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 10%;
-  border-radius: 1em;
-  background-color: #292e3c;
-  padding: 0.3rem;
-  margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    width: 95%;
+  }
 
   & > h1 {
-    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 3em;
+    
+  }
+`;
+
+const ArticleList = styled.li`
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 100%;
+  border-radius: 0.3em;
+  margin-bottom: 1em;
+  
+  padding: 0.3rem 1.3rem;
+  border-bottom: 1px solid ${({theme}) => theme.colors.border};
+  background-color: ${({theme}) => theme.colors.headline};
+  
+  & > h1 {
+    color: ${({theme}) => theme.colors.text};
     word-wrap: break-word;      /* 긴 단어가 경계를 넘어가면 줄바꿈 */
     overflow-wrap: break-word;  /* 과도하게 긴 단어를 다음 줄로 넘기도록 함 */
     white-space: normal;        /* 공백을 기준으로 자동 줄바꿈 */
-    text-align: center;         /* 제목을 중앙 정렬 */
+    /* text-align: center; */
     width: 90%;                 /* 컨테이너 너비의 90%만 사용 */
     margin-top: 1rem;
     margin-bottom: 0;
-    margin-left: auto;
+    
     margin-right: auto;
   }
 
   & > p {
+
     margin-top: 0.1rem;
-    color: grey;
+    
+    color: ${({theme}) =>  theme.colors.subtitle};
   }
 `
-const TagContainer = styled.div`
+
+const Tag = styled.div`
   display: flex;
   flex-direction: row;
   /* background-color: blue; */
   flex-wrap: wrap;
   gap: 0.5rem;
-
+  margin-bottom: 0.5em;
+  
+  letter-spacing: 0.5px;
   & > button {
     margin: 0.3rem;
-    background-color: #3773af;
+    background-color: ${({theme}) => theme.colors.background};
+    color: ${({theme}) => theme.colors.clicked};
+    border: 1.5px solid ${({theme}) => theme.colors.clicked};
+    
+    font-size: 1em;
+    font-weight: 600;
     padding: 0.7rem;
-    border-radius: 1rem;
+    border-radius: 2em;
     white-space: nowrap;
   }
 
   & > p {
     margin : 0.3rem;
-    background-color: #40734b;
+    background-color: #347D39;
+    color: #FFFFFF;
+    border: 1.5px solid #556355;
     padding: 0.7rem;
-    border-radius: 1rem;
+    border-radius: 2em;
+    font-size: 1em;
+    font-weight: 600;
     white-space: nowrap;
   }
 `

@@ -1,25 +1,30 @@
-import{ ReactNode, useState } from 'react';
+import{ ReactNode, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
 import { HiChevronLeft } from "react-icons/hi2";
 import { HiChevronRight } from "react-icons/hi2";
+import { useLocation } from 'react-router-dom';
+
 
 interface PaginationProps {
   items: ReactNode[];
   itemsPerPage: number;
 }
 
-export default function Pagination3({ items, itemsPerPage }: PaginationProps) {
-  
+export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
   const totalPages = Math.ceil(items.length / itemsPerPage);
-  const fixedItemIndex = useSelector((state: RootState) => state.fixedIndex.value);
-  const initialPage = Math.floor(fixedItemIndex / itemsPerPage);
-  const [currentPage, setCurrentPage] = useState(initialPage);
+  const [currentPage, setCurrentPage] = useState(0);
 
-  // const changePage = (newPage: number) => {
-  //   setCurrentPage(newPage);
-  // };
+  //언마운트시 state 초기화
+  const location = useLocation();
+  useEffect(() => {
+    return () => {
+      setCurrentPage(0);
+    }
+  }, [location])
+
+  const changePage = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
 
   const handleLeftClick = () => {
     setCurrentPage((prev) => prev === 0 ? prev : prev - 1);
@@ -42,7 +47,15 @@ export default function Pagination3({ items, itemsPerPage }: PaginationProps) {
 
       <PageIndicatorContainer $currentpageindex={currentPage} $totalpages={totalPages}>
         <button onClick={handleLeftClick} className='prev'><HiChevronLeft />&nbsp;&nbsp;Previous</button>
-        <span>{currentPage + 1 } / {totalPages}</span>
+        {[...Array(totalPages)].map((_, index) => (
+          <PageIndicator
+            key={index}
+            onClick={() => changePage(index)}
+            $active={index === currentPage}
+          >
+            {index + 1}
+          </PageIndicator>
+        ))}
         <button onClick={handleRightClick} className='next'>Next&nbsp;&nbsp;<HiChevronRight /></button>
       </PageIndicatorContainer>
 
@@ -81,12 +94,12 @@ const Page = styled.ul`
 `;
 
 const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpages: number}>`
-  
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   padding: 1em 0;  // 패딩으로 버튼의 높이 조정
+  margin-top: 1.5em;
   
   & > button {
     display: flex;
@@ -112,9 +125,7 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
       /* font-size: 1em; */
 
     }
-  }
-
-  
+  }  
 
   & > span {
     font-size: 1.3rem;
@@ -123,11 +134,11 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
   }
 `;
 
-// const PageIndicator = styled.button<{ isActive: boolean }>`
-  
-//   padding: 5px 10px;
-//   margin: 0 5px;
-//   background-color: ${({ isActive }) => (isActive ? 'black' : 'gray')};
-//   border: 1px solid #ddd;
-//   cursor: pointer;
-// `;
+const PageIndicator = styled.button<{ $active: boolean }>`
+  color: ${({theme}) => theme.colors.text};
+  width: 2.5rem;
+  margin: 0 5px;
+  background-color: ${(prop) => (prop.$active ? prop.theme.colors.clicked : '')};
+  /* border: 1px solid #ddd; */
+  cursor: pointer;
+`;
