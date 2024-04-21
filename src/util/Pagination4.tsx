@@ -24,6 +24,7 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
 
   const changePage = (newPage: number) => {
     setCurrentPage(newPage);
+    window.scrollTo(0, 0);
   };
 
   // const handleLeftClick = () => {
@@ -103,7 +104,7 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
       </ContentContainer>
 
       <PageIndicatorContainer $currentpageindex={currentPage} $totalpages={totalPages}>
-        <button onClick={handleLeftClick} className='prev'><HiChevronLeft />&nbsp;&nbsp;Previous</button>
+        <button onClick={handleLeftClick} className='prev'><HiChevronLeft />&nbsp;&nbsp;이전</button>
         {/* {[...Array(totalPages)].map((_, index) => (
           <PageIndicator
             key={index}
@@ -115,7 +116,7 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
         ))} */}
         <PageState>{currentPage + 1} / {totalPages}</PageState>
         {renderPageIndicators()}
-        <button onClick={handleRightClick} className='next'>Next&nbsp;&nbsp;<HiChevronRight /></button>
+        <button onClick={handleRightClick} className='next'>다음&nbsp;&nbsp;<HiChevronRight /></button>
       </PageIndicatorContainer>
 
     </StyledContainer>
@@ -159,6 +160,8 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
   font-weight: 600;
   padding: 1em 0;  // 패딩으로 버튼의 높이 조정
   margin-top: 1.5em;
+  margin-bottom: 100px;
+  /* background-color: coral; */
   
   & > button {
     display: flex;

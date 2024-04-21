@@ -23,6 +23,7 @@ export default function CategoryArticles() {
   const handleClick = (title: string) => () => {
     dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, title)));
     navigate(`/${category}/${title}`);
+    window.scrollTo(0, 0);
   }
 
   const article = ArticlesData.find((article) => article.category === category)!;
@@ -33,10 +34,10 @@ export default function CategoryArticles() {
       <h1><Icon />{`${category}`}</h1>
 
       <Pagination4
-        itemsPerPage={7}
-        items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue) => (
+        itemsPerPage={10}
+        items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
           <ArticleList onClick={handleClick(issue.title)}>
-            <h1>{issue.title}</h1>
+            <h1><span>#{array.length - index}</span> {issue.title}</h1>
             <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
             <Tag>
               {getTags(issue.milestone?.title).map((tag) => (
@@ -69,9 +70,17 @@ const StyledContainer = styled.div`
 
   & > h1 {
     display: flex;
+    width: auto;
     align-items: center;
+    justify-content: center;
     font-size: 3em;
+    color: ${({theme}) => theme.colors.clicked};
+    margin-left: 0.5rem;
     
+
+    & > svg {
+      margin-right: 0.5rem;
+    }
   }
 `;
 
@@ -81,10 +90,10 @@ const ArticleList = styled.li`
   /* align-items: center; */
   width: 100%;
   border-radius: 0.3em;
-  margin-bottom: 1em;
+  margin-bottom: 0.3rem;
   
   padding: 0.3rem 1.3rem;
-  border-bottom: 1px solid ${({theme}) => theme.colors.border};
+  border: 1px solid ${({theme}) => theme.colors.border};
   background-color: ${({theme}) => theme.colors.headline};
   
   & > h1 {
@@ -98,6 +107,12 @@ const ArticleList = styled.li`
     margin-bottom: 0;
     
     margin-right: auto;
+    
+    // article order number
+    & > span {
+      font-size: 1.9rem;
+      color: ${({theme}) => theme.colors.subtitle};
+    }
   }
 
   & > p {
@@ -105,6 +120,11 @@ const ArticleList = styled.li`
     margin-top: 0.1rem;
     
     color: ${({theme}) =>  theme.colors.subtitle};
+  }
+
+  &:hover {
+    filter: brightness(125%);
+    cursor: pointer;
   }
 `
 

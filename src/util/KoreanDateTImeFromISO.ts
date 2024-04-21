@@ -5,13 +5,11 @@ export default function koreanDateTimeFromISO(isoDateTime: string): string {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
     timeZone: 'Asia/Seoul',
   });
 
   const formattedDateTime = dateFormatter.format(date);
+  const finalFormattedDate = formattedDateTime.slice(0, -1);
 
-  return formattedDateTime;
+  return finalFormattedDate;
 }

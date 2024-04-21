@@ -28,10 +28,7 @@ export const getIssuesData = async (): Promise<IssuesData> => {
 };
 
 export class GithubIssues {
-  
-  constructor(private issues: FetchedIssues) {
-    
-  }
+  constructor(private issues: FetchedIssues) {}
 
   getAllIssues(): FetchedIssues {
     return this.issues;
@@ -47,18 +44,29 @@ export class GithubIssues {
     );
   }
 
-  
-  // tag는 이슈마다 겹칠 수 있음. 
+  getCategoryByTitle(title: string) {
+    const issue =  this.issues?.find((issue) => issue.title === title);
+    if (typeof issue?.labels[0] === "object" && issue.labels[0] !== null && "name" in issue.labels[0]) {
+      return issue.labels[0].name;
+    } else { 
+      throw new Error('label[0].name 에 접근 실패. 카테고리 이름에 접근실패');
+    }
+  }
+
+  // tag는 이슈마다 겹칠 수 있음.
   getIssuesByTag(tag: string): FetchedIssues {
     return this.issues?.filter(
       (issue) =>
         issue.milestone !== null &&
-        issue.milestone.title.split("#").filter(Boolean).map((element) => element.trim()).includes(tag.trim())
+        issue.milestone.title
+          .split("#")
+          .filter(Boolean)
+          .map((element) => element.trim())
+          .includes(tag.trim())
     );
   }
 
   getIssuesById(ids: number[]): FetchedIssues {
-
     return this.issues?.filter((issue) => ids.includes(issue.id));
   }
 
@@ -66,8 +74,13 @@ export class GithubIssues {
     return this.issues?.filter((issue) => issue.title === title);
   }
 
-  getIndexInCategoryByTitle(category:string, title: string): number | undefined {
-    return this.getIssuesByCategory(category)?.findIndex((issue) => issue.title === title);
+  getIndexInCategoryByTitle(
+    category: string,
+    title: string
+  ): number | undefined {
+    return this.getIssuesByCategory(category)?.findIndex(
+      (issue) => issue.title === title
+    );
   }
 
   // filterIssuesBySearchEngine(searchText: string): FetchedIssues {
@@ -80,7 +93,7 @@ export class GithubIssues {
   //     return (
   //       judgeTitleMatchByHuristic(normalizeSearchText, normalizeTitle) ||
   //       judgeTagMatchByHuristic(normalizeSearchText, normalizeTags)
-        
+
   //     );
   //   });
   // }
