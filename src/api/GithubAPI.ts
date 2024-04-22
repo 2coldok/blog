@@ -70,8 +70,10 @@ export class GithubIssues {
     return this.issues?.filter((issue) => ids.includes(issue.id));
   }
 
-  getIssueByTitle(title: string): FetchedIssues {
-    return this.issues?.filter((issue) => issue.title === title);
+  getIssueByTitle(title: string) {
+    const issue = this.issues?.find((issue) => issue.title === title);
+    
+    return issue;
   }
 
   getIndexInCategoryByTitle(

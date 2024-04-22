@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 interface IPopper {
   // 테마 버튼 자리
@@ -57,9 +57,22 @@ export function Popper({ anchorEl, children, active, onClose }: IPopper) {
   );
 }
 
+const slideDown = keyframes`
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
 const PopperContainer = styled.div<{ top: number; left: number }>`
   position: fixed;
   top: ${({ top }) => top}px;
   left: ${({ left }) => left}px;
   z-index: 1500;
+  opacity: 0;
+  animation: ${slideDown} 0.5s ease-out forwards;
 `;

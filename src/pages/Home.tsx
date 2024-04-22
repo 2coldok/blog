@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <StyledContainer>
-            
+      <h1>All Posts</h1>            
       <Pagination4 
         itemsPerPage={10}
         items={githubIssuesManager?.getAllIssues()?.map((issue, index, array) => (
@@ -51,6 +51,19 @@ const StyledContainer = styled.div`
   margin-top: 1em;
 
   color: white;
+
+  & > h1 {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    font-size: 2.5em;
+    
+    color: ${({theme}) => theme.colors.clicked};
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+  }
   
   @media (max-width: 768px) {
     width: 95%;

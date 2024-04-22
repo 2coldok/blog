@@ -32,7 +32,7 @@ export default function App() {
   );
 }
 
-const NavbarContainer = styled.div`
+const NavbarContainer = styled.header`
   position: fixed;
   top: 0;
   z-index: 8000;
@@ -44,7 +44,7 @@ const NavbarContainer = styled.div`
   max-width: 1100px;
 `;
 
-const MainContentsContainer = styled.div<{ $margintop: number }>`
+const MainContentsContainer = styled.main<{ $margintop: number }>`
   display: flex;
   justify-content: center;
   align-items: center;

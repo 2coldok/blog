@@ -11,6 +11,8 @@ import { setFixedIndex } from '../redux/slice/fixedIndexSlice';
 
 import { useContext } from 'react';
 import Pagination3 from '../util/Pagination3';
+import { Helmet } from 'react-helmet';
+
 
 export default function ArticleDetail() {
   const navigate = useNavigate();
@@ -19,18 +21,17 @@ export default function ArticleDetail() {
   const dispatch = useDispatch();
   const theme = useContext(ThemeContext);
   
-
-  
-  
   if (title === undefined || category === undefined) {
     return <h1>카테고리, 타이틀 오류</h1>;
-  } 
-
+  }
+  
   const decodedTitle = decodeURIComponent(title);
-  
-  
+  const issue = githubIssuesManager?.getIssueByTitle(decodedTitle);
 
-
+  if (!issue) {
+    return <div>해당 이슈를 찾을 수 없습니다</div>
+  }
+  
   const handleTitleClick = (title: string) => () => {
     dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, decodedTitle)));
     navigate(`/${category}/${title}`);
@@ -42,15 +43,22 @@ export default function ArticleDetail() {
     navigate(`/${category}`);
     window.scrollTo(0, 0);
   }
-  
-  
 
+  // meta info
+  const pageTitle = issue?.title as string;
+  const body = issue?.body as string;
+  const pageDescription = body.slice(0, 150).concat('...');
 
+  
   return (
-    <Wrapper>
-      {githubIssuesManager?.getIssueByTitle(decodedTitle)?.map((issue) => (
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name='description' content={pageDescription} />
+      </Helmet>
+  
+      <Wrapper> 
         <IssueContainer>
-          
           <TitleContainer>
             <h1>{issue.title}</h1>
             <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
@@ -60,27 +68,28 @@ export default function ArticleDetail() {
                 <p>{tag}</p>
               ))}
             </TagContainer>
-            
           </TitleContainer>
           <CustomMarkdown data={issue.body} />
         </IssueContainer>
-      ))}
+        
+  
+        <OtherIssuesContainer>
+          <h2>{category}의 또다른 글</h2>
+          <Pagination3 
+            itemsPerPage={3}
+            
+            items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
+              <OtherIssuesList key={issue.id} onClick={handleTitleClick(issue.title)} style={{color: decodedTitle === issue.title ? theme?.colors.clicked : ''}}>
+                <h3><span>#{array.length - index}</span> {issue.title}</h3>
+                <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
+              </OtherIssuesList>
+            )) || []}
+          />  
+        </OtherIssuesContainer>  
 
-      <OtherIssuesContainer>
-        <h1>{category}의 또다른 글</h1>
-        <Pagination3 
-          itemsPerPage={3}
-          
-          items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
-            <OtherIssuesList key={issue.id} onClick={handleTitleClick(issue.title)} style={{color: decodedTitle === issue.title ? theme?.colors.clicked : ''}}>
-              <h2><span>#{array.length - index}</span> {issue.title}</h2>
-              <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
-            </OtherIssuesList>
-          )) || []}
-        />  
-      </OtherIssuesContainer>  
-      <Comments />
-    </Wrapper>
+        <Comments />
+      </Wrapper>
+    </>
   );
 }
 
@@ -98,10 +107,11 @@ const Wrapper = styled.div`
   
   @media (max-width: 768px) {
     width: 95%;
+    min-width: 300px;
   }
 `
 
-const IssueContainer = styled.div`
+const IssueContainer = styled.article`
   width: 100%;
   /* background-color: ${({theme}) => theme.colors.block}; */
   border-radius: 1rem;
@@ -133,6 +143,7 @@ const TitleContainer = styled.div`
     margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
+    font-size: 2em;
   }
 
   & > p {
@@ -175,7 +186,7 @@ const TagContainer = styled.div`
 `
 
 /////////////////////////////////////////////////////////
-const OtherIssuesContainer = styled.ul`
+const OtherIssuesContainer = styled.section`
   /* background-color: ${({theme}) => theme.colors.headline}; */
 
   display: flex;
@@ -188,7 +199,7 @@ const OtherIssuesContainer = styled.ul`
   border-radius: 1em;
   border: 1px solid ${({theme}) => theme.colors.border};
 
-  & > h1 {
+  & > h2 {
     color: ${({theme}) => theme.colors.text};
   }
 `;
@@ -203,7 +214,7 @@ const OtherIssuesList = styled.li`
     cursor: pointer;
   }
   // 제목
-  & > h2 {
+  & > h3 {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;  

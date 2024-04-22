@@ -133,8 +133,6 @@ const StyledContainer = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  
-
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -144,7 +142,7 @@ const ContentContainer = styled.div`
 
 const Page = styled.ul`
   
-  margin: 0.5em;
+  margin: 0;
   
   /* display: flex; */
   

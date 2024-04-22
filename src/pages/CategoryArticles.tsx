@@ -60,7 +60,7 @@ const StyledContainer = styled.div`
   height: 100%;
   min-height: 800px;
   /* padding: 1em; */
-  margin-top: 1em;
+  /* margin-top: 1em; */
 
   color: white;
   
@@ -70,12 +70,17 @@ const StyledContainer = styled.div`
 
   & > h1 {
     display: flex;
-    width: auto;
     align-items: center;
-    justify-content: center;
-    font-size: 3em;
+    /* justify-content: center; */
+    font-size: 2.5em;
+    
     color: ${({theme}) => theme.colors.clicked};
-    margin-left: 0.5rem;
+    
+    
+    border-radius: 1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
     
 
     & > svg {
@@ -87,11 +92,9 @@ const StyledContainer = styled.div`
 const ArticleList = styled.li`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   width: 100%;
-  border-radius: 0.3em;
   margin-bottom: 0.3rem;
-  
+  border-radius: 0.3em;
   padding: 0.3rem 1.3rem;
   border: 1px solid ${({theme}) => theme.colors.border};
   background-color: ${({theme}) => theme.colors.headline};
