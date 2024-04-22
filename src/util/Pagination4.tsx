@@ -47,6 +47,7 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
         return newPage;
       }
     });
+    window.scrollTo(0, 0);
   };
 
   const handleLeftClick = () => {
@@ -61,6 +62,7 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
         return newPage;
       }
     });
+    window.scrollTo(0, 0);
   };
 
 

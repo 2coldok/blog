@@ -1,13 +1,25 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, RefObject, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 interface IToolkitModal {
   active: boolean;
   onClose: () => void;
   children: ReactNode;
+  buttonRef: RefObject<HTMLElement>;
 }
 
-export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
+export function ThemeModal({ active, onClose, buttonRef, children }: IToolkitModal) {
+  const [top, setTop] = useState(0);
+  const [left, setLeft] = useState(0);
+
+  useEffect(() => {
+    if (active && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setTop(rect.bottom + window.scrollY);
+      setLeft(rect.left + window.scrollX);
+    }
+  }, [active, buttonRef]);
+
 
   // 이벤트 전파 방지.
   // ModalOutside에서도 onClose를 이용해 모달 창을 닫는다. 그래서 여기에 이벤트 핸들러가 바인딩 되어있음.
@@ -34,7 +46,7 @@ export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
   return (
     <>
       <ModalOutside $active={active} onClick={onClose}/>
-      <ModalContainer $active={active}>
+      <ModalContainer $active={active} style={{ top: `${top}px`, left: `${left}px` }}>
         {/* <CloseButton onClick={handleClick}>X</CloseButton> */}
         {children}
       </ModalContainer>
@@ -57,19 +69,14 @@ const ModalOutside = styled.div<{ $active: boolean }>`
 `;
 
 const ModalContainer = styled.div<{ $active: boolean }>`
+  background-color: red;
   position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  transform: translateX(-50%);  // X축 중앙 정렬
   z-index: 2023;
-  
   display: ${(props) => (props.$active ? 'flex' : 'none')};
   flex-direction: column;
-  width: 80%;
+  width: 10%;
   max-width: 1100px;
   height: auto;
-  
-  @media (max-width: 1000px) {
-    width: 100%;
-  }
+  padding: 20px;  // 내부 여백
 `;

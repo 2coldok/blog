@@ -14,6 +14,7 @@ export const darkTheme: DefaultTheme = {
     tagborder: '#556355',
     headline: '#1a1e22',
     number: '#3b4756',
+    popper: '#2D333B',
   }
 };
 

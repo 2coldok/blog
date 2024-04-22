@@ -6,7 +6,7 @@ import { IoMusicalNotes } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { useDispatch } from "react-redux";
-import { setMusicModal, setSearchModal, setThemeModal } from "../redux/slice/modalSlice";
+import { setMusicModal, setSearchModal, setThemeModal, setThemeToggle } from "../redux/slice/modalSlice";
 
 import Search from "./Search";
 import { DrawerModal } from "./DrawerModal";
@@ -14,6 +14,11 @@ import { ToolkitModal } from "./ToolkitModal";
 import Music from "./Music";
 
 import styled from "styled-components";
+import { useRef } from "react";
+import { Popper } from "../util/modal/Popper";
+import ThemeMode from "./ThemeMode";
+
+import { RxChevronDown } from "react-icons/rx"; // 테마 클릭시 아래방향 아이콘
 
 export default function ToolBox() {
   // 서로 개별적인 상태인데 이렇게 묶어서 가져오면 한상태 변경이 다른 선택자의 호출까지 트리거함.
@@ -28,6 +33,11 @@ export default function ToolBox() {
   const musicModal = useSelector((state: RootState) => state.modal.musicModal);
 
   const dispatch = useDispatch();
+
+  // 테마 버튼의 위치 조달을 위해 참조 생성
+  const buttonRef = useRef<HTMLButtonElement>(null); 
+
+  
   
   return (
     <>
@@ -42,12 +52,13 @@ export default function ToolBox() {
         <Search />
       </ToolkitModal>
 
-      <ToolButton onClick={() => dispatch(setThemeModal(true))}>
-        <ImBrightnessContrast/>
+      <ToolButton onClick={() => dispatch(setThemeToggle())} ref={buttonRef}>
+        {themeModal ? <RxChevronDown/> : <ImBrightnessContrast />}
       </ToolButton> 
-      <ToolkitModal active={themeModal} onClose={() => dispatch(setThemeModal(false))}>
-        <p>테마 content</p>
-      </ToolkitModal>
+      <Popper anchorEl={buttonRef.current} active={themeModal} onClose={() => dispatch(setThemeModal(false))}>
+        <ThemeMode />
+      </Popper>
+      
       
       <ToolButton onClick={() => dispatch(setMusicModal(true))}>
         <IoMusicalNotes/>

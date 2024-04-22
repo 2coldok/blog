@@ -34,7 +34,7 @@ export default function CategoryArticles() {
       <h1><Icon />{`${category}`}</h1>
 
       <Pagination4
-        itemsPerPage={10}
+        itemsPerPage={5}
         items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
           <ArticleList onClick={handleClick(issue.title)}>
             <h1><span>#{array.length - index}</span> {issue.title}</h1>

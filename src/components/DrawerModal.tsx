@@ -1,7 +1,7 @@
 import { ReactNode, useEffect} from 'react';
 import styled from 'styled-components';
 
-type Direction = 'left' | 'right';
+type Direction = 'left' | 'right' | 'top';
 
 interface ILeftDrawerModal {
   active: boolean;
@@ -31,7 +31,7 @@ export function DrawerModal({ active, onClose, direction, children }: ILeftDrawe
 }
 
 const DrawerOutside = styled.div<{ $active: boolean }>`
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
 
   position: fixed;
   top: 0;
@@ -43,25 +43,24 @@ const DrawerOutside = styled.div<{ $active: boolean }>`
   display: ${(props) => (props.$active ? 'flex' : 'none')};
 `;
 
-const DrawerContainer = styled.div<{ $active: boolean; $direction: Direction }>`
-  background-color: ${({theme}) => theme.colors.background};
-
+const DrawerContainer = styled.div<{ $active: boolean, $direction: Direction }>`
+  background-color: ${({ theme }) => theme.colors.background};
   position: fixed;
-  top: 0;
-  ${props => props.$direction === 'left' ? 'left: 0;' : 'right: 0;'};
-  transform: ${props => (props.$active ? 'translateX(0)' : (props.$direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)'))};
-  max-width: 250px;
-  height: 100%;
+  top: ${({ $direction }) => $direction === 'top' ? '0' : 'auto'};
+  bottom: ${({ $direction }) => $direction === 'top' ? 'auto' : '0'};
+  left: ${({ $direction }) => $direction === 'left' ? '0' : $direction === 'top' ? '0' : 'auto'};
+  right: ${({ $direction }) => $direction === 'right' ? '0' : 'auto'};
+  width: ${({ $direction }) => $direction === 'top' ? '100%' : '250px'};
+  height: ${({ $direction }) => $direction === 'top' ? '250px' : '100%'};
+  transform: ${({ $active, $direction }) =>
+    !$active ? ($direction === 'left' ? 'translateX(-100%)' : $direction === 'right' ? 'translateX(100%)' : 'translateY(-100%)') : 'translateX(0)'};
   z-index: 4000;
   overflow-y: auto;
   overflow-x: hidden;
-
-  border-top-right-radius: ${(props) => props.$direction === 'left' ? '1rem' : '' };
-  border-top-left-radius: ${(props) => props.$direction === 'left' ? '' : '1rem' };
-  border-bottom-right-radius: ${(props) => props.$direction === 'left' ? '1rem' : '' };
-  border-bottom-left-radius: ${(props) => props.$direction === 'left' ? '' : '1rem' };
-  
-  border: 1px solid ${({theme}) => theme.colors.border};
-
+  border-radius: ${({ $direction }) =>
+    $direction === 'left' ? '0 1rem 1rem 0' :
+    $direction === 'right' ? '1rem 0 0 1rem' :
+    '0 0 1rem 1rem'};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   transition: transform 0.2s ease-in-out;
 `;

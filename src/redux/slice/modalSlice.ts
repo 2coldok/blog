@@ -27,11 +27,14 @@ const modalSlice = createSlice({
     setThemeModal: (state, action) => {
       state.themeModal = action.payload;
     },
+    setThemeToggle: (state) => {
+      state.themeModal = !state.themeModal;
+    },
     setMusicModal: (state, action) => {
       state.musicModal = action.payload;
     },
   },
 });
 
-export const { setMenuModal, setSearchModal, setThemeModal, setMusicModal } = modalSlice.actions;
+export const { setMenuModal, setSearchModal, setThemeModal, setThemeToggle ,setMusicModal } = modalSlice.actions;
 export default modalSlice.reducer;

@@ -11,6 +11,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const handleHomeButtonClick = () => {
     navigate('/');
+    window.scrollTo(0, 0);
   };
   
   

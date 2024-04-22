@@ -15,6 +15,7 @@ declare module 'styled-components' {
       tagborder: string;
       headline: string;
       number: string;
+      popper: string;
     };
   }
 }

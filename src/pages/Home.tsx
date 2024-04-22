@@ -14,9 +14,10 @@ export default function Home() {
     window.scrollTo(0, 0);
   };
 
+
   return (
     <StyledContainer>
-      
+            
       <Pagination4 
         itemsPerPage={10}
         items={githubIssuesManager?.getAllIssues()?.map((issue, index, array) => (
