@@ -9,8 +9,8 @@ export default function Home() {
   const { githubIssuesManager } = useGithubIssuesMananger();
   const navigate = useNavigate();
 
-  const handleTitleClick = (category: string | undefined, title: string | undefined) => () => {
-    navigate(`/${category}/${title}`);
+  const handleTitleClick = (category: string | undefined, title: string) => () => {
+    navigate(`/${category}/${encodeURIComponent(title)}`);
     window.scrollTo(0, 0);
   };
 

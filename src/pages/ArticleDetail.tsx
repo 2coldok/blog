@@ -34,7 +34,7 @@ export default function ArticleDetail() {
   
   const handleTitleClick = (title: string) => () => {
     dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, decodedTitle)));
-    navigate(`/${category}/${title}`);
+    navigate(`/${category}/${encodeURIComponent(title)}`);
     window.scrollTo(0, 0);
   }
 
