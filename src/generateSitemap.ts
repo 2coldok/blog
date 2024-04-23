@@ -1,6 +1,8 @@
+// import { SitemapStream, streamToPromise } from 'sitemap/dist/index.js';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { createWriteStream } from 'fs';
 import { Octokit } from "octokit";
+import { Issue, IssuesData } from './types/models';
 
 const GITHUB_AUTH_TOKEN = import.meta.env.VITE_GITHUB_AUTH_TOKEN.replaceAll(
   "?",
@@ -12,7 +14,7 @@ const octokit = new Octokit({
 });
 
 async function fetchGithubIssues() {
-  const response = await octokit.request("GET /repos/{owner}/{repo}/issues", {
+  const response: IssuesData = await octokit.request("GET /repos/{owner}/{repo}/issues", {
     owner: "2coldok",
     repo: "react-blog",
     headers: {
@@ -20,14 +22,18 @@ async function fetchGithubIssues() {
     }
   });
 
-  return response.data.map((issue) => ({
+  const issues = response.data as Issue[];
+
+  // const filtedIssues = issues.filter(issue => typeof issue.labels[0] === 'object' && "name" in issue.labels[0] && typeof issue.labels[0].name === 'string');
+
+  return issues.map((issue) => ({
     url: `/${encodeURIComponent(issue.labels[0].name)}/${encodeURIComponent(issue.title)}`,
     changefreq: 'weekly',
     priority: 1
   }));
 }
 
-async function generateSitemap() {
+export async function generateSitemap() {
   const issues = await fetchGithubIssues();
   const sitemapStream = new SitemapStream({ hostname: 'https://2coldok.github.io/blog/' });
 
@@ -41,4 +47,6 @@ async function generateSitemap() {
   console.log('sitemap 을 dist 폴더에 생성 완료');
 }
 
-generateSitemap();
+(async () => {
+  await generateSitemap();
+})();

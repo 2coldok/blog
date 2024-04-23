@@ -1,3 +1,11 @@
+import { Endpoints } from "@octokit/types";
+
+export type IssuesData =
+  Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
+export type Issues =
+  Endpoints["GET /repos/{owner}/{repo}/issues"]["response"]["data"];
+export type FetchedIssues = Issues | undefined;
+
 type User = {
   login: string;
   id: number;
