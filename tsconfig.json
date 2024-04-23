@@ -20,7 +20,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     /*js파일을 함께 컴파일 하도록*/
-    "allowJs": true
+    "allowJs": true,
+    
+    // fs모듈이 제공되도록.
+    // "esModuleInterop": true,
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
