@@ -27,6 +27,10 @@ export default function CategoryArticles() {
   }
 
   const article = ArticlesData.find((article) => article.category === category)!;
+  // 
+  if (!article) {
+    return <h1>No data available for this category</h1>
+  }
   const Icon = iconMapping[article.icon];
   
   return (

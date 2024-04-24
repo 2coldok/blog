@@ -75,7 +75,7 @@ const BigSearchButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  height: 40px;
+  height: 35px;
   padding: 1em;
   margin-right: 0.5em;
 
