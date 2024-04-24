@@ -25,7 +25,7 @@ const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/blog',
     element: <App />,
     children: [
       {index: true, element: <Home />},

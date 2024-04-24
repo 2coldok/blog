@@ -10,7 +10,7 @@ import styled from "styled-components";
 export default function Navbar() {
   const navigate = useNavigate();
   const handleHomeButtonClick = () => {
-    navigate('/');
+    navigate('/blog');
     window.scrollTo(0, 0);
   };
   

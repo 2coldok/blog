@@ -34,13 +34,13 @@ export default function ArticleDetail() {
   
   const handleTitleClick = (title: string) => () => {
     dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, decodedTitle)));
-    navigate(`/${category}/${encodeURIComponent(title)}`);
+    navigate(`/blog/${category}/${encodeURIComponent(title)}`);
     window.scrollTo(0, 0);
   }
 
   const handleCategoryClick = () => {
     dispatch(setFixedIndex(0));
-    navigate(`/${category}`);
+    navigate(`/blog/${category}`);
     window.scrollTo(0, 0);
   }
 
