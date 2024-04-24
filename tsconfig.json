@@ -23,8 +23,8 @@
     "allowJs": true,
     
     // fs모듈이 제공되도록.
-    // "esModuleInterop": true,
+    "esModuleInterop": true,
   },
-  "include": ["src"],
+  "include": ["src", "script/generateSitemap.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

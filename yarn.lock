@@ -1052,6 +1052,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^20.12.7":
+  version: 20.12.7
+  resolution: "@types/node@npm:20.12.7"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10c0/dce80d63a3b91892b321af823d624995c61e39c6a223cc0ac481a44d337640cc46931d33efb3beeed75f5c85c3bda1d97cef4c5cd4ec333caf5dee59cff6eca0
+  languageName: node
+  linkType: hard
+
 "@types/prop-types@npm:*":
   version: 15.7.12
   resolution: "@types/prop-types@npm:15.7.12"
@@ -1484,6 +1493,7 @@ __metadata:
     "@reduxjs/toolkit": "npm:^2.2.3"
     "@tanstack/react-query": "npm:^5.28.14"
     "@types/gh-pages": "npm:^6"
+    "@types/node": "npm:^20.12.7"
     "@types/react": "npm:^18.2.66"
     "@types/react-dom": "npm:^18.2.22"
     "@types/react-helmet": "npm:^6"
@@ -1494,6 +1504,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
     "@typescript-eslint/parser": "npm:^7.2.0"
     "@vitejs/plugin-react-swc": "npm:^3.5.0"
+    dotenv: "npm:^16.4.5"
     eslint: "npm:^8.57.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-refresh: "npm:^0.4.6"
@@ -1512,6 +1523,7 @@ __metadata:
     styled-components: "npm:^6.1.8"
     typescript: "npm:^5.2.2"
     vite: "npm:^5.2.0"
+    vite-plugin-sitemap: "npm:^0.5.3"
   languageName: unknown
   linkType: soft
 
@@ -1838,6 +1850,13 @@ __metadata:
   dependencies:
     esutils: "npm:^2.0.2"
   checksum: 10c0/c96bdccabe9d62ab6fea9399fdff04a66e6563c1d6fb3a3a063e8d53c3bb136ba63e84250bbf63d00086a769ad53aef92d2bd483f03f837fc97b71cbee6b2520
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.4.5":
+  version: 16.4.5
+  resolution: "dotenv@npm:16.4.5"
+  checksum: 10c0/48d92870076832af0418b13acd6e5a5a3e83bb00df690d9812e94b24aff62b88ade955ac99a05501305b8dc8f1b0ee7638b18493deb6fe93d680e5220936292f
   languageName: node
   linkType: hard
 
@@ -5038,6 +5057,13 @@ __metadata:
     unist-util-stringify-position: "npm:^4.0.0"
     vfile-message: "npm:^4.0.0"
   checksum: 10c0/443bda43e5ad3b73c5976e987dba2b2d761439867ba7d5d7c5f4b01d3c1cb1b976f5f0e6b2399a00dc9b4eaec611bd9984ce9ce8a75a72e60aed518b10a902d2
+  languageName: node
+  linkType: hard
+
+"vite-plugin-sitemap@npm:^0.5.3":
+  version: 0.5.3
+  resolution: "vite-plugin-sitemap@npm:0.5.3"
+  checksum: 10c0/db0a394212c7de89900825370149c43d6669eef04c273112b1dd363ae9c801c01e0e1257e005506778c8a1d5e5eb654cdd11029b14f6393836afffa9c9e8e6cb
   languageName: node
   linkType: hard
 
