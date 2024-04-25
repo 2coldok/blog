@@ -912,7 +912,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 `).replace(/\*\*/gi,"@$_%!^").replace(/@\$_%!\^/gi,"**").replace(/<\/?u>/gi,"*")})})}const Ote=oe.div`
   //깃발
-  /* background-color: rgba(0, 0, 0, 0.9); */
+  background-color: rgba(0, 0, 0, 0.9);
   //
   
   border-bottom-left-radius: 1em;
@@ -1151,6 +1151,8 @@ object-assign
   }
 `,$ne=oe.section`
   /* background-color: ${({theme:e})=>e.colors.headline}; */
+  // 깃발
+  background-color: rgba(0, 0, 0, 0.9);
 
   display: flex;
   flex-direction: column;
