@@ -1295,7 +1295,8 @@ object-assign
 
     // 깃발
     /* background-color: ${({theme:e})=>e.colors.background}; */
-    background-image: url('image/starcraft11.jpeg');
+    background-color: black;
+    background-image: url('image/starcraft.jpeg');
     background-size: cover; 
     background-repeat: no-repeat; 
     background-attachment: fixed; 
