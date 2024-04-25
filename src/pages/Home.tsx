@@ -24,7 +24,7 @@ export default function Home() {
           
           <ArticleList onClick={handleTitleClick(githubIssuesManager.getCategoryByTitle(issue.title), issue.title)}>
             
-            <h1><span>#{array.length - index}</span> {issue.title}</h1>
+            <h2><span>#{array.length - index}</span> {issue.title}</h2>
             <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
             <Tag>
               <button>{githubIssuesManager.getCategoryByTitle(issue.title)}</button>
@@ -56,7 +56,7 @@ const StyledContainer = styled.div`
     display: flex;
     /* align-items: center; */
     /* justify-content: center; */
-    font-size: 2.5em;
+    
     
     color: ${({theme}) => theme.colors.clicked};
     
@@ -73,16 +73,15 @@ const StyledContainer = styled.div`
 const ArticleList = styled.li`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  
   width: 100%;
   border-radius: 0.3em;
-  margin-bottom: 0.3rem;
   
   padding: 0.3rem 1.3rem;
-  border: 1px solid ${({theme}) => theme.colors.border};
+  border-bottom: 1px solid ${({theme}) => theme.colors.border};
   background-color: ${({theme}) => theme.colors.headline};
   
-  & > h1 {
+  & > h2 {
     color: ${({theme}) => theme.colors.text};
     word-wrap: break-word;      /* 긴 단어가 경계를 넘어가면 줄바꿈 */
     overflow-wrap: break-word;  /* 과도하게 긴 단어를 다음 줄로 넘기도록 함 */
@@ -96,16 +95,16 @@ const ArticleList = styled.li`
     
     // article order number
     & > span {
-      font-size: 1.9rem;
-      color: ${({theme}) => theme.colors.subtitle};
+      font-size: 0.9em;
+      color: ${({theme}) => theme.colors.number};
     }
   }
 
   & > p {
 
     margin-top: 0.1rem;
-    
-    color: ${({theme}) =>  theme.colors.subtitle};
+    font-size: 0.9em;
+    color: ${({theme}) =>  theme.colors.date};
   }
 
   &:hover {
@@ -117,31 +116,33 @@ const ArticleList = styled.li`
 const Tag = styled.div`
   display: flex;
   flex-direction: row;
-  /* background-color: blue; */
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.5em;
   
+  
   letter-spacing: 0.5px;
   & > button {
     margin: 0.3rem;
+    margin-left: 0;
     background-color: ${({theme}) => theme.colors.background};
     color: ${({theme}) => theme.colors.clicked};
     border: 1.5px solid ${({theme}) => theme.colors.clicked};
     
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: 600;
-    padding: 0.7rem;
+    padding: 0.5rem;
     border-radius: 2em;
     white-space: nowrap;
   }
 
   & > p {
     margin : 0.3rem;
-    background-color: #347D39;
-    color: #FFFFFF;
-    border: 1.5px solid #556355;
-    padding: 0.7rem;
+    margin-left: 0;
+    background-color: ${({theme}) => theme.colors.tagbackground};
+    color: ${({theme}) => theme.colors.tagtext};
+    border: 1.5px solid ${({theme}) => theme.colors.tagborder};
+    padding: 0.5rem;
     border-radius: 2em;
     font-size: 1em;
     font-weight: 600;

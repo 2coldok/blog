@@ -6,6 +6,8 @@ declare module 'styled-components' {
     colors: {
       background: string;
       text: string;
+      articletext: string;
+      date: string;
       border: string;
       clicked: string;
       block: string;
@@ -16,6 +18,10 @@ declare module 'styled-components' {
       headline: string;
       number: string;
       popper: string;
+      bigsearchborder: string;
+      bigsearchtext: string;
+      bigsearchbackground: string;
+      pageindicatorborder: string;
     };
   }
 }

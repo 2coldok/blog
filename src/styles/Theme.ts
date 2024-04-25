@@ -5,6 +5,8 @@ export const darkTheme: DefaultTheme = {
     // background: '#22272E',
     background: '#1C2128',
     text: '#C5D1DE',
+    articletext: '#C5D1DE',
+    date: '#454C56',
     border: '#454C56',
     clicked: '#4588E1',
     block: '#22272E',
@@ -15,11 +17,39 @@ export const darkTheme: DefaultTheme = {
     headline: '#1a1e22',
     number: '#3b4756',
     popper: '#2D333B',
+    bigsearchborder: '#4588E1',
+    bigsearchtext: '#707E8B',
+    bigsearchbackground: '',
+    pageindicatorborder: '',
   }
 };
 
-// const theme = {
-//   colors,
-// };
+export const starcraftTheme: DefaultTheme = {
+  colors: {
+    background: 'black',
+    text: '#41A822',
+    articletext: '#AEBACB',
+    date: '#A6B6E3',
+    border: '#750002',
+    clicked: '#A6B6E3',
+    block: 'gray',
+    subtitle: '#C2A607',
+    tagbackground: '#131B39',
+    tagtext: '#C2A607',
+    tagborder: '#1B1793',
+    
+    //All post list, Category list, detail post headline
+    headline: '#100B0A',
+    // headline: '#070D29',
+
+    number: '#DEDCDE',
+    popper: 'black',
+
+    bigsearchborder: '#1B1793',
+    bigsearchtext: '#C2A607', 
+    bigsearchbackground: '#070D29',   
+    pageindicatorborder: '#750002',
+  }
+}
 
 

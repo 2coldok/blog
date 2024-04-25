@@ -10,8 +10,10 @@ import { useDispatch } from 'react-redux';
 import { setFixedIndex } from '../redux/slice/fixedIndexSlice';
 
 import { useContext } from 'react';
-import Pagination3 from '../util/Pagination3';
+// import Pagination3 from '../util/Pagination3';
 import { Helmet } from 'react-helmet';
+// import Pagination4 from '../util/Pagination4';
+import MiniPagination from '../util/MiniPagination';
 
 
 export default function ArticleDetail() {
@@ -47,7 +49,7 @@ export default function ArticleDetail() {
   // meta info
   const pageTitle = issue?.title as string;
   const body = issue?.body as string;
-  const pageDescription = body.slice(0, 150).concat('...');
+  const pageDescription = body.slice(0, 147).concat('...');
 
   
   return (
@@ -57,7 +59,8 @@ export default function ArticleDetail() {
         <meta name='description' content={pageDescription} />
       </Helmet>
   
-      <Wrapper> 
+      <StyledContainer>
+
         <IssueContainer>
           <TitleContainer>
             <h1>{issue.title}</h1>
@@ -72,10 +75,9 @@ export default function ArticleDetail() {
           <CustomMarkdown data={issue.body} />
         </IssueContainer>
         
-  
         <OtherIssuesContainer>
           <h2>{category}의 또다른 글</h2>
-          <Pagination3 
+          <MiniPagination
             itemsPerPage={3}
             
             items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
@@ -88,22 +90,23 @@ export default function ArticleDetail() {
         </OtherIssuesContainer>  
 
         <Comments />
-      </Wrapper>
+
+      </StyledContainer>
     </>
   );
 }
 
-const Wrapper = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   /* align-items: center; 이거하면 댓글 찌부됨*/ 
   flex-direction: column;
   width: 100%;
   height: 100%;
-  min-height: 800px;
+  /* min-height: 800px; */
   /* padding: 1em; */
   margin-top: 1em;
 
-  color: white;
+  
   
   @media (max-width: 768px) {
     width: 95%;
@@ -112,9 +115,11 @@ const Wrapper = styled.div`
 `
 
 const IssueContainer = styled.article`
+  
   width: 100%;
   /* background-color: ${({theme}) => theme.colors.block}; */
   border-radius: 1rem;
+  margin-bottom: 1em;
   border: 1px solid ${({theme}) => theme.colors.border};
   
 `
@@ -133,7 +138,7 @@ const TitleContainer = styled.div`
   background-color: ${({theme}) => theme.colors.headline};
   
   & > h1 {
-    color: white;
+    color: ${({theme}) => theme.colors.text};
     word-wrap: break-word;      /* 긴 단어가 경계를 넘어가면 줄바꿈 */
     overflow-wrap: break-word;  /* 과도하게 긴 단어를 다음 줄로 넘기도록 함 */
     white-space: normal;        /* 공백을 기준으로 자동 줄바꿈 */
@@ -145,10 +150,11 @@ const TitleContainer = styled.div`
     margin-right: auto;
     font-size: 2em;
   }
-
+  
+  // data
   & > p {
     margin-top: 0.1rem;
-    color: ${({theme}) =>  theme.colors.subtitle};
+    color: ${({theme}) =>  theme.colors.date};
   }
 `
 const TagContainer = styled.div`
@@ -174,9 +180,9 @@ const TagContainer = styled.div`
 
   & > p {
     margin : 0.3rem;
-    background-color: #347D39;
-    color: #FFFFFF;
-    border: 1.5px solid #556355;
+    background-color: ${({theme}) => theme.colors.tagbackground};
+    color: ${({theme}) => theme.colors.tagtext};
+    border: 1.5px solid ${({theme}) => theme.colors.tagborder};
     padding: 0.7rem;
     border-radius: 2em;
     font-size: 1em;
@@ -200,18 +206,21 @@ const OtherIssuesContainer = styled.section`
   border: 1px solid ${({theme}) => theme.colors.border};
 
   & > h2 {
-    color: ${({theme}) => theme.colors.text};
+    color: ${({theme}) => theme.colors.subtitle};
   }
 `;
 
 const OtherIssuesList = styled.li`
-  background-color: ${({theme}) => theme.colors.headline};
+  /* background-color: ${({theme}) => theme.colors.headline}; */
   color: ${({theme}) => theme.colors.text};
   padding: 0.5em 1.2em;
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
+  border-bottom: 0.5px solid ${({theme}) => theme.colors.border};
+  margin: 0 0.5em;
   &:hover {
     filter: brightness(125%);
     cursor: pointer;
+    
   }
   // 제목
   & > h3 {
@@ -219,15 +228,17 @@ const OtherIssuesList = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;  
     margin-bottom: 0;
-      
+    font-size: 1.4em;
     // #number
     & > span {
+      font-size: 0.9em;
       color: ${({theme}) => theme.colors.number};
     }
   }
   // 날짜
   & > p {
     margin-top: 0;
-    color: ${({theme}) => theme.colors.subtitle};
+    font-size: 0.8em;
+    color: ${({theme}) => theme.colors.date};
   }
 `

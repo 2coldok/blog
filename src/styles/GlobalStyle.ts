@@ -45,10 +45,6 @@ const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    /* background-color: coral; */
-    background-color: ${({theme}) => theme.colors.background};
-    
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,6 +94,15 @@ const GlobalStyle = createGlobalStyle`
     ::-webkit-scrollbar-corner {
       background: transparent;
     }
+
+    // 깃발
+    /* background-color: ${({theme}) => theme.colors.background}; */
+    background-image: url('image/starcraft11.jpeg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    background-position: center center;
+    //
   }
 
   // App.tsx container
@@ -108,8 +113,12 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     width: 100%;
     max-width: 1100px;
+    
 
-    background-color: ${({theme}) => theme.colors.background};
+    // 깃발
+    /* background-color: ${({theme}) => theme.colors.background}; */
+    //
+
     color: ${({theme}) => theme.colors.text};
   }
 

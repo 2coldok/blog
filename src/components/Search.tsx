@@ -94,7 +94,7 @@ export default function Search() {
               ))}
                 
             </List>
-            
+            <Divider></Divider>
           </>
         ))}
       </SearchListContainer>
@@ -198,8 +198,9 @@ const Title = styled.div`
 `;
 // #4c4c9f
 const Tag = styled.div`
-  background-color: #4c4c9f; 
-  /* background-color: ${({theme}) => theme.colors.border}; */
+  background-color: ${({theme}) => theme.colors.tagbackground};
+  color: ${({theme}) => theme.colors.tagtext};
+  border: 1px solid ${({theme}) => theme.colors.tagborder};
 
   
   display: inline-block;
@@ -211,4 +212,12 @@ const Tag = styled.div`
   font-weight: 800;
   border-radius: 2em;
   letter-spacing: 0.5px;
+`;
+
+const Divider = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0.5px;
+  background-color: ${({theme}) => theme.colors.border};
+  margin: 2px 0;
 `;

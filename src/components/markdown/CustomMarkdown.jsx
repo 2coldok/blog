@@ -95,11 +95,13 @@ export default function CustomMarkdown({ data }) {
 }
 
 const Container = styled.div`
-  /* background-color: #292e3c; */
-  /* background-color: #22272E; */
+  //깃발
+  /* background-color: rgba(0, 0, 0, 0.9); */
+  //
+  
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
-  color: ${({theme}) => theme.colors.text};
+  color: ${({theme}) => theme.colors.articletext};
   /* letter-spacing: 0.1rem; */
   /* word-spacing: 1px; */
   line-height: 2.1;
@@ -117,7 +119,7 @@ const Container = styled.div`
 	
 
   & > hr {
-    border: 1px solid purple;
+    border: 1px solid ${({theme}) => theme.colors.border};
   };
   & > table {
     border-spacing: 0 !important;

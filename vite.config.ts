@@ -15,7 +15,7 @@ export default defineConfig({
   plugins: [
     react(),
     Sitemap({
-      hostname: 'https://2coldok.github.io/blog',
+      hostname: 'https://2coldok.github.io/blog/',
       dynamicRoutes
     })
   ],

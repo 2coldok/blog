@@ -10,7 +10,7 @@ interface PaginationProps {
   itemsPerPage: number;
 }
 
-export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
+export default function MiniPagination({ items, itemsPerPage }: PaginationProps) {
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const [currentPage, setCurrentPage] = useState(0);
   const [pageGroupIndex, setPageGroupIndex] = useState(0);  
@@ -24,7 +24,7 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
 
   const changePage = (newPage: number) => {
     setCurrentPage(newPage);
-    window.scrollTo(0, 0);
+    
   };
 
   // const handleLeftClick = () => {
@@ -47,7 +47,7 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
         return newPage;
       }
     });
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   };
 
   const handleLeftClick = () => {
@@ -62,7 +62,7 @@ export default function Pagination4({ items, itemsPerPage }: PaginationProps) {
         return newPage;
       }
     });
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   };
 
 
@@ -169,17 +169,19 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
     justify-content: center;
     font-size: 1.2rem;
     font-weight: 600;
-
     /* color: ${({theme}) => theme.colors.clicked}; */
     border-radius: 0.5em;
     padding: 0.5em;
+    
 
     &.prev {
       color: ${(props) => props.$currentpageindex === 0 ? props.theme.colors.border : props.theme.colors.clicked };
+      background-color: none;
     }
 
     &.next {
       color: ${(props) => props.$currentpageindex === (props.$totalpages - 1) ? props.theme.colors.border : props.theme.colors.clicked};
+      background-color: none;
     }
 
     & > svg {
@@ -215,8 +217,7 @@ const PageIndicator = styled.button<{ $active: boolean }>`
   width: 2.5rem;
   margin: 0 5px;
   background-color: ${(prop) => (prop.$active ? prop.theme.colors.clicked : '')};
-  
-  
+  border:1px solid ${({theme}) => theme.colors.pageindicatorborder};
   @media (max-width: 800px) {
     //important 안하면 안없어짐.
     display: none !important;

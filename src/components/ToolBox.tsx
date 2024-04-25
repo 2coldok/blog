@@ -79,8 +79,9 @@ const BigSearchButton = styled.button`
   padding: 1em;
   margin-right: 0.5em;
 
-  border: 1.5px solid ${({theme}) => theme.colors.clicked};
-  color: ${({theme}) => theme.colors.subtitle};
+  border: 1.5px solid ${({theme}) => theme.colors.bigsearchborder};
+  color: ${({theme}) => theme.colors.tagtext};
+  background-color: ${({theme}) => theme.colors.bigsearchbackground};
   border-radius: 2em;
 
   & > svg {

@@ -41,9 +41,10 @@ export default function CategoryArticles() {
         itemsPerPage={5}
         items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
           <ArticleList onClick={handleClick(issue.title)}>
-            <h1><span>#{array.length - index}</span> {issue.title}</h1>
+            <h2><span>#{array.length - index}</span> {issue.title}</h2>
             <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
             <Tag>
+              <button>{githubIssuesManager.getCategoryByTitle(issue.title)}</button>
               {getTags(issue.milestone?.title).map((tag) => (
                 <p>{tag}</p>
 
@@ -76,7 +77,7 @@ const StyledContainer = styled.div`
     display: flex;
     align-items: center;
     /* justify-content: center; */
-    font-size: 2.5em;
+    /* font-size: 2.5em; */
     
     color: ${({theme}) => theme.colors.clicked};
     
@@ -97,13 +98,13 @@ const ArticleList = styled.li`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 0.3rem;
+  /* margin-bottom: 0.3rem; */
   border-radius: 0.3em;
   padding: 0.3rem 1.3rem;
-  border: 1px solid ${({theme}) => theme.colors.border};
+  border-bottom: 1px solid ${({theme}) => theme.colors.border};
   background-color: ${({theme}) => theme.colors.headline};
   
-  & > h1 {
+  & > h2 {
     color: ${({theme}) => theme.colors.text};
     word-wrap: break-word;      /* 긴 단어가 경계를 넘어가면 줄바꿈 */
     overflow-wrap: break-word;  /* 과도하게 긴 단어를 다음 줄로 넘기도록 함 */
@@ -117,16 +118,15 @@ const ArticleList = styled.li`
     
     // article order number
     & > span {
-      font-size: 1.9rem;
-      color: ${({theme}) => theme.colors.subtitle};
+      font-size: 0.9em;
+      color: ${({theme}) => theme.colors.number};
     }
   }
 
   & > p {
-
     margin-top: 0.1rem;
     
-    color: ${({theme}) =>  theme.colors.subtitle};
+    color: ${({theme}) =>  theme.colors.date};
   }
 
   &:hover {
@@ -146,23 +146,25 @@ const Tag = styled.div`
   letter-spacing: 0.5px;
   & > button {
     margin: 0.3rem;
+    margin-left: 0;
     background-color: ${({theme}) => theme.colors.background};
     color: ${({theme}) => theme.colors.clicked};
     border: 1.5px solid ${({theme}) => theme.colors.clicked};
     
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: 600;
-    padding: 0.7rem;
+    padding: 0.5rem;
     border-radius: 2em;
     white-space: nowrap;
   }
 
   & > p {
     margin : 0.3rem;
-    background-color: #347D39;
-    color: #FFFFFF;
-    border: 1.5px solid #556355;
-    padding: 0.7rem;
+    margin-left: 0;
+    background-color: ${({theme}) => theme.colors.tagbackground};
+    color: ${({theme}) => theme.colors.tagtext};
+    border: 1.5px solid ${({theme}) => theme.colors.tagborder};
+    padding: 0.5rem;
     border-radius: 2em;
     font-size: 1em;
     font-weight: 600;

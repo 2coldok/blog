@@ -34,8 +34,8 @@ export default function Music() {
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  
   padding: 2em 0.2em;
+  
   
 `;
 
@@ -66,7 +66,7 @@ const TitleButton = styled.button<{ $title: string, $track: string }>`
   font-weight: 500;
   background-color: transparent;
   border-radius: 0.4em;
-  color: ${props => props.$title === props.$track ? '#66B2FF' : '#AEBACB'};
+  color: ${props => props.$title === props.$track ? props.theme.colors.clicked : props.theme.colors.text};
   padding: 0.4em 1em;
   /* border-radius: 0.5em; */
   
