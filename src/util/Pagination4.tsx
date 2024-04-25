@@ -159,9 +159,11 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
   justify-content: center;
   font-weight: 600;
   padding: 1em 0;  // 패딩으로 버튼의 높이 조정
-  margin-top: 1.5em;
+  padding-bottom: 2.5em;
+  /* margin-top: 1.5em; */
   /* margin-bottom: 100px; */
-  /* background-color: coral; */
+  background-color: ${({theme}) => theme.colors.block};
+  border-radius: 0.3em;
   
   & > button {
     display: flex;
@@ -214,8 +216,8 @@ const PageIndicator = styled.button<{ $active: boolean }>`
   color: ${({theme}) => theme.colors.text};
   width: 2.5rem;
   margin: 0 5px;
-  background-color: ${(prop) => (prop.$active ? prop.theme.colors.clicked : '')};
-  
+  background-color: ${(prop) => (prop.$active ? prop.theme.colors.pageindicatorclicked : '')};
+  border:1px solid ${({theme}) => theme.colors.pageindicatorborder};
   
   @media (max-width: 800px) {
     //important 안하면 안없어짐.

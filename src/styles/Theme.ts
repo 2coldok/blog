@@ -9,7 +9,8 @@ export const darkTheme: DefaultTheme = {
     date: '#454C56',
     border: '#454C56',
     clicked: '#4588E1',
-    block: '#22272E',
+    // block: '#22272E',
+    block: '',
     subtitle: '#707E8B',
     tagbackground: '#347D39',
     tagtext: '#FFFFFF',
@@ -20,7 +21,11 @@ export const darkTheme: DefaultTheme = {
     bigsearchborder: '#4588E1',
     bigsearchtext: '#707E8B',
     bigsearchbackground: '',
-    pageindicatorborder: '',
+    pageindicatorborder: 'none',
+    pageindicatorclicked: '#4588E1',
+    backgroundimage: '',
+    navbarbackground: '#1C2128',
+    navbarborder: 'none',
   }
 };
 
@@ -32,14 +37,15 @@ export const starcraftTheme: DefaultTheme = {
     date: '#A6B6E3',
     border: '#750002',
     clicked: '#A6B6E3',
-    block: 'gray',
+    block: 'rgba(0, 0, 0, 0.9)',
     subtitle: '#C2A607',
     tagbackground: '#131B39',
     tagtext: '#C2A607',
     tagborder: '#1B1793',
     
     //All post list, Category list, detail post headline
-    headline: '#100B0A',
+    // headline: '#100B0A',
+    headline: 'rgba(16, 11, 10, 0.9)',
     // headline: '#070D29',
 
     number: '#DEDCDE',
@@ -49,6 +55,10 @@ export const starcraftTheme: DefaultTheme = {
     bigsearchtext: '#C2A607', 
     bigsearchbackground: '#070D29',   
     pageindicatorborder: '#750002',
+    pageindicatorclicked: '#65221A',
+    backgroundimage: "url('image/starcraft.jpeg')",
+    navbarbackground: 'rgba(16, 11, 10, 0.9)',
+    navbarborder: '#750002',
   }
 }
 

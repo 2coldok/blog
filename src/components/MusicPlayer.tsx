@@ -78,8 +78,9 @@ const Iframe = styled.iframe`
   width: 100%;
   /* height: 100%; */
   border: 1px solid ${({theme}) => theme.colors.border};
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  /* border-top: none; */
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
   border-right: none;
 
 `;
@@ -87,8 +88,8 @@ const Iframe = styled.iframe`
 const Button = styled.button<{ $loading: boolean }>`
   width: 50px;
   height: 100%;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   border: 1px solid ${({theme}) => theme.colors.border};
   border-left: none;
   background-color: black;

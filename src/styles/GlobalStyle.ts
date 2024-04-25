@@ -96,9 +96,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     // 깃발
-    /* background-color: ${({theme}) => theme.colors.background}; */
-    background-color: black;
-    background-image: url('image/starcraft.jpeg');
+    background-color: ${({theme}) => theme.colors.background};
+    background-image: ${({theme}) => theme.colors.backgroundimage};
     background-size: cover; 
     background-repeat: no-repeat; 
     background-attachment: fixed; 

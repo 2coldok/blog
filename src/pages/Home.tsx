@@ -48,19 +48,21 @@ const StyledContainer = styled.div`
   height: 100%;
   min-height: 800px;
   /* padding: 1em; */
-  margin-top: 1em;
+  
 
   color: white;
 
   & > h1 {
-    display: flex;
+    display: inline;
+    
     /* align-items: center; */
     /* justify-content: center; */
     
     
+    
     color: ${({theme}) => theme.colors.clicked};
     
-    margin-top: 20px;
+    margin-top: 20px; 
     margin-bottom: 20px;
     margin-left: 10px;
   }

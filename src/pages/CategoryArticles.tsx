@@ -81,8 +81,6 @@ const StyledContainer = styled.div`
     
     color: ${({theme}) => theme.colors.clicked};
     
-    
-    border-radius: 1rem;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 10px;

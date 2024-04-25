@@ -36,8 +36,11 @@ export default function Navbar() {
 }
 
 const StyledContainer = styled.div`
-  background-color: ${({theme}) => theme.colors.background};
-
+  background-color: ${({theme}) => theme.colors.navbarbackground};
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border: 1px solid ${({theme}) => theme.colors.navbarborder};
+  border-top: none;
   display: flex;
   justify-content: space-between;
   flex-direction: row;

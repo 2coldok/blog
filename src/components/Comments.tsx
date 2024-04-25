@@ -50,7 +50,7 @@ export default Comments;
 
 
 const CommentsContainer = styled.div`
-  /* background-color: #999494; */
+  background-color: ${({theme}) => theme.colors.block};
   min-height: 200px;
 
   border-radius: 1rem;

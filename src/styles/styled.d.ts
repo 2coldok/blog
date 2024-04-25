@@ -22,6 +22,11 @@ declare module 'styled-components' {
       bigsearchtext: string;
       bigsearchbackground: string;
       pageindicatorborder: string;
+      pageindicatorclicked: string;
+      backgroundimage: string;
+      navbarbackground: string;
+      navbarborder: string;
+      
     };
   }
 }
