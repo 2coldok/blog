@@ -15,10 +15,11 @@ import GlobalStyle from "./styles/GlobalStyle.ts";
 // page
 // import NotFound from './pages/NotFound.tsx';
 import Home from "./pages/Home.tsx";
+import { ThemeProvider } from "./context/ThemeContext.tsx";
 
 // style
-import { ThemeProvider } from "styled-components";
-import { starcraftTheme } from "./styles/Theme.ts";
+// import { ThemeProvider } from "styled-components";
+// import { starcraftTheme } from "./styles/Theme.ts";
 // import { darkTheme } from "./styles/Theme.ts";
 
 // errorElement: <NotFound />,
@@ -41,7 +42,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <GithubIssuesProvider>
-          <ThemeProvider theme={starcraftTheme}>
+          <ThemeProvider>
             <GlobalStyle />
             <RouterProvider router={router} />
           </ThemeProvider>

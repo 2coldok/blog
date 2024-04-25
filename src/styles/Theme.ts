@@ -1,6 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
-export const darkTheme: DefaultTheme = {
+export const githubTheme: DefaultTheme = {
   colors: {
     // background: '#22272E',
     background: '#1C2128',
