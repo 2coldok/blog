@@ -96,7 +96,7 @@ export default function CustomMarkdown({ data }) {
 
 const Container = styled.div`
   //깃발
-  /* background-color: rgba(0, 0, 0, 0.9); */
+  background-color: rgba(0, 0, 0, 0.9);
   //
   
   border-bottom-left-radius: 1em;

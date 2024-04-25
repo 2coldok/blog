@@ -194,6 +194,8 @@ const TagContainer = styled.div`
 /////////////////////////////////////////////////////////
 const OtherIssuesContainer = styled.section`
   /* background-color: ${({theme}) => theme.colors.headline}; */
+  // 깃발
+  background-color: rgba(0, 0, 0, 0.9);
 
   display: flex;
   flex-direction: column;
