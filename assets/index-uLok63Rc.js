@@ -539,8 +539,11 @@ Error generating stack: `+a.message+`
     font-size: 3.2em;
   }
 `;function KG(){const e=$o(),t=()=>{e("/blog/"),window.scrollTo(0,0)};return I.jsxs(XG,{children:[I.jsxs(ZG,{children:[I.jsx(WG,{}),I.jsxs(QG,{onClick:t,children:[I.jsx(x6,{}),I.jsx("span",{children:"Chan's Blog"})]})]}),I.jsx(JG,{children:I.jsx(TG,{})})]})}const XG=oe.div`
-  background-color: ${({theme:e})=>e.colors.background};
-
+  background-color: ${({theme:e})=>e.colors.navbarbackground};
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border: 1px solid ${({theme:e})=>e.colors.navbarborder};
+  border-top: none;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -620,15 +623,16 @@ Error generating stack: `+a.message+`
   width: 100%;
   /* height: 100%; */
   border: 1px solid ${({theme:e})=>e.colors.border};
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  /* border-top: none; */
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
   border-right: none;
 
 `,o7=oe.button`
   width: 50px;
   height: 100%;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   border: 1px solid ${({theme:e})=>e.colors.border};
   border-left: none;
   background-color: black;
@@ -690,9 +694,11 @@ Error generating stack: `+a.message+`
   justify-content: center;
   font-weight: 600;
   padding: 1em 0;  // 패딩으로 버튼의 높이 조정
-  margin-top: 1.5em;
+  padding-bottom: 2.5em;
+  /* margin-top: 1.5em; */
   /* margin-bottom: 100px; */
-  /* background-color: coral; */
+  background-color: ${({theme:e})=>e.colors.block};
+  border-radius: 0.3em;
   
   & > button {
     display: flex;
@@ -743,8 +749,8 @@ Error generating stack: `+a.message+`
   color: ${({theme:e})=>e.colors.text};
   width: 2.5rem;
   margin: 0 5px;
-  background-color: ${e=>e.$active?e.theme.colors.clicked:""};
-  
+  background-color: ${e=>e.$active?e.theme.colors.pageindicatorclicked:""};
+  border:1px solid ${({theme:e})=>e.colors.pageindicatorborder};
   
   @media (max-width: 800px) {
     //important 안하면 안없어짐.
@@ -779,8 +785,6 @@ Error generating stack: `+a.message+`
     
     color: ${({theme:e})=>e.colors.clicked};
     
-    
-    border-radius: 1rem;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 10px;
@@ -912,7 +916,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 `).replace(/\*\*/gi,"@$_%!^").replace(/@\$_%!\^/gi,"**").replace(/<\/?u>/gi,"*")})})}const Ote=oe.div`
   //깃발
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: ${({theme:e})=>e.colors.block};
   //
   
   border-bottom-left-radius: 1em;
@@ -956,7 +960,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   padding-bottom: 0.3rem;
   };
 `,Nte=()=>{const e=xl();return U.useEffect(()=>{const t=document.getElementById("comments-section");if(!t)return;for(;t.firstChild;)t.removeChild(t.firstChild);const n=document.createElement("script");n.src="https://utteranc.es/client.js",n.async=!0,n.setAttribute("repo","2coldok/blog-comments"),n.setAttribute("issue-term","url"),n.setAttribute("id","utterances"),n.setAttribute("theme","github-dark"),n.setAttribute("crossorigin","anonymous");const r=window.location.origin+e.pathname+e.search+e.hash;return n.setAttribute("issue-term",r),t.appendChild(n),()=>{t.firstChild&&t.removeChild(t.firstChild)}},[e.pathname,e.search,e.hash]),I.jsx(I.Fragment,{children:I.jsx(Lte,{id:"comments-section"})})},Lte=oe.div`
-  /* background-color: #999494; */
+  background-color: ${({theme:e})=>e.colors.block};
   min-height: 200px;
 
   border-radius: 1rem;
@@ -997,7 +1001,7 @@ object-assign
   padding: 1em 0;  // 패딩으로 버튼의 높이 조정
   margin-top: 1.5em;
   /* margin-bottom: 100px; */
-  /* background-color: coral; */
+
   
   & > button {
     display: flex;
@@ -1050,7 +1054,7 @@ object-assign
   color: ${({theme:e})=>e.colors.text};
   width: 2.5rem;
   margin: 0 5px;
-  background-color: ${e=>e.$active?e.theme.colors.clicked:""};
+  background-color: ${e=>e.$active?e.theme.colors.pageindicatorclicked:""};
   border:1px solid ${({theme:e})=>e.colors.pageindicatorborder};
   @media (max-width: 800px) {
     //important 안하면 안없어짐.
@@ -1152,7 +1156,7 @@ object-assign
 `,$ne=oe.section`
   /* background-color: ${({theme:e})=>e.colors.headline}; */
   // 깃발
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: ${({theme:e})=>e.colors.block};
 
   display: flex;
   flex-direction: column;
@@ -1294,9 +1298,8 @@ object-assign
     }
 
     // 깃발
-    /* background-color: ${({theme:e})=>e.colors.background}; */
-    background-color: black;
-    background-image: url('image/starcraft.jpeg');
+    background-color: ${({theme:e})=>e.colors.background};
+    background-image: ${({theme:e})=>e.colors.backgroundimage};
     background-size: cover; 
     background-repeat: no-repeat; 
     background-attachment: fixed; 
@@ -1350,19 +1353,21 @@ object-assign
   height: 100%;
   min-height: 800px;
   /* padding: 1em; */
-  margin-top: 1em;
+  
 
   color: white;
 
   & > h1 {
-    display: flex;
+    display: inline;
+    
     /* align-items: center; */
     /* justify-content: center; */
     
     
+    
     color: ${({theme:e})=>e.colors.clicked};
     
-    margin-top: 20px;
+    margin-top: 20px; 
     margin-bottom: 20px;
     margin-left: 10px;
   }
@@ -1446,4 +1451,4 @@ object-assign
     font-weight: 600;
     white-space: nowrap;
   }
-`,Wne={colors:{background:"black",text:"#41A822",articletext:"#AEBACB",date:"#A6B6E3",border:"#750002",clicked:"#A6B6E3",block:"gray",subtitle:"#C2A607",tagbackground:"#131B39",tagtext:"#C2A607",tagborder:"#1B1793",headline:"#100B0A",number:"#DEDCDE",popper:"black",bigsearchborder:"#1B1793",bigsearchtext:"#C2A607",bigsearchbackground:"#070D29",pageindicatorborder:"#750002"}},Yne=new z4,Kne=h4([{path:"/blog",element:I.jsx(s7,{}),children:[{index:!0,element:I.jsx(jne,{})},{path:":category",element:I.jsx(v7,{})},{path:":category/:title",element:I.jsx(Pne,{})}]}]);Ky.createRoot(document.getElementById("root")).render(I.jsx(Ne.StrictMode,{children:I.jsx(b6,{store:f7,children:I.jsx(W4,{client:Yne,children:I.jsx(Z5,{children:I.jsxs(P$,{theme:Wne,children:[I.jsx(zne,{}),I.jsx(k4,{router:Kne})]})})})})}));
+`,Wne={colors:{background:"black",text:"#41A822",articletext:"#AEBACB",date:"#A6B6E3",border:"#750002",clicked:"#A6B6E3",block:"rgba(0, 0, 0, 0.9)",subtitle:"#C2A607",tagbackground:"#131B39",tagtext:"#C2A607",tagborder:"#1B1793",headline:"rgba(16, 11, 10, 0.9)",number:"#DEDCDE",popper:"black",bigsearchborder:"#1B1793",bigsearchtext:"#C2A607",bigsearchbackground:"#070D29",pageindicatorborder:"#750002",pageindicatorclicked:"#65221A",backgroundimage:"url('image/starcraft.jpeg')",navbarbackground:"rgba(16, 11, 10, 0.9)",navbarborder:"#750002"}},Yne=new z4,Kne=h4([{path:"/blog",element:I.jsx(s7,{}),children:[{index:!0,element:I.jsx(jne,{})},{path:":category",element:I.jsx(v7,{})},{path:":category/:title",element:I.jsx(Pne,{})}]}]);Ky.createRoot(document.getElementById("root")).render(I.jsx(Ne.StrictMode,{children:I.jsx(b6,{store:f7,children:I.jsx(W4,{client:Yne,children:I.jsx(Z5,{children:I.jsxs(P$,{theme:Wne,children:[I.jsx(zne,{}),I.jsx(k4,{router:Kne})]})})})})}));
