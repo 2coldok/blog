@@ -335,10 +335,6 @@ Error generating stack: `+a.message+`
       border-bottom: none;
       background-color: ${e=>e.$theme==="starbucks"&&e.theme.colors.border};
     }
-
-    &:hover {
-      background-color: ${({theme:e})=>e.colors.border};
-    }
   }
   
   
@@ -971,7 +967,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
   };
-`,Mte=()=>{const e=xl();return U.useEffect(()=>{const t=document.getElementById("comments-section");if(!t)return;for(;t.firstChild;)t.removeChild(t.firstChild);const n=document.createElement("script");n.src="https://utteranc.es/client.js",n.async=!0,n.setAttribute("repo","2coldok/blog-comments"),n.setAttribute("issue-term","url"),n.setAttribute("id","utterances"),n.setAttribute("theme","github-dark"),n.setAttribute("crossorigin","anonymous");const r=window.location.origin+e.pathname+e.search+e.hash;return n.setAttribute("issue-term",r),t.appendChild(n),()=>{t.firstChild&&t.removeChild(t.firstChild)}},[e.pathname,e.search,e.hash]),I.jsx(I.Fragment,{children:I.jsx(Ute,{id:"comments-section"})})},Ute=oe.div`
+`,Mte=()=>{const e=xl();return U.useEffect(()=>{const t=document.getElementById("comments-section");if(!t)return;for(;t.firstChild;)t.removeChild(t.firstChild);const n=document.createElement("script");n.src="https://utteranc.es/client.js",n.async=!0,n.setAttribute("repo","2coldok/blog-comments"),n.setAttribute("issue-term","pathname"),n.setAttribute("id","utterances"),n.setAttribute("theme","github-dark"),n.setAttribute("crossorigin","anonymous");const r=window.location.origin+e.pathname+e.search;return n.setAttribute("issue-term",r),t.appendChild(n),()=>{t.firstChild&&t.removeChild(t.firstChild)}},[e.pathname,e.search]),I.jsx(I.Fragment,{children:I.jsx(Ute,{id:"comments-section"})})},Ute=oe.div`
   background-color: ${({theme:e})=>e.colors.block};
   min-height: 200px;
 
