@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { githubTheme, starcraftTheme } from "../styles/Theme";
 
@@ -11,7 +11,14 @@ export type ThemeContextType = {
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode}) {
-  const [themeName, setThemeName] = useState<ThemeName>('github');
+  
+  const [themeName, setThemeName] = useState<ThemeName>(() => getThemeFromSessionStorage());
+
+
+  useEffect(() => {
+    sessionStorage.setItem('theme', JSON.stringify(themeName));
+    
+  }, [themeName])
 
   const themes = {
     github: githubTheme,
@@ -25,4 +32,12 @@ export function ThemeProvider({ children }: { children: ReactNode}) {
       </StyledThemeProvider>
     </ThemeContext.Provider>
   );
+}
+
+function getThemeFromSessionStorage(): ThemeName {
+  const savedTheme = sessionStorage.getItem('theme');
+  if (savedTheme !== null) {
+    return JSON.parse(savedTheme);
+  }
+  return 'github'
 }
