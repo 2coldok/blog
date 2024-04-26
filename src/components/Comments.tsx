@@ -20,12 +20,12 @@ const Comments = () => {
     script.src = "https://utteranc.es/client.js";
     script.async = true;
     script.setAttribute("repo", "2coldok/blog-comments");
-    script.setAttribute("issue-term", "url"); 
+    script.setAttribute("issue-term", "pathname"); 
     script.setAttribute("id", "utterances");
     script.setAttribute("theme", "github-dark"); 
     script.setAttribute("crossorigin", "anonymous");
 
-    const currentUrl = window.location.origin + location.pathname + location.search + location.hash;
+    const currentUrl = window.location.origin + location.pathname + location.search;
     script.setAttribute('issue-term', currentUrl);
 
     scriptParentNode.appendChild(script);
@@ -36,7 +36,7 @@ const Comments = () => {
         scriptParentNode.removeChild(scriptParentNode.firstChild);
       }
     }  
-  }, [location.pathname, location.search, location.hash]);
+  }, [location.pathname, location.search]);
 
   return (
     <>

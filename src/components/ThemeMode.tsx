@@ -68,10 +68,6 @@ const StyledContainer = styled.div<{ $theme: string }>`
       border-bottom: none;
       background-color: ${prop => prop.$theme === 'starbucks' && prop.theme.colors.border};
     }
-
-    &:hover {
-      background-color: ${({theme}) => theme.colors.border};
-    }
   }
   
   
