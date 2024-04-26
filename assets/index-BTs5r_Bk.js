@@ -1459,4 +1459,4 @@ object-assign
     font-weight: 600;
     white-space: nowrap;
   }
-`,Jne=new j4,ere=m4([{path:"/blog",element:I.jsx(f7,{}),children:[{index:!0,element:I.jsx(Kne,{})},{path:":category",element:I.jsx(A7,{})},{path:":category/:title",element:I.jsx(Gne,{})}]}]);Ky.createRoot(document.getElementById("root")).render(I.jsx(Ne.StrictMode,{children:I.jsx(y6,{store:E7,children:I.jsx(Y4,{client:Jne,children:I.jsx(Q5,{children:I.jsxs(TG,{children:[I.jsx(Yne,{}),I.jsx(_4,{router:ere})]})})})})}));
+`,Jne=new j4,ere=m4([{path:"/",element:I.jsx(f7,{}),children:[{index:!0,element:I.jsx(Kne,{})},{path:":category",element:I.jsx(A7,{})},{path:":category/:title",element:I.jsx(Gne,{})}]}],{basename:"https://2coldok.github.io/blog/"});Ky.createRoot(document.getElementById("root")).render(I.jsx(Ne.StrictMode,{children:I.jsx(y6,{store:E7,children:I.jsx(Y4,{client:Jne,children:I.jsx(Q5,{children:I.jsxs(TG,{children:[I.jsx(Yne,{}),I.jsx(_4,{router:ere})]})})})})}));
