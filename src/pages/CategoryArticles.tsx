@@ -22,7 +22,7 @@ export default function CategoryArticles() {
   }
   const handleClick = (title: string) => () => {
     dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, title)));
-    navigate(`/blog/${category}/${encodeURIComponent(title)}`);
+    navigate(`/${category}/${encodeURIComponent(title)}`);
     window.scrollTo(0, 0);
   }
 

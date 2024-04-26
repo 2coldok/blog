@@ -27,7 +27,7 @@ const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
-    path: "/blog",
+    path: "/",
     element: <App />,
     children: [
       { index: true, element: <Home /> },
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       { path: ":category/:title", element: <ArticleDetail /> },
     ],
   },
-]);
+], { basename: '/blog/' });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

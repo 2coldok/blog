@@ -5,7 +5,11 @@ import * as fs from 'fs';
 
 function loadDynamicRoutes() {
   const routes = fs.readFileSync('dynamicRoutes.json', 'utf8');
-  return JSON.parse(routes);
+  const parsedRoutes = JSON.parse(routes);
+
+  // Sitemap이 hostname의 blog를 인식하지 못하고, dynamicRoutes를 상대경로로 올바르게 인식하지 못하기 때문에
+  // sub domain인 blog를 추가해주는 과정.
+  return parsedRoutes.map((route: string) => `blog/${route}`);
 }
 
 const dynamicRoutes = loadDynamicRoutes();

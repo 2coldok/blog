@@ -10,7 +10,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const handleTitleClick = (category: string | undefined, title: string) => () => {
-    navigate(`/blog/${category}/${encodeURIComponent(title)}`);
+    navigate(`/${category}/${encodeURIComponent(title)}`);
     window.scrollTo(0, 0);
   };
 

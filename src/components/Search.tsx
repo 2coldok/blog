@@ -25,7 +25,7 @@ export default function Search() {
   }
   const handleClick = (category: string | undefined, title: string) => () => {
     dispatch(setSearchModal(false));
-    navigate(`/blog/${category}/${encodeURIComponent(title)}`);
+    navigate(`/${category}/${encodeURIComponent(title)}`);
     const index = githubIssuesManager?.getIndexInCategoryByTitle(category!, title);
     dispatch(setFixedIndex(index));
     

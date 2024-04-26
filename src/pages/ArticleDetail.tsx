@@ -27,6 +27,7 @@ export default function ArticleDetail() {
     return <h1>카테고리, 타이틀 오류</h1>;
   }
   
+  const decodedCategory = decodeURIComponent(category);
   const decodedTitle = decodeURIComponent(title);
   const issue = githubIssuesManager?.getIssueByTitle(decodedTitle);
 
@@ -36,19 +37,22 @@ export default function ArticleDetail() {
   
   const handleTitleClick = (title: string) => () => {
     dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, decodedTitle)));
-    navigate(`/blog/${category}/${encodeURIComponent(title)}`);
+    navigate(`/${category}/${encodeURIComponent(title)}`);
     window.scrollTo(0, 0);
   }
 
   const handleCategoryClick = () => {
     dispatch(setFixedIndex(0));
-    navigate(`/blog/${category}`);
+    navigate(`/${category}`);
     window.scrollTo(0, 0);
   }
 
   // meta info
   const pageTitle = issue?.title as string;
+  const date = issue.updated_at;
   const body = issue?.body as string;
+  const pageUrl = `https://2coldok.github.io/blog/${decodedCategory}/${decodedTitle}`;
+  const keywords = getTags(issue.milestone?.title).join(', ');
   const pageDescription = body.slice(0, 147).concat('...');
 
   
@@ -57,6 +61,12 @@ export default function ArticleDetail() {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name='description' content={pageDescription} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta name="article:published_time" content={date} />
+        <meta name="keywords" content={keywords} />
+        <meta property="og:url" content={pageUrl} />
+        <meta name="author" content="이찬웅" />
       </Helmet>
   
       <StyledContainer>

@@ -56,7 +56,7 @@ export const starcraftTheme: DefaultTheme = {
     bigsearchbackground: '#070D29',   
     pageindicatorborder: '#750002',
     pageindicatorclicked: '#65221A',
-    backgroundimage: "url('image/starcraft.jpeg')",
+    backgroundimage: "url('/blog/image/starcraft.jpeg')",
     navbarbackground: 'rgba(16, 11, 10, 0.9)',
     navbarborder: '#750002',
   }
