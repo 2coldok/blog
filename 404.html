@@ -1,13 +1,18 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>이찬웅 블로그</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    // Check the segments to prevent redirect loops on actual file requests
+    const segments = location.pathname.split('/').filter(Boolean);
+    if (!segments.length || !segments[segments.length - 1].includes('.')) {
+      // Redirect to the base `index.html` file
+      window.location.href = '/index.html' + location.pathname + location.search;
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting you to the homepage...</p>
+</body>
 </html>
