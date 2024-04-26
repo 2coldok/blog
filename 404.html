@@ -7,9 +7,10 @@
     // const path = location.pathname;
     // window.location.replace(path);
     const segments = location.pathname.split('/').filter(Boolean);
-    if (segments.length && !segments[segments.length - 1].includes('.')) {
-      window.location.replace('/index.html' + location.search);
-    }
+    if (!segments.length || !segments[segments.length - 1].includes('.')) {
+      // Redirect to the base `index.html` file
+      window.location.href = '/index.html' + location.pathname + location.search;
+    }  
   </script>
 </head>
 <body>
