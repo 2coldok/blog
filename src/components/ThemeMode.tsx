@@ -13,7 +13,7 @@ export default function ThemeMode() {
       <button className='github' onClick={() => setThemeName('github')}><IoLogoGithub />깃허브: Default</button>
       <button className='starcraft' onClick={() => setThemeName('starcraft')}><HiOutlineRocketLaunch />스타크래프트</button>
       <button className='colorweakness'><VscColorMode />색약모드</button>
-      <button className='starbucks'><SiStarbucks />스타벅스</button>
+      <button className='starbucks' onClick={() => setThemeName('starbucks')}><SiStarbucks />스타벅스</button>
     </StyledContainer>
   );
 }

@@ -9,10 +9,8 @@ issue.labels[0].name : 포스트 카테고리
 issue.milestone.title : 포스트의 태그
 ```
 
----
-
 ## 블로그 개발 스택
-- Yarn berry PnP
+- Yarn Berry Plug'n'Play
 - React Vite
 - TypeScript
 - Styled-Components  
@@ -20,11 +18,9 @@ issue.milestone.title : 포스트의 태그
 - TanStack React Query
 - Redux Toolkit
 - Github Pages Hosting
-- Github API Octokit
+- Github API with Octokit
 - React Markdown
 - Vite-Plugin-Sitemap
 - React Helmet
 - React Icons
 - Utterances
-
-##.

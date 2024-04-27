@@ -90,6 +90,7 @@ const BigSearchButton = styled.button`
   }
 
   & > span {
+    color: ${({theme}) => theme.colors.bigsearchtext};
     font-weight: bold;  
   }
 

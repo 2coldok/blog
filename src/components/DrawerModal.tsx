@@ -44,7 +44,7 @@ const DrawerOutside = styled.div<{ $active: boolean }>`
 `;
 
 const DrawerContainer = styled.div<{ $active: boolean, $direction: Direction }>`
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.block};
   position: fixed;
   top: ${({ $direction }) => $direction === 'top' ? '0' : 'auto'};
   bottom: ${({ $direction }) => $direction === 'top' ? 'auto' : '0'};

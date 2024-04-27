@@ -11,6 +11,7 @@ export default function Category() {
   const handleListClick = (category: string) => () => {
     dispatch(setMenuModal(false));
     navigate(`/${category}`);
+    window.scrollTo(0, 0);
   }
 
   // 메뉴창에서 현재 보고있는 카테고리를 파란색으로 강조해주는 기능
