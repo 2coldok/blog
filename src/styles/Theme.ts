@@ -27,6 +27,7 @@ export const githubTheme: DefaultTheme = {
     navbarbackground: '#1C2128',
     navbarborder: 'none',
     categorytagbackground: '#1C2128',
+    categorytagtext: '#4588E1',
 
     articletable: '#465464',
     articlebacktick: '#3C434D',
@@ -61,11 +62,12 @@ export const starcraftTheme: DefaultTheme = {
     bigsearchbackground: '',   
     pageindicatorborder: '#750002',
     pageindicatorclicked: '#65221A',
-    backgroundimage: "url('/blog/image/universe.jpeg')",
+    backgroundimage: "url('/blog/image/universe2.png')",
     navbarbackground: 'rgba(16, 11, 10, 0.9)',
     navbarborder: '#750002',
 
     categorytagbackground: 'black',
+    categorytagtext: '#A6B6E3',
 
     articletable: '#AEBACB',
     articlebacktick: '#451c27',
@@ -127,6 +129,7 @@ export const starbucksTheme: DefaultTheme = {
     navbarborder: 'none',
     
     categorytagbackground: '#F6F5EF',
+    categorytagtext: '#076242',
 
     articletable: '#95aea3',
     articlebacktick: '#785c45',

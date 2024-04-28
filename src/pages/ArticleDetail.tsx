@@ -177,7 +177,7 @@ const TagContainer = styled.div`
   & > button {
     margin: 0.3rem;
     background-color: ${({theme}) => theme.colors.categorytagbackground};
-    color: ${({theme}) => theme.colors.clicked};
+    color: ${({theme}) => theme.colors.categorytagtext};
     border: 1.5px solid ${({theme}) => theme.colors.clicked};
     
     font-size: 1em;

@@ -28,6 +28,7 @@ declare module 'styled-components' {
       navbarborder: string;
 
       categorytagbackground: string;
+      categorytagtext: string;
 
       articletable: string;
       articlebacktick: string;

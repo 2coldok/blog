@@ -128,7 +128,8 @@ const Tag = styled.div`
     margin: 0.3rem;
     margin-left: 0;
     background-color: ${({theme}) => theme.colors.categorytagbackground};
-    color: ${({theme}) => theme.colors.clicked};
+    /* color: ${({theme}) => theme.colors.clicked}; */
+    color: ${({theme}) => theme.colors.categorytagtext};
     border: 1.5px solid ${({theme}) => theme.colors.clicked};
     
     font-size: 0.8em;
