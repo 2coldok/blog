@@ -61,7 +61,7 @@ export const starcraftTheme: DefaultTheme = {
     bigsearchbackground: '',   
     pageindicatorborder: '#750002',
     pageindicatorclicked: '#65221A',
-    backgroundimage: "url('/blog/image/starcraft.jpeg')",
+    backgroundimage: "url('/blog/image/universe.jpeg')",
     navbarbackground: 'rgba(16, 11, 10, 0.9)',
     navbarborder: '#750002',
 
@@ -85,6 +85,7 @@ export const starbucksTheme: DefaultTheme = {
     // 다른갈색
     // background: '#AF8766',
     background: '#1E3932',
+    // background: '#937A70',
 
 
     text: '#FFFFFF',
