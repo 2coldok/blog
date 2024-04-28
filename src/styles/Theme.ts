@@ -26,6 +26,10 @@ export const githubTheme: DefaultTheme = {
     backgroundimage: '',
     navbarbackground: '#1C2128',
     navbarborder: 'none',
+    categorytagbackground: '#1C2128',
+
+    articletable: '#465464',
+    articlebacktick: '#3C434D',
   }
 };
 
@@ -34,6 +38,7 @@ export const starcraftTheme: DefaultTheme = {
     background: 'black',
     text: '#41A822',
     articletext: '#AEBACB',
+    
     date: '#A6B6E3',
     border: '#750002',
     clicked: '#A6B6E3',
@@ -59,6 +64,11 @@ export const starcraftTheme: DefaultTheme = {
     backgroundimage: "url('/blog/image/starcraft.jpeg')",
     navbarbackground: 'rgba(16, 11, 10, 0.9)',
     navbarborder: '#750002',
+
+    categorytagbackground: 'black',
+
+    articletable: '#AEBACB',
+    articlebacktick: '#451c27',
   }
 }
 
@@ -73,28 +83,33 @@ export const starbucksTheme: DefaultTheme = {
     // 다크 갈색
     // background: '#4F2C1D',
     // 다른갈색
-    background: '#AF8766',
+    // background: '#AF8766',
+    background: '#1E3932',
 
 
     text: '#FFFFFF',
     articletext: '#FFFFFF',
     date: '#ABABAB',
+    // border: '#076242',
+    // border: '#E3E7C4',
     border: '#076242',
 
     // 밝은초록
-    clicked: '#076242',
+    // clicked: '#076242',
+    clicked: '#AF8766',
     // 어두운 초록
     block: '#1E3932',
     // 일단 회색
     subtitle: 'gray',
     
-    tagbackground: '#D2405D',
+    tagbackground: '#076242',
     tagtext: '#FCE6EB',
-    tagborder: '#DAB2BA',
+    tagborder: 'gray',
     
     // 일단 어두운 그레이
     // headline: '#664C42',
-    headline: '#1E3932',
+    // headline: '#1E3932',
+    headline: '#26473F',
     
 
     
@@ -110,6 +125,9 @@ export const starbucksTheme: DefaultTheme = {
     navbarbackground: '#1E3932',
     navbarborder: 'none',
     
+    categorytagbackground: '#F6F5EF',
 
+    articletable: '#95aea3',
+    articlebacktick: '#785c45',
   }
 }

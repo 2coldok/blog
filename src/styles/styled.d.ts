@@ -26,6 +26,11 @@ declare module 'styled-components' {
       backgroundimage: string;
       navbarbackground: string;
       navbarborder: string;
+
+      categorytagbackground: string;
+
+      articletable: string;
+      articlebacktick: string;
       
     };
   }

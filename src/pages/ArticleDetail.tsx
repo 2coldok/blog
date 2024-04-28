@@ -55,7 +55,6 @@ export default function ArticleDetail() {
   const keywords = getTags(issue.milestone?.title).join(', ');
   const pageDescription = body.slice(0, 147).concat('...');
 
-  
   return (
     <>
       <Helmet>
@@ -177,7 +176,7 @@ const TagContainer = styled.div`
   letter-spacing: 0.5px;
   & > button {
     margin: 0.3rem;
-    background-color: ${({theme}) => theme.colors.background};
+    background-color: ${({theme}) => theme.colors.categorytagbackground};
     color: ${({theme}) => theme.colors.clicked};
     border: 1.5px solid ${({theme}) => theme.colors.clicked};
     
