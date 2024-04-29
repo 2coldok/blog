@@ -1,8 +1,8 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { githubTheme, starbucksTheme, starcraftTheme } from "../styles/Theme";
+import { githubTheme, starbucksTheme, starcraftTheme, colorweaknessTheme } from "../styles/Theme";
 
-type ThemeName = 'github' | 'starcraft' | 'starbucks';
+type ThemeName = 'github' | 'starcraft' | 'starbucks' | 'colorweakness';
 export type ThemeContextType = {
   themeName: ThemeName;
   setThemeName: (themeName: ThemeName) => void;
@@ -24,6 +24,7 @@ export function ThemeProvider({ children }: { children: ReactNode}) {
     github: githubTheme,
     starcraft: starcraftTheme,
     starbucks: starbucksTheme,
+    colorweakness: colorweaknessTheme,
   };
 
   return (

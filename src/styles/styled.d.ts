@@ -22,7 +22,7 @@ declare module 'styled-components' {
       bigsearchtext: string;
       bigsearchbackground: string;
       pageindicatorborder: string;
-      pageindicatorclicked: string;
+      pageindicatorclicked: string; 
       backgroundimage: string;
       navbarbackground: string;
       navbarborder: string;
@@ -33,6 +33,8 @@ declare module 'styled-components' {
       articletable: string;
       articlebacktick: string;
       
+      expired: string;
+      listbottomborder: string;
     };
   }
 }

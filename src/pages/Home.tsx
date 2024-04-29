@@ -80,7 +80,7 @@ const ArticleList = styled.li`
   border-radius: 0.3em;
   
   padding: 0.3rem 1.3rem;
-  border-bottom: 1px solid ${({theme}) => theme.colors.border};
+  border-bottom: 1px solid ${({theme}) => theme.colors.listbottomborder};
   background-color: ${({theme}) => theme.colors.headline};
   
   & > h2 {

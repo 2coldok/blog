@@ -175,12 +175,12 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
     
 
     &.prev {
-      color: ${(props) => props.$currentpageindex === 0 ? props.theme.colors.border : props.theme.colors.clicked };
+      color: ${(props) => props.$currentpageindex === 0 ? props.theme.colors.expired : props.theme.colors.clicked };
       background-color: none;
     }
 
     &.next {
-      color: ${(props) => props.$currentpageindex === (props.$totalpages - 1) ? props.theme.colors.border : props.theme.colors.clicked};
+      color: ${(props) => props.$currentpageindex === (props.$totalpages - 1) ? props.theme.colors.expired : props.theme.colors.clicked};
       background-color: none;
     }
 
@@ -216,8 +216,9 @@ const PageIndicator = styled.button<{ $active: boolean }>`
   color: ${({theme}) => theme.colors.text};
   width: 2.5rem;
   margin: 0 5px;
+  
   background-color: ${(prop) => (prop.$active ? prop.theme.colors.pageindicatorclicked : '')};
-  border:1px solid ${({theme}) => theme.colors.pageindicatorborder};
+  border: 1px solid ${(prop) => prop.$active ? prop.theme.colors.pageindicatorborder : 'transparent'};
   @media (max-width: 800px) {
     //important 안하면 안없어짐.
     display: none !important;

@@ -7,6 +7,7 @@ import { musicOff } from '../redux/slice/musicSlice';
 import { CgClose } from "react-icons/cg";
 import { useEffect, useState } from 'react';
 import { MusicSkeletonLoader } from '../util/skeleton/MusicSkeletonLoader';
+import { useThemeChange } from '../hook/ThemeHook';
 
 export default function MusicPlayer() {
   const youtubeUrl = useSelector((state: RootState) => state.music.url);
@@ -14,7 +15,7 @@ export default function MusicPlayer() {
   const [loading, setLoading] = useState(true);
   
   const dispatch = useDispatch();
-  
+  const { themeName } = useThemeChange();
   useEffect(() => {
     setYoutubeEmbedURL(`https://www.youtube.com/embed/${getVideoId(youtubeUrl)}`);
     setLoading(true);
@@ -35,7 +36,7 @@ export default function MusicPlayer() {
         src={youtubeEmbedURL}
         onLoad={() => setLoading(false)} 
       ></Iframe>
-      <Button onClick={handleClick} $loading={loading}><CgClose /></Button>
+      <Button onClick={handleClick} $loading={loading} $themename={themeName}><CgClose /></Button>
     </PlayerWrapper>
   );
 }
@@ -85,7 +86,7 @@ const Iframe = styled.iframe`
 
 `;
 
-const Button = styled.button<{ $loading: boolean }>`
+const Button = styled.button<{ $loading: boolean, $themename: string }>`
   width: 50px;
   height: 100%;
   border-top-right-radius: 0.5rem;
@@ -95,7 +96,7 @@ const Button = styled.button<{ $loading: boolean }>`
   background-color: black;
   &> svg {
     font-size: 30px;
-    color: red;
+    color: ${props => props.$themename === 'colorweakness' ? 'white' : 'red'};
   }
   &:hover {
     filter: none;

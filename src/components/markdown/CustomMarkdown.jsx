@@ -1,10 +1,12 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { oneDark, a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import styled from 'styled-components';
+import { useThemeChange } from "../../hook/ThemeHook";
 
 export default function CustomMarkdown({ data }) {
+  const { themeName } = useThemeChange();
   return (
     <Container>
       <ReactMarkdown
@@ -21,7 +23,7 @@ export default function CustomMarkdown({ data }) {
                   ) : match ? (
                     // 코드 (```)
                     <StyledSyntaxHighlighter
-                      style={oneDark}
+                      style={themeName === 'colorweakness' ? a11yDark : oneDark}
                       language={match[1]}
                       PreTag="div"
                       {...rest}
@@ -106,7 +108,7 @@ const Container = styled.div`
 
   // 모바일 폰트사이즈, 패딩
   @media (max-width: 900px) {
-    font-size: 0.9em;
+    font-size: 1em;
     padding: 0.2em;
   }
   /* border: 1px solid ${({theme}) => theme.colors.border}; */
@@ -159,6 +161,11 @@ const InlineCode = styled.code`
 // 코드 ```블록 폰트 사이즈
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
   font-size: 0.9em;
+
+  @media (max-width: 900px) {
+    padding-left: 0.3em !important;
+  }
+  
 `
 
 

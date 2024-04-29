@@ -7,12 +7,12 @@ import { useThemeChange } from '../hook/ThemeHook';
 
 export default function ThemeMode() {
   const { themeName, setThemeName } = useThemeChange();
-
+  console.log(themeName);
   return (
     <StyledContainer $theme={themeName}>
       <button className='github' onClick={() => setThemeName('github')}><IoLogoGithub />깃허브: Default</button>
       <button className='starcraft' onClick={() => setThemeName('starcraft')}><HiOutlineRocketLaunch />스타크래프트</button>
-      <button className='colorweakness'><VscColorMode />색약모드</button>
+      <button className='colorweakness' onClick={() => setThemeName('colorweakness')}><VscColorMode />색약모드</button>
       <button className='starbucks' onClick={() => setThemeName('starbucks')}><SiStarbucks />스타벅스</button>
     </StyledContainer>
   );

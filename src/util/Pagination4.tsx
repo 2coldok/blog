@@ -177,11 +177,11 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
     padding: 0.5em;
 
     &.prev {
-      color: ${(props) => props.$currentpageindex === 0 ? props.theme.colors.border : props.theme.colors.clicked };
+      color: ${(props) => props.$currentpageindex === 0 ? props.theme.colors.expired : props.theme.colors.clicked };
     }
 
     &.next {
-      color: ${(props) => props.$currentpageindex === (props.$totalpages - 1) ? props.theme.colors.border : props.theme.colors.clicked};
+      color: ${(props) => props.$currentpageindex === (props.$totalpages - 1) ? props.theme.colors.expired : props.theme.colors.clicked};
     }
 
     & > svg {
@@ -200,7 +200,7 @@ const PageIndicatorContainer = styled.div<{$currentpageindex: number, $totalpage
     font-weight: 700;
 
     &:hover {
-      filter: brightness(200%);
+      /* filter: brightness(200%); */
       cursor: pointer;
       
 
@@ -217,11 +217,15 @@ const PageIndicator = styled.button<{ $active: boolean }>`
   width: 2.5rem;
   margin: 0 5px;
   background-color: ${(prop) => (prop.$active ? prop.theme.colors.pageindicatorclicked : '')};
-  border:1px solid ${({theme}) => theme.colors.pageindicatorborder};
-  
+  border: 1px solid ${(prop) => prop.$active ? prop.theme.colors.pageindicatorborder : 'transparent'};
+
   @media (max-width: 800px) {
     //important 안하면 안없어짐.
     display: none !important;
+  }
+
+  &:hover {
+    filter: none;
   }
 `;
 
