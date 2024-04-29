@@ -20,7 +20,7 @@ export default function CustomMarkdown({ data }) {
                     </InlineCode>
                   ) : match ? (
                     // 코드 (```)
-                    <SyntaxHighlighter
+                    <StyledSyntaxHighlighter
                       style={oneDark}
                       language={match[1]}
                       PreTag="div"
@@ -31,7 +31,7 @@ export default function CustomMarkdown({ data }) {
                         .replace(/\n$/, "")
                         .replace(/\n&nbsp;\n/g, "")
                         .replace(/\n&nbsp\n/g, "")}
-                    </SyntaxHighlighter>    
+                    </StyledSyntaxHighlighter>    
                   ) : (
                     <SyntaxHighlighter2
                       style={oneDark}
@@ -93,7 +93,7 @@ const Container = styled.div`
   //깃발
   background-color: ${({theme}) => theme.colors.block};
   //
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 400;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
@@ -103,9 +103,17 @@ const Container = styled.div`
   /* word-spacing: 1px; */
   line-height: 2.1;
 	padding: 1em 1.5em;
+
+  // 모바일 폰트사이즈, 패딩
+  @media (max-width: 900px) {
+    font-size: 0.9em;
+    padding: 0.2em;
+  }
   /* border: 1px solid ${({theme}) => theme.colors.border}; */
   border-top: none;
   
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   & > ul {
     list-style: disc outside none;
@@ -147,6 +155,12 @@ const InlineCode = styled.code`
   border-radius: 3px;
   display: inline !important;
 `
+
+// 코드 ```블록 폰트 사이즈
+const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
+  font-size: 0.9em;
+`
+
 
 // 백틱으로 감싼 inline code block 스타일링
 // 대신 코드블럭시 이름을 명확히 명시해야 함.

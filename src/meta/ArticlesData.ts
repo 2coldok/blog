@@ -6,6 +6,7 @@ import { TbBrandNextjs } from "react-icons/tb"; // nextjs
 import { SiJest } from "react-icons/si"; // jset
 import { GiFireBottle } from "react-icons/gi"; // 실험실
 import { FaNodeJs } from "react-icons/fa"; // express
+import { GiHummingbird } from "react-icons/gi"; // 프로그래머스
 
 export const iconMapping = {
   react: FaReact,
@@ -16,6 +17,7 @@ export const iconMapping = {
   jest: SiJest,
   laboratory: GiFireBottle,
   express: FaNodeJs,
+  programmers: GiHummingbird,
 };
 
 interface IArticleData {
@@ -27,7 +29,7 @@ interface IArticleData {
 }
 
 // 이 순서대로 메뉴바에서 sort 됨.
-export const ArticleSortData = ['frontend', 'backend'];
+export const ArticleSortData = ['frontend', 'backend', 'coding test'];
 
 export const ArticlesData: IArticleData[] = [
   {
@@ -85,5 +87,12 @@ export const ArticlesData: IArticleData[] = [
     category: 'express',
     sort: 'backend',
     icon: 'express',
+  },
+  {
+    id: 9,
+    name: 'Programmers',
+    category: 'programmers',
+    sort: 'coding test',
+    icon: 'programmers',
   }
 ];

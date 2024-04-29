@@ -10,6 +10,7 @@ import { setMenuModal } from "../../redux/slice/modalSlice";
 
 import styled from "styled-components";
 
+
 export default function Menu() {
   const dispatch = useDispatch();
   const menuModal = useSelector((state: RootState) => state.modal.menuModal);

@@ -118,7 +118,7 @@ const StyledContainer = styled.div`
   
   
   @media (max-width: 768px) {
-    width: 95%;
+    width: 99%;
     min-width: 300px;
   }
 `
