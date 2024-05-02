@@ -52,6 +52,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; // footer 생성시 x overflow생성됨
     
     // font style
     font-family: 'Roboto', sans-serif;

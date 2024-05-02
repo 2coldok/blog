@@ -1086,6 +1086,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-is@npm:^18":
+  version: 18.3.0
+  resolution: "@types/react-is@npm:18.3.0"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10c0/0fdc950981c36100cc3c1692081d62538671c8e4a431b64f80c452c6f67b7bcd569542dffeb6b4a4b13565a2037bc963b6bf64c4ae5623c64ffa2935b6ecfb21
+  languageName: node
+  linkType: hard
+
 "@types/react-redux@npm:^7.1.33":
   version: 7.1.33
   resolution: "@types/react-redux@npm:7.1.33"
@@ -1497,6 +1506,7 @@ __metadata:
     "@types/react": "npm:^18.2.66"
     "@types/react-dom": "npm:^18.2.22"
     "@types/react-helmet": "npm:^6"
+    "@types/react-is": "npm:^18"
     "@types/react-redux": "npm:^7.1.33"
     "@types/react-router-dom": "npm:^5.3.3"
     "@types/react-syntax-highlighter": "npm:^15.5.11"
@@ -1514,6 +1524,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-helmet: "npm:^6.1.0"
     react-icons: "npm:^5.0.1"
+    react-is: "npm:^18.3.1"
     react-markdown: "npm:^9.0.1"
     react-redux: "npm:^9.1.0"
     react-router-dom: "npm:^6.22.3"
@@ -4213,6 +4224,13 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 10c0/33977da7a5f1a287936a0c85639fec6ca74f4f15ef1e59a6bc20338fc73dc69555381e211f7a3529b8150a1f71e4225525b41b60b52965bda53ce7d47377ada1
+  languageName: node
+  linkType: hard
+
+"react-is@npm:^18.3.1":
+  version: 18.3.1
+  resolution: "react-is@npm:18.3.1"
+  checksum: 10c0/f2f1e60010c683479e74c63f96b09fb41603527cd131a9959e2aee1e5a8b0caf270b365e5ca77d4a6b18aae659b60a86150bb3979073528877029b35aecd2072
   languageName: node
   linkType: hard
 

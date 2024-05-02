@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import Navbar from "./components/Navbar";
 import MusicPlayer from "./components/MusicPlayer";
 import styled from "styled-components";
+import MyFooter from "./components/MyFooter";
+
 
 export default function App() {
   const navbarContainerRef = useRef<HTMLDivElement>(null);
@@ -28,6 +30,10 @@ export default function App() {
       <MainContentsContainer $margintop={navbarContainerHeight}>
         <Outlet />
       </MainContentsContainer>
+
+      <FooterContainer>
+        <MyFooter />
+      </FooterContainer>
     </>
   );
 }
@@ -56,3 +62,10 @@ const MainContentsContainer = styled.main<{ $margintop: number }>`
   // navbar container 의 전체 높이를 할당받아 상위 마진을 부여한다.
   margin-top: ${(prop) => prop.$margintop}px;
 `;
+
+const FooterContainer = styled.footer`
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  width: 100%;
+`

@@ -35,6 +35,12 @@ declare module 'styled-components' {
       
       expired: string;
       listbottomborder: string;
+
+      footerbackground: string;
+      footersubtitle: string;
+      footerlinkborder: string;
+      footerlinkbackground: string;
+      footerlinktext: string;
     };
   }
 }

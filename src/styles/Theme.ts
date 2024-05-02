@@ -34,6 +34,12 @@ export const githubTheme: DefaultTheme = {
 
     expired: '#454C56',
     listbottomborder: '#454C56',
+
+    footerbackground: 'transparent',
+    footersubtitle: '#C5D1DE',
+    footerlinkborder: '#444C56',
+    footerlinkbackground: '#22272E', 
+    footerlinktext: '#717E8B',
   }
 };
 
@@ -78,6 +84,12 @@ export const starcraftTheme: DefaultTheme = {
 
     expired: '#750002',
     listbottomborder: '#750002',
+
+    footerbackground: 'transparent',
+    footersubtitle: '#C2A607',
+    footerlinkborder: '#750002',
+    footerlinkbackground: 'rgba(16, 11, 10, 0.9)', 
+    footerlinktext: '#41A822',
   }
 }
 
@@ -143,6 +155,12 @@ export const starbucksTheme: DefaultTheme = {
 
     expired: '#076242',
     listbottomborder: '#076242',
+
+    footerbackground: 'transparent',
+    footersubtitle: '#F6F5EF',
+    footerlinkborder: '#486666',
+    footerlinkbackground: '#39494D', 
+    footerlinktext: '#6CACA0',
   }
 }
 
@@ -191,5 +209,10 @@ export const colorweaknessTheme: DefaultTheme = {
     expired: '#333336',
     listbottomborder: '#CED4DA',
     
+    footerbackground: 'transparent',
+    footersubtitle: '#1D1D1F',
+    footerlinkborder: '#1D1D1F',
+    footerlinkbackground: 'transparent', 
+    footerlinktext: '#1D1D1F',
   }
 }

@@ -83,7 +83,6 @@ const Iframe = styled.iframe`
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   border-right: none;
-
 `;
 
 const Button = styled.button<{ $loading: boolean, $themename: string }>`

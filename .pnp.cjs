@@ -34,6 +34,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:18.2.74"],\
           ["@types/react-dom", "npm:18.2.24"],\
           ["@types/react-helmet", "npm:6.1.11"],\
+          ["@types/react-is", "npm:18.3.0"],\
           ["@types/react-redux", "npm:7.1.33"],\
           ["@types/react-router-dom", "npm:5.3.3"],\
           ["@types/react-syntax-highlighter", "npm:15.5.11"],\
@@ -51,6 +52,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:18.2.0"],\
           ["react-helmet", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:6.1.0"],\
           ["react-icons", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:5.0.1"],\
+          ["react-is", "npm:18.3.1"],\
           ["react-markdown", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:9.0.1"],\
           ["react-redux", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:9.1.0"],\
           ["react-router-dom", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:6.22.3"],\
@@ -1426,6 +1428,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/react-is", [\
+      ["npm:18.3.0", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-react-is-npm-18.3.0-7bc157ad04-10c0.zip/node_modules/@types/react-is/",\
+        "packageDependencies": [\
+          ["@types/react-is", "npm:18.3.0"],\
+          ["@types/react", "npm:18.2.74"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/react-redux", [\
       ["npm:7.1.33", {\
         "packageLocation": "../../.yarn/berry/cache/@types-react-redux-npm-7.1.33-b668ae02f3-10c0.zip/node_modules/@types/react-redux/",\
@@ -1982,6 +1994,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:18.2.74"],\
           ["@types/react-dom", "npm:18.2.24"],\
           ["@types/react-helmet", "npm:6.1.11"],\
+          ["@types/react-is", "npm:18.3.0"],\
           ["@types/react-redux", "npm:7.1.33"],\
           ["@types/react-router-dom", "npm:5.3.3"],\
           ["@types/react-syntax-highlighter", "npm:15.5.11"],\
@@ -1999,6 +2012,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:18.2.0"],\
           ["react-helmet", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:6.1.0"],\
           ["react-icons", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:5.0.1"],\
+          ["react-is", "npm:18.3.1"],\
           ["react-markdown", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:9.0.1"],\
           ["react-redux", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:9.1.0"],\
           ["react-router-dom", "virtual:c6dcce817fa225290e033ab3df9d032741dc228bb28c9cbb4719875ef6095c1c8f4a1ecb6d1cce6f1119ad7c9bb93c31bc307a4e235fab5627d039ca42e55b65#npm:6.22.3"],\
@@ -5025,6 +5039,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/react-is-npm-16.13.1-a9b9382b4f-10c0.zip/node_modules/react-is/",\
         "packageDependencies": [\
           ["react-is", "npm:16.13.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:18.3.1", {\
+        "packageLocation": "../../.yarn/berry/cache/react-is-npm-18.3.1-370a81e1e9-10c0.zip/node_modules/react-is/",\
+        "packageDependencies": [\
+          ["react-is", "npm:18.3.1"]\
         ],\
         "linkType": "HARD"\
       }]\
