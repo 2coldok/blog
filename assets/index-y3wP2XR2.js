@@ -1328,6 +1328,9 @@ object-assign
     ::-webkit-scrollbar-corner {
       background: transparent;
     }
+    
+    background-color: ${({theme:e})=>e.colors.background};
+    background-image: ${({theme:e})=>e.colors.backgroundimage};
   }
   
   body {
