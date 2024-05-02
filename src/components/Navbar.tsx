@@ -1,4 +1,3 @@
-import { FaCat } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 import ToolBox from "./ToolBox";
@@ -22,8 +21,8 @@ export default function Navbar() {
       <LeftContainer>
         <Menu />
         <HomeButton onClick={handleHomeButtonClick}>
-          <FaCat />
-          <span>Chan's Blog</span>
+          <img src="/blog/image/mylogo.png" alt="My Logo" />
+          <span>Chanwoong</span>
         </HomeButton>
       </LeftContainer>
 
@@ -70,11 +69,19 @@ const HomeButton = styled.button`
   padding: 0;
 
   & > span {
-    font-size: 2em;
+    font-size: 1.6em;
+    margin-left: 2px;
   }
 
   & > svg {
     font-size: 2.5em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+  }
+
+  & > img {
+    width: 2em;
+    height: 2em;
     margin-left: 0.3em;
     margin-right: 0.3em;
   }

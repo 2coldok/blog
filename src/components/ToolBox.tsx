@@ -86,6 +86,7 @@ const BigSearchButton = styled.button`
   border-radius: 2em;
 
   & > svg {
+    color: ${({theme}) => theme.colors.bigsearchtext};
     font-size: 1.5em;
     margin-right: 0.3em;
   }

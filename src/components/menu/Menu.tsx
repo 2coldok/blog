@@ -1,4 +1,3 @@
-import { LuMenu } from "react-icons/lu";
 import MenuList from "./MenuList";
 import { DrawerModal } from "../DrawerModal";
 
@@ -7,8 +6,9 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { setMenuModal } from "../../redux/slice/modalSlice";
-
+import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import styled from "styled-components";
+
 
 
 export default function Menu() {
@@ -18,7 +18,7 @@ export default function Menu() {
   return (
     <>
       <MenuButton onClick={() => dispatch(setMenuModal(true))}>
-        <LuMenu />
+        <HiOutlineMenuAlt1 />
       </MenuButton>
   
       <DrawerModal active={menuModal} onClose={() => dispatch(setMenuModal(false))} direction="left">
@@ -33,9 +33,9 @@ const MenuButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin-right: 0.8em;
+  margin-right: 1em;
 
   & > svg {
-    font-size: 3.2em;
+    font-size: 3em;
   }
 `;
