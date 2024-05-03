@@ -59,7 +59,7 @@ const MainContentsContainer = styled.main<{ $margintop: number }>`
     width: 100%;
   }
   height: 100%;
-  max-width: 1100px; // #root 에서 max-width: 1100px 해두었지만, 안정장치로 설정해둠.
+  max-width: 1000px; //
   
   // navbar에 music player가 생길 수도 있기에
   // navbar container 의 전체 높이를 할당받아 상위 마진을 부여한다.
@@ -71,5 +71,6 @@ const FooterContainer = styled.footer`
   /* justify-content: center; */
   /* align-items: center; */
   width: 100%;
+  
   /* max-width: 900px; */
 `

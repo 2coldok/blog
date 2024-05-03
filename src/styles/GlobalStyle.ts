@@ -113,7 +113,7 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1100px;
+    /* max-width: 1100px; */
     
 
     // 깃발

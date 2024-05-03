@@ -148,8 +148,11 @@ const TitleContainer = styled.div`
   /* border-bottom: 1px solid ${({theme}) => theme.colors.border}; */
   background-color: ${({theme}) => theme.colors.headline};
   
+  
+  
   & > h1 {
     color: ${({theme}) => theme.colors.text};
+    
     word-wrap: break-word;      /* 긴 단어가 경계를 넘어가면 줄바꿈 */
     overflow-wrap: break-word;  /* 과도하게 긴 단어를 다음 줄로 넘기도록 함 */
     white-space: normal;        /* 공백을 기준으로 자동 줄바꿈 */
@@ -204,9 +207,9 @@ const TagContainer = styled.div`
 
 /////////////////////////////////////////////////////////
 const OtherIssuesContainer = styled.section`
-  /* background-color: ${({theme}) => theme.colors.headline}; */
+  background-color: ${({theme}) => theme.colors.headline};
   // 깃발
-  background-color: ${({theme}) => theme.colors.block};
+  /* background-color: ${({theme}) => theme.colors.block}; */
 
   display: flex;
   flex-direction: column;
@@ -215,7 +218,7 @@ const OtherIssuesContainer = styled.section`
 
   width: 100%;
 
-  border-radius: 1em;
+  border-radius: 0.5rem;
   border: 1px solid ${({theme}) => theme.colors.border};
 
   & > h2 {

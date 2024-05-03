@@ -4,6 +4,7 @@ export const githubTheme: DefaultTheme = {
   colors: {
     // background: '#22272E',
     background: '#1C2128',
+    
     text: '#C5D1DE',
     articletext: '#C5D1DE',
     date: '#454C56',
@@ -25,7 +26,7 @@ export const githubTheme: DefaultTheme = {
     pageindicatorclicked: '#4588E1',
     backgroundimage: '',
     navbarbackground: '#1C2128',
-    navbarborder: 'none',
+    navbarborder: '#444C56',
     categorytagbackground: '#1C2128',
     categorytagtext: '#4588E1',
 
@@ -71,7 +72,7 @@ export const starcraftTheme: DefaultTheme = {
 
     bigsearchborder: '#1B1793',
     bigsearchtext: '#C2A607', 
-    bigsearchbackground: '',   
+    bigsearchbackground: '#131B39',   
     pageindicatorborder: '#750002',
     pageindicatorclicked: '#65221A',
     backgroundimage: "url('/blog/image/universe2.png')",
@@ -126,7 +127,7 @@ export const starbucksTheme: DefaultTheme = {
     // 어두운 초록
     block: '#1E3932',
     // 일단 회색
-    subtitle: 'gray',
+    subtitle: 'pink',
     
     tagbackground: '#076242',
     tagtext: '#FCE6EB',
@@ -149,7 +150,7 @@ export const starbucksTheme: DefaultTheme = {
     backgroundimage: '',
 
     navbarbackground: '#1E3932',
-    navbarborder: 'none',
+    navbarborder: '#2b4944',
     
     categorytagbackground: '#F6F5EF',
     categorytagtext: '#076242',

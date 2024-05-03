@@ -57,6 +57,8 @@ const StyledContainer = styled.ul`
   & > p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+    font-size: 0.8em;
+    font-weight: 800;
     color: ${({theme}) => theme.colors.subtitle};
   }
 

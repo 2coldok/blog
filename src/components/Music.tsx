@@ -7,6 +7,7 @@ import { setMusicModal } from '../redux/slice/modalSlice';
 
 import { useState } from 'react';
 
+
 export default function Music() {
   const dispatch = useDispatch();
   const [currentTrack, setCurrentTrack] = useState('');
@@ -24,7 +25,6 @@ export default function Music() {
       {MusicContents.map((music: IMusic) => (
         <>
           <TitleButton onClick={handleMusicClick(music.youtubeUrl, music.title)} $title={music.title} $track={currentTrack}>{music.title} - {music.singer}</TitleButton>
-          
         </>
       ))}
     </StyledContainer>
@@ -38,7 +38,6 @@ const StyledContainer = styled.div`
   
   
 `;
-
 
 
 // const CloseButton = styled.button`

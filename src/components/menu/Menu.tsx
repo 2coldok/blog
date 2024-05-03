@@ -33,7 +33,7 @@ const MenuButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin-right: 1.5em;
+  margin-right: 1.3em;
 
   & > svg {
     font-size: 3em;

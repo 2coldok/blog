@@ -130,6 +130,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  
 `;
 
 const ContentContainer = styled.div`

@@ -24,8 +24,9 @@ const StyledContainer = styled.div`
   width: 100%;
   background-color: ${({theme}) => theme.colors.footerbackground};
   
+  
+  
   margin-top: 3em;
-  margin-bottom: 1em;
   padding: 0.5em;
   
   & > h4 {
