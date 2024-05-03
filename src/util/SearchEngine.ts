@@ -64,7 +64,7 @@ export function getTags(milestoneTitle: string | undefined): string[] {
 }
 
 //
-export function getAccentedTarget(input: string, target: string): string {
+export function getAccentedTarget(input: string, target: string, accentColor: string): string {
   const array = input.split("").map((element, index) => {
     if (index !== input.length - 1) {
       return element + `\\s*`;
@@ -79,6 +79,6 @@ export function getAccentedTarget(input: string, target: string): string {
   if (matchResult === null) {
     return target;
   }
-
-  return target.replace(matchResult[0], `<span style="color: rgb(80, 255, 82);">${matchResult}</span>`);
+  // rgb(80, 255, 82)
+  return target.replace(matchResult[0], `<span style="color: ${accentColor};">${matchResult}</span>`);
 }

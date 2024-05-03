@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
-import styled from "styled-components";
+import React, { useContext, useEffect, useMemo, useState } from "react";
+import styled, { ThemeContext } from "styled-components";
 import { useGithubIssuesMananger } from "../hook/GithubIssuesManager";
 import { FetchedIssues } from "../api/GithubAPI";
 import { getAccentedTarget, getNormalizeStringInput, getNormalizeTagBundle, getTags, judgeTagMatchByHuristic, judgeTitleMatchByHuristic } from "../util/SearchEngine";
@@ -12,6 +12,9 @@ import { setFixedIndex } from "../redux/slice/fixedIndexSlice";
 // import { SlClose } from "react-icons/sl";
 
 export default function Search() {
+  const theme = useContext(ThemeContext);
+  const searchAccentColor = theme?.colors.searchaccent as string;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [text, setText] = useState("");
@@ -87,14 +90,14 @@ export default function Search() {
           
           <>
             <List onClick={handleClick(typeof issue.labels[0] === 'object' && issue.labels[0] !== null ? issue.labels[0].name : '', issue.title)}>
-              <Title><h2 dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, issue.title)}}></h2></Title>
+              <Title><h2 dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, issue.title, searchAccentColor)}}></h2></Title>
               
               {getTags(issue.milestone?.title).map((tag) => (
-                <Tag><span dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, tag)}}></span></Tag>
+                <Tag><span dangerouslySetInnerHTML={{ __html: getAccentedTarget(text, tag, searchAccentColor)}}></span></Tag>
               ))}
                 
             </List>
-            <Divider></Divider>
+            
           </>
         ))}
       </SearchListContainer>
@@ -168,8 +171,8 @@ const SearchListContainer = styled.ul`
 const List = styled.li`
   background-color: ${({theme}) => theme.colors.background};
   /* border: 2px solid ${({theme}) => theme.colors.block}; */
-  border-radius: 0.9em;
-  
+  /* border-radius: 0.9em; */
+  border-bottom: 1px solid ${({theme}) => theme.colors.border};
   
   width: 100%;
   
@@ -181,7 +184,6 @@ const List = styled.li`
 
   &:hover {
     cursor: pointer;
-    background-color: ${({theme}) => theme.colors.border};
   }
 `;
 
@@ -198,9 +200,9 @@ const Title = styled.div`
 `;
 // #4c4c9f
 const Tag = styled.div`
-  background-color: ${({theme}) => theme.colors.tagbackground};
-  color: ${({theme}) => theme.colors.tagtext};
-  border: 1px solid ${({theme}) => theme.colors.tagborder};
+  background-color: ${({theme}) => theme.colors.background};
+  color: ${({theme}) => theme.colors.text};
+  border: 1px solid ${({theme}) => theme.colors.text};
 
   
   display: inline-block;
@@ -212,12 +214,4 @@ const Tag = styled.div`
   font-weight: 800;
   border-radius: 2em;
   letter-spacing: 0.5px;
-`;
-
-const Divider = styled.div`
-  position: relative;
-  width: 100%;
-  height: 0.5px;
-  background-color: ${({theme}) => theme.colors.border};
-  margin: 2px 0;
 `;

@@ -64,7 +64,7 @@ const DrawerContainer = styled.div<{ $active: boolean, $direction: Direction }>`
   bottom: ${({ $direction }) => $direction === 'top' ? 'auto' : '0'};
   left: ${({ $direction }) => $direction === 'left' ? '0' : $direction === 'top' ? '0' : 'auto'};
   right: ${({ $direction }) => $direction === 'right' ? '0' : 'auto'};
-  width: ${({ $direction }) => $direction === 'top' ? '100%' : '250px'};
+  width: ${({ $direction }) => $direction === 'top' ? '100%' : '18%'};
   height: ${({ $direction }) => $direction === 'top' ? '250px' : '100%'};
   transform: ${({ $active, $direction }) =>
     !$active ? ($direction === 'left' ? 'translateX(-100%)' : $direction === 'right' ? 'translateX(100%)' : 'translateY(-100%)') : 'translateX(0)'};

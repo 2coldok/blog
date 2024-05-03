@@ -41,6 +41,8 @@ declare module 'styled-components' {
       footerlinkborder: string;
       footerlinkbackground: string;
       footerlinktext: string;
+      
+      searchaccent: string;
     };
   }
 }

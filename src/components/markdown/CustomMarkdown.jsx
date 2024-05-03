@@ -94,8 +94,8 @@ export default function CustomMarkdown({ data }) {
 const Container = styled.div`
   //깃발
   background-color: ${({theme}) => theme.colors.block};
-  //
-  font-size: 1.1em;
+  // 폰트사이즈
+  font-size: 1em;
   font-weight: 400;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
@@ -104,12 +104,12 @@ const Container = styled.div`
   /* letter-spacing: 0.1rem; */
   /* word-spacing: 1px; */
   line-height: 2.1;
-	padding: 1em 1.5em;
+	padding: 1em 1.2em;
 
   // 모바일 폰트사이즈, 패딩
   @media (max-width: 900px) {
-    font-size: 1em;
-    padding: 0.2em;
+    font-size: 0.9em;
+    padding: 0.3em;
   }
   /* border: 1px solid ${({theme}) => theme.colors.border}; */
   border-top: none;

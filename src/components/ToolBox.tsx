@@ -21,6 +21,7 @@ import ThemeMode from "./ThemeMode";
 import { RxChevronDown } from "react-icons/rx"; // 테마 클릭시 아래방향 아이콘
 
 
+
 export default function ToolBox() {
   // 서로 개별적인 상태인데 이렇게 묶어서 가져오면 한상태 변경이 다른 선택자의 호출까지 트리거함.
   // 번거롭더라도 따로 따로 useSelector를 이용해 상태 가져오기.

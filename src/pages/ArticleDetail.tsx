@@ -84,6 +84,8 @@ export default function ArticleDetail() {
           <CustomMarkdown data={issue.body} />
         </IssueContainer>
         
+
+        
         <OtherIssuesContainer>
           <h2>{category}의 또다른 글</h2>
           <MiniPagination
@@ -97,8 +99,9 @@ export default function ArticleDetail() {
             )) || []}
           />  
         </OtherIssuesContainer>  
-
         <Comments />
+
+        
 
       </StyledContainer>
     </>
@@ -111,16 +114,16 @@ const StyledContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  /* min-height: 800px; */
+  min-height: 700px;
   /* padding: 1em; */
   margin-top: 1em;
 
   
   
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     width: 99%;
     min-width: 300px;
-  }
+  } */
 `
 
 const IssueContainer = styled.article`
@@ -129,7 +132,7 @@ const IssueContainer = styled.article`
   /* background-color: ${({theme}) => theme.colors.block}; */
   border-radius: 1rem;
   margin-bottom: 1em;
-  border: 1px solid ${({theme}) => theme.colors.border};
+  /* border: 1px solid ${({theme}) => theme.colors.border} */
   
 `
 
@@ -138,12 +141,11 @@ const TitleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
+  border-radius: 0.5rem;
   
   padding: 0.3rem;
   /* border: 1px solid ${({theme}) => theme.colors.border}; */
-  border-bottom: 1px solid ${({theme}) => theme.colors.border};
+  /* border-bottom: 1px solid ${({theme}) => theme.colors.border}; */
   background-color: ${({theme}) => theme.colors.headline};
   
   & > h1 {

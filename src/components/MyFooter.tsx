@@ -20,7 +20,8 @@ export default function MyFooter() {
 }
 
 const StyledContainer = styled.div`
-  
+  text-align: center;
+  width: 100%;
   background-color: ${({theme}) => theme.colors.footerbackground};
   
   margin-top: 3em;
@@ -43,5 +44,9 @@ const StyledContainer = styled.div`
     background-color: ${({theme}) => theme.colors.footerlinkbackground};
     color : ${({theme}) => theme.colors.footerlinktext};
     text-decoration: none;
+
+    &:hover {
+      filter: brightness(125%);
+    }
   }
 `;

@@ -46,15 +46,18 @@ const NavbarContainer = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   width: 100%;
-  max-width: 1100px;
 `;
 
 const MainContentsContainer = styled.main<{ $margintop: number }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 90%;
+  @media (max-width: 900px) {
+    width: 100%;
+  }
   height: 100%;
   max-width: 1100px; // #root 에서 max-width: 1100px 해두었지만, 안정장치로 설정해둠.
   
@@ -65,7 +68,8 @@ const MainContentsContainer = styled.main<{ $margintop: number }>`
 
 const FooterContainer = styled.footer`
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
+  /* justify-content: center; */
+  /* align-items: center; */
   width: 100%;
+  /* max-width: 900px; */
 `
