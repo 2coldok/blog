@@ -25,6 +25,7 @@ export default function Music() {
       {MusicContents.map((music: IMusic) => (
         <>
           <TitleButton onClick={handleMusicClick(music.youtubeUrl, music.title)} $title={music.title} $track={currentTrack}>{music.title} - {music.singer}</TitleButton>
+          <MusicDivder />
         </>
       ))}
     </StyledContainer>
@@ -74,3 +75,10 @@ const TitleButton = styled.button<{ $title: string, $track: string }>`
   }
 
 `;
+
+const MusicDivder = styled.div`
+  height: 0.5px;
+  background-color: ${({theme}) => theme.colors.border};
+  margin: 0 0.3em;
+  filter: brightness(80%);
+`
