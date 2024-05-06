@@ -44,6 +44,15 @@ export class GithubIssues {
     );
   }
 
+  getCategoryPostCount(category: string): number {
+    const count = this.getIssuesByCategory(category)?.length;
+
+    if (count === undefined) {
+      return 0;
+    }
+    
+    return count;
+  }
   getCategoryByTitle(title: string) {
     const issue =  this.issues?.find((issue) => issue.title === title);
     if (typeof issue?.labels[0] === "object" && issue.labels[0] !== null && "name" in issue.labels[0]) {

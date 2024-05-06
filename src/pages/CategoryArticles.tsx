@@ -35,7 +35,7 @@ export default function CategoryArticles() {
   
   return (
     <StyledContainer>
-      <h1><Icon />{`${category}`}</h1>
+      <h1><Icon />{`${category} (${githubIssuesManager?.getCategoryPostCount(category)})`}</h1>
 
       <Pagination4
         itemsPerPage={5}
