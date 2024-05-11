@@ -7,7 +7,6 @@ import MusicPlayer from "./components/MusicPlayer";
 import styled from "styled-components";
 import MyFooter from "./components/MyFooter";
 
-
 export default function App() {
   const navbarContainerRef = useRef<HTMLDivElement>(null);
   const musicToggle = useSelector((state: RootState) => state.music.toggle);
@@ -18,6 +17,19 @@ export default function App() {
     if (navbarContainerRef.current) {
       setNavbarContainerHeight(navbarContainerRef.current.offsetHeight);
     }
+
+    // const loadingElement = document.querySelector('.universe') as HTMLDivElement;
+    //   if (loadingElement) {
+    //     loadingElement.style.display = 'none';
+    //   }
+
+    setTimeout(() => {
+      const loadingElement = document.querySelector('.universe') as HTMLDivElement;
+      if (loadingElement) {
+        loadingElement.style.display = 'none';
+      }
+    }, 1500);
+
   }, [musicToggle]);
 
   return (
@@ -26,15 +38,16 @@ export default function App() {
         <Navbar />
         {musicToggle && <MusicPlayer />}
       </NavbarContainer>
-
+  
       <MainContentsContainer $margintop={navbarContainerHeight}>
         <Outlet />
       </MainContentsContainer>
-
+  
       <FooterContainer>
         <MyFooter />
-      </FooterContainer>
+     </FooterContainer>
     </>
+    
   );
 }
 

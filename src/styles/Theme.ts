@@ -42,7 +42,8 @@ export const githubTheme: DefaultTheme = {
     footerlinkbackground: '#22272E', 
     footerlinktext: '#717E8B',
 
-    searchaccent: '#4588E1',
+    // searchaccent: '#4588E1',
+    searchaccent: '#EC775C',
 
     scrolltrack: '#2C2C2C',
     scrollthumb: '#6B6B6B',
@@ -98,11 +99,12 @@ export const starcraftTheme: DefaultTheme = {
     footerlinkbackground: 'rgba(16, 11, 10, 0.9)', 
     footerlinktext: '#41A822',
 
-    searchaccent: '#A6B6E3',
+    // searchaccent: '#A6B6E3',
+    searchaccent: 'white',
 
     scrolltrack: 'rgba(16, 11, 10, 0.9)',
-    scrollthumb: 'transparent',
-    scrollborder: '#750002',
+    scrollthumb: 'black',
+    scrollborder: '#A20601',
   }
 }
 

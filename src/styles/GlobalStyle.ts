@@ -1,9 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-// 1. :root
-// 2. body
-// 3. #root
-
 const GlobalStyle = createGlobalStyle`
 
   // html
@@ -12,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     color-scheme: light dark; */
     ::-webkit-scrollbar {
-      width: 10px;
+      width: 12px;
       height: 10px;
     }
     ::-webkit-scrollbar-button {
@@ -62,7 +58,6 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     width: 100%;
     
-    background-color: ${({theme}) => theme.colors.background};
     color: ${({theme}) => theme.colors.text};
   }
 
