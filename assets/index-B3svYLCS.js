@@ -1375,7 +1375,7 @@ object-assign
     align-items: center;
     width: 100%;
     
-    background-color: ${({theme:e})=>e.colors.background};
+    /* background-color: ${({theme:e})=>e.colors.background}; */
     color: ${({theme:e})=>e.colors.text};
   }
 
