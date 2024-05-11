@@ -95,8 +95,8 @@ const Container = styled.div`
   //깃발
   background-color: ${({theme}) => theme.colors.block};
   // 폰트사이즈
-  font-size: 1em;
-  font-weight: 400;
+  font-size: 1.1em;
+  font-weight: 500;
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
   color: ${({theme}) => theme.colors.articletext};
@@ -108,7 +108,7 @@ const Container = styled.div`
 
   // 모바일 폰트사이즈, 패딩
   @media (max-width: 900px) {
-    font-size: 0.9em;
+    font-size: 0.95em;
     padding: 0.3em;
   }
   /* border: 1px solid ${({theme}) => theme.colors.border}; */

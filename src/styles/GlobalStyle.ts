@@ -1,14 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
+// 1. :root
+// 2. body
+// 3. #root
+
 const GlobalStyle = createGlobalStyle`
+
   // html
   :root {
-    /* background-color: red; */
-
     /* line-height: 1.5;
     font-weight: 400;
     color-scheme: light dark; */
-    // 스크롤바
     ::-webkit-scrollbar {
       width: 10px;
       height: 10px;
@@ -18,92 +20,38 @@ const GlobalStyle = createGlobalStyle`
       height: 0px;
     }
     ::-webkit-scrollbar-thumb {
-      background: #646464;
-      border: 0px none #ffffff;
+      /* background: #646464; */
+      background: ${({theme}) => theme.colors.scrollthumb};
+      border: 2px solid ${({theme}) => theme.colors.scrollborder};
       border-radius: 50px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #646464;
-    }
-    ::-webkit-scrollbar-thumb:active {
-      background: #939393;
+      /* border-radius: 50px; */
     }
     ::-webkit-scrollbar-track {
-      background: #292929;
+      background: ${({theme}) => theme.colors.scrolltrack};
       border: 0px none #ffffff;
       border-radius: 50px;
-    }
-    ::-webkit-scrollbar-track:hover {
-      background: #292929;
-    }
-    ::-webkit-scrollbar-track:active {
-      background: #292929;
-    }
-    ::-webkit-scrollbar-corner {
-      background: transparent;
     }
   }
   
   body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; // footer 생성시 x overflow생성됨
-    
-    // font style
-    font-family: 'Roboto', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
+    overflow-x: hidden; // by footer overflow-x
 
-    // 스크롤바
-    ::-webkit-scrollbar {
-      width: 10px;
-      height: 10px;
-    }
-    ::-webkit-scrollbar-button {
-      width: 0px;
-      height: 0px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #646464;
-      border: 0px none #ffffff;
-      border-radius: 50px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #646464;
-    }
-    ::-webkit-scrollbar-thumb:active {
-      background: #939393;
-    }
-    ::-webkit-scrollbar-track {
-      background: #292929;
-      border: 0px none #ffffff;
-      border-radius: 50px;
-    }
-    ::-webkit-scrollbar-track:hover {
-      background: #292929;
-    }
-    ::-webkit-scrollbar-track:active {
-      background: #292929;
-    }
-    ::-webkit-scrollbar-corner {
-      background: transparent;
-    }
-
-    // 깃발
     background-color: ${({theme}) => theme.colors.background};
     background-image: ${({theme}) => theme.colors.backgroundimage};
     background-size: cover; 
     background-repeat: no-repeat; 
     background-attachment: fixed; 
     background-position: center center;
-    //
+    
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
   }
 
   // App.tsx container
@@ -113,13 +61,8 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* max-width: 1100px; */
     
-
-    // 깃발
-    /* background-color: ${({theme}) => theme.colors.background}; */
-    //
-
+    background-color: ${({theme}) => theme.colors.background};
     color: ${({theme}) => theme.colors.text};
   }
 
@@ -137,8 +80,6 @@ const GlobalStyle = createGlobalStyle`
       cursor: pointer;
     }
   }
-
-  
 
   ul {
     list-style: none;

@@ -2,10 +2,28 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 // import { UtterancesSkeletonLoader } from '../util/skeleton/UtterancesSkeletonLoader';
 import styled from 'styled-components';
+import { useThemeChange } from '../hook/ThemeHook';
 
 const Comments = () => {
   const location = useLocation();
   // const [loading, setLoading] = useState(true);
+  const { themeName } = useThemeChange();
+  let utterancesTheme = 'dark-blue';
+
+  switch (themeName) {
+    case 'github': 
+      utterancesTheme = 'dark-blue';
+      break;
+    case 'colorweakness':
+      utterancesTheme = 'boxy-light';
+      break;
+    case 'starbucks':
+      utterancesTheme = 'gruvbox-dark';
+      break;
+    case 'starcraft':
+      utterancesTheme = 'github-dark-orange';
+      break;
+  }
 
 
   useEffect(() => {
@@ -22,7 +40,7 @@ const Comments = () => {
     script.setAttribute("repo", "2coldok/blog-comments");
     script.setAttribute("issue-term", "pathname"); 
     script.setAttribute("id", "utterances");
-    script.setAttribute("theme", "github-dark"); 
+    script.setAttribute("theme", `${utterancesTheme}`); 
     script.setAttribute("crossorigin", "anonymous");
 
     const currentUrl = window.location.origin + location.pathname + location.search;
@@ -36,7 +54,7 @@ const Comments = () => {
         scriptParentNode.removeChild(scriptParentNode.firstChild);
       }
     }  
-  }, [location.pathname, location.search]);
+  }, [location.pathname, location.search, utterancesTheme]);
 
   return (
     <>

@@ -43,6 +43,10 @@ export const githubTheme: DefaultTheme = {
     footerlinktext: '#717E8B',
 
     searchaccent: '#4588E1',
+
+    scrolltrack: '#2C2C2C',
+    scrollthumb: '#6B6B6B',
+    scrollborder: 'transparent',
   }
 };
 
@@ -95,6 +99,10 @@ export const starcraftTheme: DefaultTheme = {
     footerlinktext: '#41A822',
 
     searchaccent: '#A6B6E3',
+
+    scrolltrack: 'rgba(16, 11, 10, 0.9)',
+    scrollthumb: 'transparent',
+    scrollborder: '#750002',
   }
 }
 
@@ -168,6 +176,11 @@ export const starbucksTheme: DefaultTheme = {
     footerlinktext: '#6CACA0',
 
     searchaccent: '#FEA443',
+    
+    scrolltrack: '#26473F',
+    // scrollthumb: '#F6F5EF',
+    scrollthumb: 'pink',
+    scrollborder: '#076242',
   }
 }
 
@@ -222,5 +235,9 @@ export const colorweaknessTheme: DefaultTheme = {
     footerlinktext: '#1D1D1F',
 
     searchaccent: '#00E0E0',
+    
+    scrolltrack: '#EAEAEB',
+    scrollthumb: '#717171',
+    scrollborder: 'transparent',
   }
 }

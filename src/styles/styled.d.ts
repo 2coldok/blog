@@ -43,6 +43,10 @@ declare module 'styled-components' {
       footerlinktext: string;
       
       searchaccent: string;
+
+      scrolltrack: string;
+      scrollthumb: string;
+      scrollborder: string;
     };
   }
 }

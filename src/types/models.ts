@@ -71,10 +71,10 @@ export type Issue = {
   active_lock_reason: string;
   comments: number;
   pull_request?: {
-      url: string;
-      html_url: string;
-      diff_url: string;
-      patch_url: string;
+    url: string;
+    html_url: string;
+    diff_url: string;
+    patch_url: string;
   };
   closed_at: string;
   created_at: string;

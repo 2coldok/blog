@@ -32,12 +32,12 @@ const StyledContainer = styled.div`
   & > h4 {
     color: ${({theme}) => theme.colors.footersubtitle};
     margin-bottom: 0.4em;
-    font-size: 0.9em;
+    font-size: 0.7em;
   }
 
   & > a {
     display: inline-block;
-    font-size: 0.8em;
+    font-size: 0.6em;
     padding: 0.4em 0.7em;
     border-radius: 0.4em;
     margin: 0.3em 0.6em;
