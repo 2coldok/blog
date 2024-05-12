@@ -4,15 +4,15 @@ import styled from 'styled-components';
 // import { Pagination } from '../components/Pagenation';
 import koreanDateTimeFromISO from '../util/KoreanDateTImeFromISO';
 import { getTags } from '../util/SearchEngine';
-import { useDispatch } from 'react-redux';
-import { setFixedIndex } from '../redux/slice/fixedIndexSlice';
+// import { useDispatch } from 'react-redux';
+// import { setFixedIndex } from '../redux/slice/fixedIndexSlice';
 import { ArticlesData, iconMapping } from '../meta/ArticlesData';
 
 import Pagination4 from '../util/Pagination4';
 
 
 export default function CategoryArticles() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { category } = useParams();
   const { githubIssuesManager } = useGithubIssuesMananger();
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function CategoryArticles() {
     return <h1>category is undefined</h1>
   }
   const handleClick = (title: string) => () => {
-    dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, title)));
+    // dispatch(setFixedIndex(githubIssuesManager?.getIndexInCategoryByTitle(category, title)));
     navigate(`/${category}/${encodeURIComponent(title)}`);
     window.scrollTo(0, 0);
   }

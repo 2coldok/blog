@@ -2,38 +2,26 @@ import{ ReactNode, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { HiChevronLeft } from "react-icons/hi2";
 import { HiChevronRight } from "react-icons/hi2";
-import { useLocation } from 'react-router-dom';
-
 
 interface PaginationProps {
   items: ReactNode[];
   itemsPerPage: number;
+  initialPage: number; // 0page부터 시작
 }
 
-export default function MiniPagination({ items, itemsPerPage }: PaginationProps) {
+export default function MiniPagination({ items, itemsPerPage, initialPage }: PaginationProps) {
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const [currentPage, setCurrentPage] = useState(0);
   const [pageGroupIndex, setPageGroupIndex] = useState(0);  
-  //언마운트시 state 초기화
-  const location = useLocation();
+  
   useEffect(() => {
-    return () => {
-      setCurrentPage(0);
-    }
-  }, [location])
+    setCurrentPage(initialPage);
+
+  }, [initialPage]);
 
   const changePage = (newPage: number) => {
     setCurrentPage(newPage);
-    
   };
-
-  // const handleLeftClick = () => {
-  //   setCurrentPage((prev) => prev === 0 ? prev : prev - 1);
-  // };
-
-  // const handleRightClick = () => {
-  //   setCurrentPage((prev) => prev === (totalPages - 1) ? prev : prev + 1);
-  // };
 
   const handleRightClick = () => {
     setCurrentPage((prev) => {
@@ -64,7 +52,6 @@ export default function MiniPagination({ items, itemsPerPage }: PaginationProps)
     });
     // window.scrollTo(0, 0);
   };
-
 
   const renderPageIndicators = () => {
     const start = pageGroupIndex * 5;

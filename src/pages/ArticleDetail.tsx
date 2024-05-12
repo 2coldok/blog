@@ -14,6 +14,7 @@ import { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 // import Pagination4 from '../util/Pagination4';
 import MiniPagination from '../util/MiniPagination';
+import DEFAULT_BLOG_VALUES from '../constants/DefaultValues';
 
 
 export default function ArticleDetail() {
@@ -30,6 +31,11 @@ export default function ArticleDetail() {
   const decodedCategory = decodeURIComponent(category);
   const decodedTitle = decodeURIComponent(title);
   const issue = githubIssuesManager?.getIssueByTitle(decodedTitle);
+
+  // 해당 포스터의 mini pagination의 item per page = 3 에서의 페이지 구하기 (페이지 0부터 시작)
+  const indexInCategoryByTitle = githubIssuesManager?.getIndexInCategoryByTitle(category, decodedTitle) as number;
+  const initialPage = Math.ceil((indexInCategoryByTitle + 1) / DEFAULT_BLOG_VALUES.itemsPerPageInPagination) - 1;
+  
 
   if (!issue) {
     return <div>해당 이슈를 찾을 수 없습니다</div>
@@ -89,7 +95,8 @@ export default function ArticleDetail() {
         <OtherIssuesContainer>
           <h2>{category}의 또다른 글</h2>
           <MiniPagination
-            itemsPerPage={3}
+            itemsPerPage={DEFAULT_BLOG_VALUES.itemsPerPageInPagination}
+            initialPage={initialPage}
             
             items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
               <OtherIssuesList key={issue.id} onClick={handleTitleClick(issue.title)} style={{color: decodedTitle === issue.title ? theme?.colors.clicked : ''}}>
@@ -98,7 +105,7 @@ export default function ArticleDetail() {
               </OtherIssuesList>
             )) || []}
           />  
-        </OtherIssuesContainer>  
+        </OtherIssuesContainer>                                                              
         <Comments />
 
         

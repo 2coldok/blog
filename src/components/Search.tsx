@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { setSearchModal } from "../redux/slice/modalSlice";
 import { TbSearch } from "react-icons/tb"; // 검색
 import { IoCloseOutline } from "react-icons/io5"; // 닫기
-import { setFixedIndex } from "../redux/slice/fixedIndexSlice";
+// import { setFixedIndex } from "../redux/slice/fixedIndexSlice";
 // import { SlClose } from "react-icons/sl";
 
 export default function Search() {
@@ -29,9 +29,7 @@ export default function Search() {
   const handleClick = (category: string | undefined, title: string) => () => {
     dispatch(setSearchModal(false));
     navigate(`/${category}/${encodeURIComponent(title)}`);
-    const index = githubIssuesManager?.getIndexInCategoryByTitle(category!, title);
-    dispatch(setFixedIndex(index));
-    
+    window.scrollTo(0, 0);
   }
   const handleCloseClick = (e: React.MouseEvent) => {
     e.stopPropagation();
