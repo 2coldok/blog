@@ -13,23 +13,36 @@ export default function App() {
   
   const [navbarContainerHeight, setNavbarContainerHeight] = useState(60); // navbar height : 60px
 
+  // 로딩스피너
+  useEffect(() => {
+    const loadingBackground = document.querySelector('.loading-background') as HTMLDivElement;
+    const loadingContainer = document.querySelector('.loading-container') as HTMLDivElement;
+
+    const handleTransitionEnd = () => {
+      if (loadingBackground && loadingContainer) {
+        loadingBackground.style.display = 'none';
+        loadingContainer.style.display = 'none';
+      }
+    };
+
+    if (loadingContainer) {
+      loadingContainer.addEventListener('transitionend', handleTransitionEnd);
+    }  
+
+    loadingBackground.style.opacity = '0';
+    loadingContainer.style.opacity = '0';
+
+    return () => {
+      if (loadingContainer) {
+        loadingContainer.removeEventListener('transitionend', handleTransitionEnd);
+      }
+    };
+  }, [])
+
   useEffect(() => {
     if (navbarContainerRef.current) {
       setNavbarContainerHeight(navbarContainerRef.current.offsetHeight);
     }
-
-    // const loadingElement = document.querySelector('.universe') as HTMLDivElement;
-    //   if (loadingElement) {
-    //     loadingElement.style.display = 'none';
-    //   }
-
-    setTimeout(() => {
-      const loadingElement = document.querySelector('.universe') as HTMLDivElement;
-      if (loadingElement) {
-        loadingElement.style.display = 'none';
-      }
-    }, 1500);
-
   }, [musicToggle]);
 
   return (
