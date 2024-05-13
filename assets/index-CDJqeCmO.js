@@ -213,7 +213,7 @@ Error generating stack: `+a.message+`
   border-radius: ${({$direction:e})=>e==="left"?"0 1rem 1rem 0":e==="right"?"1rem 0 0 1rem":"0 0 1rem 1rem"};
   border: 1px solid ${({theme:e})=>e.colors.border};
   transition: transform 0.2s ease-in-out;
-`;function X$({active:e,onClose:t,children:r}){return M.useEffect(()=>{const n=window.getComputedStyle(document.body).overflow;return document.body.style.overflow=e?"hidden":n,()=>{document.body.style.overflow=n}},[e]),e?C.jsxs(C.Fragment,{children:[C.jsx(Z$,{$active:e,onClick:t}),C.jsx(Q$,{$active:e,children:r})]}):null}const Z$=re.div`
+`;function X$({active:e,onClose:t,children:r}){return M.useEffect(()=>{const n=window.getComputedStyle(document.body).overflow,i=a=>a.preventDefault();return e?(document.body.style.overflow="hidden",document.addEventListener("touchmove",i,{passive:!1})):(document.body.style.overflow=n,document.removeEventListener("touchmove",i)),()=>{document.body.style.overflow=n,document.removeEventListener("touchmove",i)}},[e]),e?C.jsxs(C.Fragment,{children:[C.jsx(Z$,{$active:e,onClick:t}),C.jsx(Q$,{$active:e,children:r})]}):null}const Z$=re.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
