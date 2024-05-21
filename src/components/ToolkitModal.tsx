@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 interface IToolkitModal {
@@ -8,6 +8,7 @@ interface IToolkitModal {
 }
 
 export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
+  const modalContainerRef = useRef<HTMLDivElement>(null);
 
   // 이벤트 전파 방지.
   // ModalOutside에서도 onClose를 이용해 모달 창을 닫는다. 그래서 여기에 이벤트 핸들러가 바인딩 되어있음.
@@ -20,12 +21,27 @@ export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
 
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = active ? 'hidden' : originalStyle;
+
+    const preventScrollOnOutside = (e: TouchEvent) => {
+      if (modalContainerRef.current && !modalContainerRef.current.contains(e.target as Node)) {
+        e.preventDefault();
+      }
+    };
+
+    if (active) {
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('touchmove', preventScrollOnOutside, { passive: false });
+    } else {
+      document.body.style.overflow = originalStyle;
+      document.removeEventListener('touchmove', preventScrollOnOutside);
+    }
 
     return () => {
       document.body.style.overflow = originalStyle;
-    }
-  }, [active])
+      document.removeEventListener('touchmove', preventScrollOnOutside);
+    };
+  }, [active]);
+
 
   // 조건부 렌더링 최적화.
   // active가 false일때 DOM에서 컴포넌트를 완전히 제거하기 위함.
@@ -34,7 +50,7 @@ export function ToolkitModal({ active, onClose, children }: IToolkitModal) {
   return (
     <>
       <ModalOutside $active={active} onClick={onClose}/>
-      <ModalContainer $active={active}>
+      <ModalContainer ref={modalContainerRef} $active={active}>
         {/* <CloseButton onClick={handleClick}>X</CloseButton> */}
         {children}
       </ModalContainer>

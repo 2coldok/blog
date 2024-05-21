@@ -42,7 +42,7 @@ export default function CategoryArticles() {
         items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
           <ArticleList onClick={handleClick(issue.title)}>
             <h2><span>#{array.length - index}</span> {issue.title}</h2>
-            <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
+            <p>{koreanDateTimeFromISO(issue.created_at)}</p>
             <Tag>
               <button>{githubIssuesManager.getCategoryByTitle(issue.title)}</button>
               {getTags(issue.milestone?.title).map((tag) => (

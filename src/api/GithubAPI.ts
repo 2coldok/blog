@@ -20,7 +20,7 @@ const octokit = new Octokit({
 export const getIssuesData = async (): Promise<IssuesData> => {
   return await octokit.request("GET /repos/{owner}/{repo}/issues", {
     owner: "2coldok",
-    repo: "react-blog",
+    repo: "blog-posts",
     headers: {
       "X-GitHub-Api-Version": "2022-11-28",
     },

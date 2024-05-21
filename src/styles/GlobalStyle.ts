@@ -48,6 +48,8 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+
+    padding-right: calc(100vw - 100%);
   }
 
   // App.tsx container

@@ -25,7 +25,7 @@ export default function Home() {
           <ArticleList onClick={handleTitleClick(githubIssuesManager.getCategoryByTitle(issue.title), issue.title)}>
             
             <h2><span>#{array.length - index}</span> {issue.title}</h2>
-            <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
+            <p>{koreanDateTimeFromISO(issue.created_at)}</p>
             <Tag>
               <button>{githubIssuesManager.getCategoryByTitle(issue.title)}</button>
               {getTags(issue.milestone?.title).map((tag) => (

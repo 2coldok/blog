@@ -79,7 +79,7 @@ export default function ArticleDetail() {
         <IssueContainer>
           <TitleContainer>
             <h1>{issue.title}</h1>
-            <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
+            <p>{koreanDateTimeFromISO(issue.created_at)}</p>
             <TagContainer>
               <button onClick={handleCategoryClick}>{category}</button>
               {getTags(issue.milestone?.title).map((tag) => (
@@ -101,7 +101,7 @@ export default function ArticleDetail() {
             items={githubIssuesManager?.getIssuesByCategory(category)?.map((issue, index, array) => (
               <OtherIssuesList key={issue.id} onClick={handleTitleClick(issue.title)} style={{color: decodedTitle === issue.title ? theme?.colors.clicked : ''}}>
                 <h3><span>#{array.length - index}</span> {issue.title}</h3>
-                <p>{koreanDateTimeFromISO(issue.updated_at)}</p>
+                <p>{koreanDateTimeFromISO(issue.created_at)}</p>
               </OtherIssuesList>
             )) || []}
           />  
