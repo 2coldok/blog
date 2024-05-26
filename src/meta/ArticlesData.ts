@@ -54,13 +54,13 @@ export const ArticlesData: IArticleData[] = [
   //   sort: 'Frontend',
   //   icon: 'typescript',
   // },
-  // {
-  //   id: 3,
-  //   name: 'JavaScript',
-  //   category: 'javascript',
-  //   sort: 'Frontend',
-  //   icon: 'javascript',
-  // },
+  {
+    id: 3,
+    name: 'JavaScript',
+    category: 'javascript',
+    sort: 'Frontend',
+    icon: 'javascript',
+  },
   // {
   //   id: 4,
   //   name: 'Jest',
