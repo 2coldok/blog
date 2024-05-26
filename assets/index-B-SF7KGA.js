@@ -1009,7 +1009,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   // 모바일 폰트사이즈, 패딩
   @media (max-width: 900px) {
     font-size: 0.95em;
-    padding: 0.3em;
+    padding: 0.7em;
   }
   /* border: 1px solid ${({theme:e})=>e.colors.border}; */
   border-top: none;
@@ -1035,6 +1035,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     max-width: 100% !important;
     overflow: auto !important;
   };
+
+  & > h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0;
+    border-bottom: 1.5px solid ${({theme:e})=>e.colors.border};
+  }
 
   & > tbody, td, tfoot, th, thead, tr {
   /* border-color: inherit !important; */
