@@ -9,6 +9,7 @@ import { FaNodeJs } from "react-icons/fa"; // express
 import { GiHummingbird } from "react-icons/gi"; // 프로그래머스
 import { IoIosGitNetwork } from "react-icons/io"; // 네트워크
 import { FaDatabase } from "react-icons/fa6"; // 자료구조
+import { BiErrorCircle } from "react-icons/bi"; // 에러
 
 
 
@@ -25,12 +26,13 @@ export const iconMapping = {
   programmers: GiHummingbird,
   network: IoIosGitNetwork,
   dataStructure: FaDatabase,
+  error: BiErrorCircle,
 };
 
 interface IArticleData {
   id: number;
   name: string;
-  category: string;
+  category: string; // github issue의 label 이름과 동일해야 함
   sort: string;
   icon: keyof typeof iconMapping;
 }
@@ -47,13 +49,13 @@ export const ArticlesData: IArticleData[] = [
     sort: 'Frontend',
     icon: 'react',
   },
-  // {
-  //   id: 2,
-  //   name: 'TypeScript',
-  //   category: 'typescript',
-  //   sort: 'Frontend',
-  //   icon: 'typescript',
-  // },
+  {
+    id: 2,
+    name: 'TypeScript',
+    category: 'typescript',
+    sort: 'Frontend',
+    icon: 'typescript',
+  },
   {
     id: 3,
     name: 'JavaScript',
@@ -116,5 +118,12 @@ export const ArticlesData: IArticleData[] = [
     category: 'network',
     sort: 'Computer Science',
     icon: 'network',
+  },
+  {
+    id: 12,
+    name: 'Error',
+    category: 'error',
+    sort: 'Frontend',
+    icon: 'error',
   }
 ];
