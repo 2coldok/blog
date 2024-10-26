@@ -10,9 +10,7 @@ import { GiHummingbird } from "react-icons/gi"; // 프로그래머스
 import { IoIosGitNetwork } from "react-icons/io"; // 네트워크
 import { FaDatabase } from "react-icons/fa6"; // 자료구조
 import { BiErrorCircle } from "react-icons/bi"; // 에러
-
-
-
+import { IoLogoHtml5 } from "react-icons/io"; // html
 
 export const iconMapping = {
   react: FaReact,
@@ -27,6 +25,7 @@ export const iconMapping = {
   network: IoIosGitNetwork,
   dataStructure: FaDatabase,
   error: BiErrorCircle,
+  html: IoLogoHtml5
 };
 
 interface IArticleData {
@@ -125,5 +124,12 @@ export const ArticlesData: IArticleData[] = [
     category: 'error',
     sort: 'Frontend',
     icon: 'error',
+  },
+  {
+    id: 13,
+    name: 'Html',
+    category: 'html',
+    sort: 'Frontend',
+    icon: 'html'
   }
 ];

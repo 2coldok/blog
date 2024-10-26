@@ -48,7 +48,8 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
-
+    
+    // 스크롤바 만큼 오른쪽 패딩 적용
     padding-right: calc(100vw - 100%);
   }
 
