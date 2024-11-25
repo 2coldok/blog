@@ -11,6 +11,8 @@ import { IoIosGitNetwork } from "react-icons/io"; // 네트워크
 import { FaDatabase } from "react-icons/fa6"; // 자료구조
 import { BiErrorCircle } from "react-icons/bi"; // 에러
 import { IoLogoHtml5 } from "react-icons/io"; // html
+import { PiLockKeyFill } from "react-icons/pi"; // security
+
 
 export const iconMapping = {
   react: FaReact,
@@ -25,20 +27,28 @@ export const iconMapping = {
   network: IoIosGitNetwork,
   dataStructure: FaDatabase,
   error: BiErrorCircle,
-  html: IoLogoHtml5
+  html: IoLogoHtml5,
+  security: PiLockKeyFill
 };
+
+// 이 순서대로 메뉴바에서 sort 됨.
+// 메뉴바에 보여질 큰 카테고리 이름
+export const ArticleSortData = ['Frontend', 'Backend', 'Computer Science', 'Coding Problem'];
 
 interface IArticleData {
   id: number;
+
+  // 메뉴바에 보여질 작은 카테고리 이름
   name: string;
-  category: string; // github issue의 label 이름과 동일해야 함
+
+  // github issue와 연동하기 위한 이름.
+  // label 이름과 동일해야 연동됨
+  category: string;
+  
+  // 메뉴바에 보여질 큰 카테고리 이름
   sort: string;
   icon: keyof typeof iconMapping;
 }
-
-// 이 순서대로 메뉴바에서 sort 됨.
-// export const ArticleSortData = ['Frontend', 'Backend', 'Coding Problem'];
-export const ArticleSortData = ['Frontend', 'Computer Science', 'Coding Problem'];
 
 export const ArticlesData: IArticleData[] = [
   {
@@ -61,6 +71,13 @@ export const ArticlesData: IArticleData[] = [
     category: 'javascript',
     sort: 'Frontend',
     icon: 'javascript',
+  },
+  {
+    id: 4,
+    name: 'Express',
+    category: 'express',
+    sort: 'Backend',
+    icon: 'express'
   },
   // {
   //   id: 4,
@@ -131,5 +148,12 @@ export const ArticlesData: IArticleData[] = [
     category: 'html',
     sort: 'Frontend',
     icon: 'html'
+  },
+  {
+    id: 14,
+    name: 'Security',
+    category: 'security',
+    sort: 'Backend',
+    icon: 'security'
   }
 ];

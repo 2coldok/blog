@@ -1,4 +1,4 @@
-import PoweredBy from "../meta/FooterData";
+// import PoweredBy from "../meta/FooterData";
 import styled from 'styled-components';
 
 export default function MyFooter() {
@@ -6,10 +6,10 @@ export default function MyFooter() {
   
   return (
     <StyledContainer>
-      <h4>Powered by</h4>
+      {/* <h4>Powered by</h4>
       {PoweredBy.map((element) => (
         <a href={element.href} target="_blank" rel="noopener noreferrer">{element.name}</a>
-      ))}
+      ))} */}
       <h4>Color theme is inspired by</h4>
       <a>Github Darkmode Theme</a>
       <a>Blizzard Video Game: StarCraft 1</a>
