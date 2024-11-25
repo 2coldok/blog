@@ -13,7 +13,7 @@ async function fetchGithubIssues() {
   try {
     const response = await octokit.request("GET /repos/{owner}/{repo}/issues", {
       owner: "2coldok",
-      repo: "react-blog",
+      repo: "blog-posts",
       headers: {
         "X-GitHub-Api-Version": "2022-11-28",
       }

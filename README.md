@@ -1,5 +1,5 @@
 # 📘 깃허브 이슈 블로그
-Github REST API를 통해 불러온 Github Issues 데이터를 다음과 같이 활용하여 개발된 블로그입니다.
+Github Issues Blog
 ```ts
 type Issue = {
   id: number;
@@ -43,7 +43,7 @@ issue.labels[0].name : 포스트 카테고리
 issue.milestone.title : 포스트 태그
 ```
 
-## 블로그 스택
+## Stack
 - Yarn Berry Plug'n'Play
 - React Vite
 - TypeScript
@@ -59,6 +59,3 @@ issue.milestone.title : 포스트 태그
 - React Icons
 - Utterances
 - YouTube Embed Videos
-
-## 블로그 테마
-블로그 테마라고 생각합니다.
